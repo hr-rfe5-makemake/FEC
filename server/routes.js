@@ -1,90 +1,119 @@
-var router = require('express').Router();
-const helper = require('./helpers');
+// var router = require('express').Router();
+// // const helper = require('./helpers');
+// var axios = require('axios');
 
 
-//-----------------------------------
-// Products
-//---------------------------------
+// //-----------------------------------
+// // Products
+// //---------------------------------
 
-//Retrieve the list of products
-router.get('/products', (req, res) => {
-  helperFunction(req.url, (err, result) =>{
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(result);
-    }
-  })
-}
+// //Retrieve the list of products
+// router.get('/products', (req, res) => {
+//   helperFunction(req.url, (err, result) =>{
+//     if (err) {
+//       res.send(err);
+//     } else {
+//       res.send(result);
+//     }
+//   })
+// })
 
-//Returns all product level information for a specified product id
-router.get('/products/:product_id', (req, res) => {})
+// //Returns all product level information for a specified product id
+// router.get('/products/:product_id', (req, res) => {
+//   console.log(req.url);
+//   res.end();
+// })
 
-//Returns the all styles available for the given product
-router.get('/products/:product_id/styles', (req, res) => {} )
+// //Returns the all styles available for the given product
+// router.get('/products/:product_id/styles', (req, res) => {} )
 
-//Returns the id's of products related to the product specified
-router.get('/products/:product_id/related', (req, res) => {} )
-
-
-//-----------------------------------
-// Carts
-//-----------------------------------
-
-//Retrieves list of products added to the cart by a user
-router.get('/cart',(req, res) => {} )
-
-//Adds a product to the cart
-router.post('/cart',(req, res) => {} )
+// //Returns the id's of products related to the product specified
+// router.get('/products/:product_id/related', (req, res) => {} )
 
 
-//-----------------------------------
-// Questions AND Answers
-//-----------------------------------
+// //-----------------------------------
+// // Carts
+// //-----------------------------------
 
-//Get a list of questions for a particular product
-router.get('/qa/questions',(req, res) => {} )
+// //Retrieves list of products added to the cart by a user
+// router.get('/cart',(req, res) => {} )
 
-//Get a answers for a given question
-router.get('/qa/questions/:question_id/answers',(req, res) => {} )
-
-//Adds a question for the given product
-router.post('/qa/questions',(req, res) => {} )
-
-//Adds an answer for the given question
-router.post('/qa/questions/:question_id/answers',(req, res) => {} )
-
-//Updates a question to show it was found helpful.
-router.put('/qa/questions/:question_id/helpful',(req, res) => {} )
-
-//Report Question
-router.put('/qa/questions/:question_id/report',(req, res) => {} )
-
-//Mark Answer as Helpful
-router.put('/qa/answers/:answer_id/helpful',(req, res) => {} )
-
-//Report answer
-router.put('/qa/answers/:answer_id/report',(req, res) => {} )
+// //Adds a product to the cart
+// router.post('/cart',(req, res) => {} )
 
 
-//-----------------------------------
-// Reviews
-//-----------------------------------
+// //-----------------------------------
+// // Questions AND Answers
+// //-----------------------------------
 
-// List Reviews
-router.get('/reviews/',(req, res) => {} );
+// //Get a list of questions for a particular product
+// router.get('/qa/questions',(req, res) => {
+//   var options = {
+//     method: 'GET',
+//     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions`,
+//     headers: {
+//       'Authorization': `token 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`
+//     },
+//     params: {
+//       "product_id": 37311,
+//       "page": 1,
+//       "count": 5
+//     }
+//   }
 
-// Get Review Metadata
-router.get('/reviews/meta',(req, res) => {} );
-
-// Add a Review
-router.post('/reviews',(req, res) => {} );
-
-// Mark Review as Helpful
-router.put('/reviews/:review_id/helpful',(req, res) => {} );
-
-// Report Review
-router.put('/reviews/:review_id/report',(req, res) => {} );
+//   axios.request(options)
+//   .then((result) => {
+//     console.log(result);
+//     res.end();
+//   })
+//   .catch(err => {
+//     console.log(err);
+//     res.end();
+//   })
 
 
-module.exports = router;
+// } )
+
+// //Get a answers for a given question
+// router.get('/qa/questions/:question_id/answers',(req, res) => {} )
+
+// //Adds a question for the given product
+// router.post('/qa/questions',(req, res) => {} )
+
+// //Adds an answer for the given question
+// router.post('/qa/questions/:question_id/answers',(req, res) => {} )
+
+// //Updates a question to show it was found helpful.
+// router.put('/qa/questions/:question_id/helpful',(req, res) => {} )
+
+// //Report Question
+// router.put('/qa/questions/:question_id/report',(req, res) => {} )
+
+// //Mark Answer as Helpful
+// router.put('/qa/answers/:answer_id/helpful',(req, res) => {} )
+
+// //Report answer
+// router.put('/qa/answers/:answer_id/report',(req, res) => {} )
+
+
+// //-----------------------------------
+// // Reviews
+// //-----------------------------------
+
+// // List Reviews
+// router.get('/reviews/',(req, res) => {} );
+
+// // Get Review Metadata
+// router.get('/reviews/meta',(req, res) => {} );
+
+// // Add a Review
+// router.post('/reviews',(req, res) => {} );
+
+// // Mark Review as Helpful
+// router.put('/reviews/:review_id/helpful',(req, res) => {} );
+
+// // Report Review
+// router.put('/reviews/:review_id/report',(req, res) => {} );
+
+
+// module.exports = router;
