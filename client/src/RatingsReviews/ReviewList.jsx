@@ -13,6 +13,7 @@ class ReviewList extends React.Component {
       showButton: false,
       sortOption: 'relevant'
     };
+    this.rerender = this.rerender.bind(this);
   }
 
   // GET all reviews, based on sortOption
@@ -24,6 +25,10 @@ class ReviewList extends React.Component {
         });
       })
       .catch(err => console.error(err))
+  }
+
+  rerender() {
+    this.getAllReviews(this.props.product_id);
   }
 
   componentDidMount() {
@@ -40,6 +45,7 @@ class ReviewList extends React.Component {
           return <IndividualTile
             review={review}
             key={review.review_id}
+            rerender={this.rerender}
           />
         })}
         <button>More Reviews Button</button>
