@@ -2,6 +2,7 @@ import React from 'react';
 import IRecommend from './ReviewListHelpers/IRecommend.jsx';
 import MyUsername from './ReviewListHelpers/MyUsername.jsx';
 import SellerResponse from './ReviewListHelpers/SellerResponse.jsx';
+import ReviewSummary from './ReviewListHelpers/ReviewSummary.jsx';
 import axios from 'axios';
 import urlFragment from './urlFragment.jsx';
 
@@ -37,7 +38,6 @@ class IndividualTile extends React.Component {
       axios.put(`${urlFragment}${this.props.review.review_id}/helpful`)
         .then((reply) => {
           console.log(reply)
-          // rerender
           this.props.rerender();
         })
         .catch(err => console.error(err))
@@ -57,7 +57,8 @@ class IndividualTile extends React.Component {
         <div>==> INDIVIDUAL TILE COMPONENT</div>
         <div>Star Rating Container. Rating: {this.props.review.rating}</div>
         <div className="tile-date">{this.reformatDate(this.props.review.date)}</div>
-        <b>Review Summary: {this.props.review.summary}</b>
+        <ReviewSummary summary={this.props.review.summary}/>
+        {/* <b>Review Summary: {this.props.review.summary.slice(0, 10)}</b> */}
         <p>Review Body(HANDLE PHOTOS): {this.props.review.body}</p>
         <IRecommend recommend={this.props.review.recommend}/>
         <MyUsername username={this.props.review.reviewer_name} verified={true}/>
