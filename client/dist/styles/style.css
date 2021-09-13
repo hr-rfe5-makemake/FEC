@@ -20,3 +20,7 @@ div {
 .filterOption {
   // change color onHover
 }
+
+.seller-response {
+  background-color: green;
+}
