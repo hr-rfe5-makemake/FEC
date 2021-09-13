@@ -37,6 +37,7 @@ class RatingsReviews extends React.Component {
         <div id='rr-right'>
           <div>Keyword Search Component (Low Priority)</div>
           <ReviewList
+            product_id={this.props.product_id}
             filterOptions={this.state.filterOption}
           />
           <button>ADD A REVIEW +</button>

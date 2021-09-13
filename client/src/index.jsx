@@ -10,7 +10,7 @@ class App extends React.Component {
     super();
     this.state ={
       shoppingCart: [],
-      currentItem_ID: 0
+      currentItem_ID: 37311
     }
     this.changeCurrentProduct = this.changeCurrentProduct.bind(this);
   }
@@ -45,7 +45,7 @@ class App extends React.Component {
         <Overview currentItem={this.state.currentItem_ID}/>
         <RelatedItems changeCurrentProduct={this.changeCurrentProduct}/>
         <QuestionsAnswers />
-        <RatingsReviews currentItem={this.state.currentItem_ID}/>
+        <RatingsReviews product_id={this.state.currentItem_ID}/>
       </div>
     )
   }
