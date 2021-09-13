@@ -20,7 +20,7 @@ class ReviewList extends React.Component {
     axios.get(`${urlFragment}?product_id=${product_id}`)
       .then(allReviews => {
         this.setState({
-          allReviews: allReviews
+          allReviews: allReviews.data.results
         });
       })
       .catch(err => console.error(err))
@@ -29,14 +29,19 @@ class ReviewList extends React.Component {
   componentDidMount() {
     this.getAllReviews(this.props.product_id);
   }
+
   // when dynamically generating IndividualTiles, only include reviews that match the filterOptions prop
   render() {
     return (
       <div>
         <div>REVIEW LIST COMPONENT</div>
         <div>Sort Options (dropdown: helpful, newest, relevant)</div>
-        <IndividualTile />
-        <IndividualTile />
+        {this.state.allReviews.map(review => {
+          return <IndividualTile
+            review={review}
+            key={review.review_id}
+          />
+        })}
         <button>More Reviews Button</button>
       </div>
     );
