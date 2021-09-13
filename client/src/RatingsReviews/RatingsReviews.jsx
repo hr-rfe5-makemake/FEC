@@ -1,6 +1,7 @@
 import React from 'react';
 import BreakdownFilter from './BreakdownFilter.jsx';
 import ReviewList from './ReviewList.jsx';
+import WriteReviewModal from './WriteReviewModal.jsx';
 
 class RatingsReviews extends React.Component {
   constructor(props) {
@@ -37,6 +38,8 @@ class RatingsReviews extends React.Component {
           <ReviewList
             filterOptions={this.state.filterOption}
           />
+          <button>ADD A REVIEW +</button>
+          <WriteReviewModal />
         </div>
       </div>
     );
