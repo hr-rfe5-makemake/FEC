@@ -86,7 +86,7 @@ class RelatedProductCard extends React.Component {
     return Object.keys(this.props.item).length !== 0 ? (
       <div className='productCard'>
         <div className='productImage'>
-          <img src ={this.state.img} alt='Photo' />
+          <img src ={this.state.img} alt='Photo Unavailable' />
         </div>
         <div className='productCategory'>Category: {this.props.item.category}</div>
         <div className='productName'>Name: {this.props.item.name}</div>
