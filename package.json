@@ -20,6 +20,10 @@
   },
   "homepage": "https://github.com/hr-rfe5-makemake/FEC#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.15",
     "axios": "^0.21.1",
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.2",

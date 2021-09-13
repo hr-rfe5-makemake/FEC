@@ -58,7 +58,6 @@ class IndividualTile extends React.Component {
         <div>Star Rating Container. Rating: {this.props.review.rating}</div>
         <div className="tile-date">{this.reformatDate(this.props.review.date)}</div>
         <ReviewSummary summary={this.props.review.summary}/>
-        {/* <b>Review Summary: {this.props.review.summary.slice(0, 10)}</b> */}
         <p>Review Body(HANDLE PHOTOS): {this.props.review.body}</p>
         <IRecommend recommend={this.props.review.recommend}/>
         <MyUsername username={this.props.review.reviewer_name} verified={true}/>
