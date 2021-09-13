@@ -1,6 +1,7 @@
 import React from 'react';
 import IndividualTile from './IndividualTile.jsx';
 import axios from 'axios';
+import urlFragment from './urlFragment.jsx';
 
 
 class ReviewList extends React.Component {
@@ -16,12 +17,17 @@ class ReviewList extends React.Component {
 
   // GET all reviews, based on sortOption
   getAllReviews(product_id) {
-    axios.get();
+    axios.get(`${urlFragment}?product_id=${product_id}`)
+      .then(allReviews => {
+        this.setState({
+          allReviews: allReviews
+        });
+      })
+      .catch(err => console.error(err))
   }
 
   componentDidMount() {
-    console.log(this.props.product_id)
-    getAllReviews(this.props.product_id);
+    this.getAllReviews(this.props.product_id);
   }
   // when dynamically generating IndividualTiles, only include reviews that match the filterOptions prop
   render() {
