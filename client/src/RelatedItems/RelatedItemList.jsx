@@ -158,8 +158,16 @@ class RelatedItemList extends React.Component {
                 }
               />
             </div>
+            {this.state.currentIdx !== 0 ?
             <button onClick={this.previous}>Previous</button>
+            :
+            <div></div>
+          }
+          {this.state.currentIdx !== this.state.length - 3 ?
             <button onClick={this.next}>Next</button>
+            :
+            <div></div>
+          }
           </div>
         );
       } else {

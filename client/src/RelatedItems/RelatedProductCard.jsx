@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import RelatedProductRating from './RelatedProductRating.jsx';
 
 class RelatedProductCard extends React.Component {
   constructor(props) {
@@ -23,7 +24,6 @@ class RelatedProductCard extends React.Component {
           }
         }
         console.log(styles[idx].photos);
-        // MIGHT HAVE TO FIX THIS LATER BECAUSE FETCH AUTOMATICALLY CHANGES TO TRUE BEFORE FINISHING ALL FETCHES
         this.setState({
           img: styles[idx].photos[0].thumbnail_url,
         });
@@ -88,11 +88,14 @@ class RelatedProductCard extends React.Component {
         <div className='productImage'>
           <img src ={this.state.img} alt='Photo Unavailable' />
         </div>
+        <div>
+          <button>Compare</button>
+        </div>
         <div className='productCategory'>Category: {this.props.item.category}</div>
         <div className='productName'>Name: {this.props.item.name}</div>
         <div className='productPrice'>Price: {this.props.item.default_price}</div>
         {this.props.item.rating ? (
-          <div className='productRating'>Rating: {this.props.item.rating}</div>
+          <div className='productRating'>Rating: <RelatedProductRating rating={this.props.item.rating} /></div>
         ) : (
           <div></div>
         )}
