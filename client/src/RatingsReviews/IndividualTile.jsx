@@ -8,7 +8,7 @@ class IndividualTile extends React.Component {
   render() {
     return (
       <div>
-        <div>Individual Tile</div>
+        <div>==> INDIVIDUAL TILE COMPONENT</div>
         <div>Star Rating Container</div>
         <div>Date</div>
         <div>Review Summary</div>

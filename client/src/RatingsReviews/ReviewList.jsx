@@ -16,7 +16,7 @@ class ReviewList extends React.Component {
   render() {
     return (
       <div>
-        <div>ReviewList</div>
+        <div>REVIEW LIST COMPONENT</div>
         <div>Sort Options (dropdown)</div>
         <IndividualTile />
         <IndividualTile />

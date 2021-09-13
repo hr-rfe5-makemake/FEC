@@ -4,10 +4,15 @@
 
 #rr-left {
   grid-column: 1;
-  background-color: #ff9e2c;
+  background-color: #b6701e;
 }
 
 #rr-right {
   grid-column: 2;
-  background-color: #b6701e;
+  background-color: #ff9e2c;
+}
+
+div {
+  border: gray;
+  border-style: solid;
 }
