@@ -5,65 +5,94 @@ class RelatedProductCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      item: {},
-      rating: null,
-      styles: {}
-    };
+      img: null
+    }
+    this.fetch = this.fetch.bind(this);
+    this.compare = this.compare.bind(this);
   }
 
   componentDidMount() {
-    console.log(this.props.itemId);
+    console.log(this.props);
     axios
-      .get("/api/fec2/hr-rfe/products/" + this.props.itemId)
+      .get("/api/fec2/hr-rfe/products/" + this.props.item.id + "/styles")
       .then((result) => {
+        var styles = result.data.results;
+        for (var i = 0; i < styles.length; i++) {
+          if (styles[i]["default?"] === true) {
+            var idx = i;
+          }
+        }
+        console.log(styles[idx].photos);
+        // MIGHT HAVE TO FIX THIS LATER BECAUSE FETCH AUTOMATICALLY CHANGES TO TRUE BEFORE FINISHING ALL FETCHES
         this.setState({
-          item: result.data,
+          img: styles[idx].photos[0].thumbnail_url,
         });
       })
       .catch((err) => {
         console.log("error");
       });
-    axios
-      .get("/api/fec2/hr-rfe/reviews/meta?product_id=" + this.props.itemId)
-      .then((result) => {
-        if (Object.keys(result.data.ratings).length > 0) {
-          var totalCount = 0;
-          var totalRatings = 0;
-          for (var key in result.data.ratings) {
-            totalRatings += parseInt(result.data.ratings[key]) * key;
-            totalCount += parseInt(result.data.ratings[key]);
-          }
-          var avgRating = totalRatings / totalCount;
-          this.setState({
-            rating: avgRating,
-          });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    // axios
-    //   .get("/api/fec2/hr-rfe/products/" + this.props.itemId + '/styles')
-    //   .then((result) => {
-    //     console.log(result.data);
-    //     for (key in result.data.styles)
-    //     this.setState({
-    //       styles: result.data,
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     console.log("error");
-    //   });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.item.id !== this.props.item.id) {
+        console.log(this.props.item.id);
+        axios
+        .get("/api/fec2/hr-rfe/products/" + this.props.item.id + "/styles")
+        .then((result) => {
+          var styles = result.data.results;
+          // set default idx to 0
+          var idx = 0;
+          for (var i = 0; i < styles.length; i++) {
+            if (styles[i]["default?"] === true) {
+              idx = i;
+            }
+          }
+          console.log(styles[idx]);
+          // MIGHT HAVE TO FIX THIS LATER BECAUSE FETCH AUTOMATICALLY CHANGES TO TRUE BEFORE FINISHING ALL FETCHES
+          this.setState({
+            img: styles[idx].photos[0].thumbnail_url,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
+
+  fetch() {
+    axios
+      .get("/api/fec2/hr-rfe/products/" + this.props.item.id + "/styles")
+      .then((result) => {
+        var styles = result.data.results;
+        for (var i = 0; i < styles.length; i++) {
+          if (styles[i]["default?"] === true) {
+            var idx = i;
+          }
+        }
+        console.log(styles[idx].photos);
+        // MIGHT HAVE TO FIX THIS LATER BECAUSE FETCH AUTOMATICALLY CHANGES TO TRUE BEFORE FINISHING ALL FETCHES
+        this.setState({
+          img: styles[idx].photos[0].thumbnail_url,
+        });
+      })
+      .catch((err) => {
+        console.log("error");
+      });
+  }
+
+  compare() {}
+
   render() {
-    return Object.keys(this.state.item).length !== 0 ? (
-      <div className="productCard">
-        <div>Category: {this.state.item.category}</div>
-        <div>Name: {this.state.item.name}</div>
-        <div>Price: {this.state.item.default_price}</div>
-        {this.state.rating ? (
-          <div>Rating: {this.state.rating}</div>
+    return Object.keys(this.props.item).length !== 0 ? (
+      <div className='productCard'>
+        <div className='productImage'>
+          <img src ={this.state.img} alt='Photo' />
+        </div>
+        <div className='productCategory'>Category: {this.props.item.category}</div>
+        <div className='productName'>Name: {this.props.item.name}</div>
+        <div className='productPrice'>Price: {this.props.item.default_price}</div>
+        {this.props.item.rating ? (
+          <div className='productRating'>Rating: {this.props.item.rating}</div>
         ) : (
           <div></div>
         )}
