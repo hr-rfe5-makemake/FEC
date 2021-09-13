@@ -13,6 +13,10 @@ class IndividualTile extends React.Component {
         <div>Date</div>
         <div>Review Summary</div>
         <div>Review Body</div>
+        <div>I recommend this product (checkmark)</div>
+        <div>Reviewer's Username + Verified Purchaser</div>
+        <div>Response from Seller</div>
+        <div>Was this review helpful? (yes link + count, no link + count)</div>
         <div>Etc.</div>
       </div>
     );

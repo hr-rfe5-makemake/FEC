@@ -5,19 +5,38 @@ import ReviewList from './ReviewList.jsx';
 class RatingsReviews extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      filterOptions: [1, 2, 3, 4, 5]
+    };
+    this.handleFilterClick = this.handleFilterClick.bind(this);
+    this.handleRemoveFiltersClick = this.handleRemoveFiltersClick.bind(this);
   }
 
+  handleFilterClick() {
+    console.log('add/remove one filter')
+    // toggle on/off
+    // additive
+    // render a "filters have been applied" message and "remove all filters" link
+  }
 
+  handleRemoveFiltersClick() {
+    console.log('remove all filters')
+  }
 
   render() {
     return (
       <div id='rr-container'>
         <h4>Ratings Reviews</h4>
         <div id='rr-left'>
-          <BreakdownFilter />
+          <BreakdownFilter
+            handleFilterClick={this.handleFilterClick}
+            handleRemoveFiltersClick={this.handleRemoveFiltersClick}
+          />
         </div>
         <div id='rr-right'>
-          <ReviewList />
+          <ReviewList
+            filterOptions={this.state.filterOption}
+          />
         </div>
       </div>
     );

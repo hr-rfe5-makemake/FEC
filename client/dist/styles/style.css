@@ -16,3 +16,7 @@ div {
   border: gray;
   border-style: solid;
 }
+
+.filterOption {
+  // change color onHover
+}

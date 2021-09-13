@@ -13,11 +13,14 @@ class ReviewList extends React.Component {
     };
   }
 
+  // GET all reviews, based on sortOption
+
+  // when dynamically generating IndividualTiles, only include reviews that match the filterOptions prop
   render() {
     return (
       <div>
         <div>REVIEW LIST COMPONENT</div>
-        <div>Sort Options (dropdown)</div>
+        <div>Sort Options (dropdown: helpful, newest, relevant)</div>
         <IndividualTile />
         <IndividualTile />
         <button>More Reviews Button</button>
