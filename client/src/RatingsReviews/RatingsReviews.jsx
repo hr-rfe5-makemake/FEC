@@ -1,16 +1,24 @@
 import React from 'react';
+import BreakdownFilter from './BreakdownFilter.jsx';
+import ReviewList from './ReviewList.jsx';
 
 class RatingsReviews extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
 
 
   render() {
     return (
-      <div>
-        Ratings Reviews
+      <div id='RR-container'>
+        <h4>Ratings Reviews</h4>
+        <div id='RR-left'>
+          <BreakdownFilter />
+        </div>
+        <div id='RR-right'>
+          <ReviewList />
+        </div>
       </div>
     );
   }
