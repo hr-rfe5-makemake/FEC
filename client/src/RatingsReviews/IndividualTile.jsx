@@ -11,7 +11,8 @@ class IndividualTile extends React.Component {
     super(props);
     this.state = {
       isVerified: false,
-      helpful: false
+      helpful: false,
+      verified: Math.round(Math.random()) // either 1 or 0, since no API data
     };
     this.handleHelpfulClick = this.handleHelpfulClick.bind(this);
   }
@@ -45,6 +46,7 @@ class IndividualTile extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.state.verified)
     this.checkVerification();
   }
 
@@ -54,18 +56,16 @@ class IndividualTile extends React.Component {
         {console.log(this.props.review)}
         <br></br>
         <br></br>
-        <div>==> INDIVIDUAL TILE COMPONENT</div>
+        <MyUsername username={this.props.review.reviewer_name} verified={this.state.verified}/>
         <div>Star Rating Container. Rating: {this.props.review.rating}</div>
-        <div className="tile-date">{this.reformatDate(this.props.review.date)}</div>
+        <div className="tile-date">Reviewed on {this.reformatDate(this.props.review.date)}</div>
         <ReviewSummary summary={this.props.review.summary}/>
         <p>Review Body(HANDLE PHOTOS): {this.props.review.body}</p>
         <IRecommend recommend={this.props.review.recommend}/>
-        <MyUsername username={this.props.review.reviewer_name} verified={true}/>
         <SellerResponse response={this.props.review.response}/>
         <div>Helpful?{' '}
           <u onClick={this.handleHelpfulClick} style={{cursor: 'pointer'}}>Yes</u> ({this.props.review.helpfulness})
         </div>
-        <div>Etc.</div>
       </div>
     );
   }
