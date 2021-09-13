@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class BreakdownFilter extends React.Component {
   constructor(props) {
@@ -9,6 +10,13 @@ class BreakdownFilter extends React.Component {
   }
 
   // GET meta data (ratings, recommended, characteristics) from /reviews/meta
+  getMetaData() {
+
+  }
+
+  ComponentDidMount() {
+    getMetaData();
+  }
 
   render() {
     return (
