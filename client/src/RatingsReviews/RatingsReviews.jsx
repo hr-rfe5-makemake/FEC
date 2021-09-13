@@ -35,6 +35,7 @@ class RatingsReviews extends React.Component {
           />
         </div>
         <div id='rr-right'>
+          <div>Keyword Search Component (Low Priority)</div>
           <ReviewList
             filterOptions={this.state.filterOption}
           />
