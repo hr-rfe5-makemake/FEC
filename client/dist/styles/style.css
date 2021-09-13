@@ -1,0 +1,13 @@
+#rr-container {
+  display: grid;
+}
+
+#rr-left {
+  grid-column: 1;
+  background-color: #ff9e2c;
+}
+
+#rr-right {
+  grid-column: 2;
+  background-color: #b6701e;
+}

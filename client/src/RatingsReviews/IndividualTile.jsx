@@ -8,7 +8,12 @@ class IndividualTile extends React.Component {
   render() {
     return (
       <div>
-        IndividualTile
+        <div>Individual Tile</div>
+        <div>Star Rating Container</div>
+        <div>Date</div>
+        <div>Review Summary</div>
+        <div>Review Body</div>
+        <div>Etc.</div>
       </div>
     );
   }

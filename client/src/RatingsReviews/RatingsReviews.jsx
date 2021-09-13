@@ -11,12 +11,12 @@ class RatingsReviews extends React.Component {
 
   render() {
     return (
-      <div id='RR-container'>
+      <div id='rr-container'>
         <h4>Ratings Reviews</h4>
-        <div id='RR-left'>
+        <div id='rr-left'>
           <BreakdownFilter />
         </div>
-        <div id='RR-right'>
+        <div id='rr-right'>
           <ReviewList />
         </div>
       </div>
