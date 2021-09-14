@@ -21,7 +21,29 @@
   transition: all 250ms linear;
   width: 30%;
   border: solid;
+  position: relative;
 }
+
+/* .productImage {
+  max-height: 50%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.productPhoto{
+  width: auto;
+  height: auto;
+  max-height: 50%;
+  max-width: 100%;
+} */
+
+
+.productDetails {
+  position:absolute;
+  bottom: 0;
+  text-align:left;
+}
+
 
 .previous, .next {
   z-index: 1;

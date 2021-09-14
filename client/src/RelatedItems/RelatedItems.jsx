@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import RelatedItemList from './RelatedItemList.jsx';
+import OutfitList from './OutfitList.jsx';
 
 class RelatedItems extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class RelatedItems extends React.Component {
     return (
       <div className='carouselList'>
         <RelatedItemList currentItemId={this.props.currentItemId} currentItem={this.props.currentItem}/>
+        <OutfitList currentItemId={this.props.currentItemId} currentItem={this.props.currentItem}/>
       </div>
     )
   }

@@ -19,7 +19,8 @@ class RelatedProductCard extends React.Component {
   }
 
   render() {
-    return Object.keys(this.props.item).length !== 0 ? (
+    return (
+      Object.keys(this.props.item).length !== 0 ? (
       <div className='productCard'>
         <div className='productImage'>
           <img className='productPhoto' src ={this.props.item.img} alt='Photo Unavailable' />
@@ -31,17 +32,20 @@ class RelatedProductCard extends React.Component {
           <div>No PopUp</div>
           }
         </div>
+        <div className='productDetails'>
         <div className='productCategory'>Category: {this.props.item.category}</div>
         <div className='productName'>Name: {this.props.item.name}</div>
         <div className='productPrice'>Price: {this.props.item.default_price}</div>
         {this.props.item.rating ? (
-          <div className='productRating'>Rating: <RelatedProductRating rating={this.props.item.rating} /></div>
+          <div className='productRating'><RelatedProductRating rating={this.props.item.rating} /></div>
         ) : (
-          <div></div>
+          <div className='productRating hide'></div>
         )}
       </div>
+        </div>
     ) : (
       <div></div>
+    )
     );
   }
 }
