@@ -16,6 +16,7 @@ class App extends React.Component {
     }
     this.changeCurrentProduct = this.changeCurrentProduct.bind(this);
     this.databaseFetcher = this.databaseFetcher.bind(this);
+    this.updateDetails = this.updateDetails.bind(this);
   }
 
   //Add Item to cart/outfit
@@ -40,11 +41,23 @@ class App extends React.Component {
   }
 
   changeCurrentProduct(newProduct){
-    this.setState({
-      currentItem_ID: newProduct
-    })
+    this.updateDetails(newProduct);
   }
 
+  updateDetails(newId) {
+    axios.get('/api/fec2/hr-rfe/products/' + newId)
+    .then(data => {
+      console.log(data.data);
+      this.setState({
+        //FILL ME IN
+        currentItem_ID: newId,
+        details: data.data
+      })
+    })
+    .catch(err => {
+      console.log('error fetching new item details');
+    })
+  }
 
   render() {
     return (

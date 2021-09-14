@@ -10,18 +10,27 @@ class RelatedProductCard extends React.Component {
       showComparison: false
     }
     this.compare = this.compare.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   compare(event) {
+    event.stopPropagation();
     this.setState({
       showComparison: !this.state.showComparison
     })
   }
 
+  handleClick(event) {
+    console.log('click');
+    console.log(this.props.item.id);
+    this.props.changeCurrentProduct(this.props.item.id);
+    this.props.updateRelated(this.props.item.id);
+  }
+
   render() {
     return (
       Object.keys(this.props.item).length !== 0 ? (
-      <div className='productCard'>
+      <div className='productCard' onClick={this.handleClick}>
         <div className='productImage'>
           <img className='productPhoto' src ={this.props.item.img} alt='Photo Unavailable' />
         </div>

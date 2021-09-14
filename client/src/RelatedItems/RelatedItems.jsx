@@ -25,7 +25,7 @@ class RelatedItems extends React.Component {
   render() {
     return (
       <div className='carouselList'>
-        <RelatedItemList currentItemId={this.props.currentItemId} currentItem={this.props.currentItem}/>
+        <RelatedItemList currentItemId={this.props.currentItemId} currentItem={this.props.currentItem} changeCurrentProduct={this.props.changeCurrentProduct}/>
         <OutfitList currentItemId={this.props.currentItemId} currentItem={this.props.currentItem}/>
       </div>
     )
