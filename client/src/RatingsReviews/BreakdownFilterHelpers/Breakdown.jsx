@@ -31,7 +31,24 @@ function Breakdown({metaData, handleRemoveFiltersClick, handleFilterClick}) {
       </div>
     );
   } else {
-    return null;
+    var bars = [];
+      for (var i = 5; i > 0; i--) {
+        bars.push(
+          <div className="bar-container">
+            <u onClick={handleFilterClick} style={{cursor: 'pointer'}}>{i} stars</u>
+            <div className="bar-grey">
+              <div className="bar-green" style={{height: "10px", width: `0%`}}></div>
+            </div> 0
+          </div>
+        )
+      }
+      return (
+        <div className='filterOption' onClick={handleFilterClick}>
+          {bars}
+          <div>"filters have been applied"</div>
+          <div onClick={handleRemoveFiltersClick}>Link: remove filters</div>
+        </div>
+      );
   }
 }
 
