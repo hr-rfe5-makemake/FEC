@@ -1,19 +1,20 @@
 import React from "react";
 import axios from "axios";
 import RelatedProductRating from './RelatedProductRating.jsx';
+import RelatedItemComparison from "./RelatedItemComparison.jsx";
 
 class RelatedProductCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      img: null
+      img: null,
+      showComparison: false
     }
     this.fetch = this.fetch.bind(this);
     this.compare = this.compare.bind(this);
   }
 
   componentDidMount() {
-    console.log(this.props);
     axios
       .get("/api/fec2/hr-rfe/products/" + this.props.item.id + "/styles")
       .then((result) => {
@@ -80,7 +81,11 @@ class RelatedProductCard extends React.Component {
       });
   }
 
-  compare() {}
+  compare(event) {
+    this.setState({
+      showComparison: !this.state.showComparison
+    })
+  }
 
   render() {
     return Object.keys(this.props.item).length !== 0 ? (
@@ -88,8 +93,12 @@ class RelatedProductCard extends React.Component {
         <div className='productImage'>
           <img src ={this.state.img} alt='Photo Unavailable' />
         </div>
-        <div>
-          <button>Compare</button>
+        <div className="popup" onClick={this.compare}>
+          {
+            this.state.showComparison ?
+          <RelatedItemComparison currentItem={this.props.currentItem} comparedItem={this.props.item}/> :
+          <div>No PopUp</div>
+          }
         </div>
         <div className='productCategory'>Category: {this.props.item.category}</div>
         <div className='productName'>Name: {this.props.item.name}</div>

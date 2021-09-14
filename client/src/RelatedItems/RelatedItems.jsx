@@ -24,7 +24,7 @@ class RelatedItems extends React.Component {
   render() {
     return (
       <div>
-        <RelatedItemList currentItem={this.props.currentItem}/>
+        <RelatedItemList currentItemId={this.props.currentItemId} currentItem={this.props.currentItem}/>
       </div>
     )
   }

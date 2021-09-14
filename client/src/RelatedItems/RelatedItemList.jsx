@@ -16,9 +16,10 @@ class RelatedItemList extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props);
     // get related items
     axios
-      .get("/api/fec2/hr-rfe/products/" + this.props.currentItem + "/related")
+      .get("/api/fec2/hr-rfe/products/" + this.props.currentItemId + "/related")
       .then((result) => {
         this.setState({
           relatedItems: result.data,
@@ -58,14 +59,14 @@ class RelatedItemList extends React.Component {
                     // MIGHT HAVE TO FIX THIS LATER BECAUSE FETCH AUTOMATICALLY CHANGES TO TRUE BEFORE FINISHING ALL FETCHES
                     this.setState({
                       [result.data.product_id]: newState,
-                      fetched: true
+                      fetched: true,
                     });
                   }
                   return result.data.product_id;
                 })
                 .catch((err) => {
                   console.log("failed to fetch ratings");
-                })
+                });
             });
         }
       })
@@ -139,6 +140,7 @@ class RelatedItemList extends React.Component {
           <div>
             <div>
               <RelatedProductCard
+                currentItem={this.props.currentItem}
                 item={
                   this.state[this.state.relatedItems[this.state.currentIdx]]
                 }
@@ -146,6 +148,7 @@ class RelatedItemList extends React.Component {
             </div>
             <div>
               <RelatedProductCard
+                currentItem={this.props.currentItem}
                 item={
                   this.state[this.state.relatedItems[this.state.currentIdx + 1]]
                 }
@@ -153,21 +156,22 @@ class RelatedItemList extends React.Component {
             </div>
             <div>
               <RelatedProductCard
+                currentItem={this.props.currentItem}
                 item={
                   this.state[this.state.relatedItems[this.state.currentIdx + 2]]
                 }
               />
             </div>
-            {this.state.currentIdx !== 0 ?
-            <button onClick={this.previous}>Previous</button>
-            :
-            <div></div>
-          }
-          {this.state.currentIdx !== this.state.length - 3 ?
-            <button onClick={this.next}>Next</button>
-            :
-            <div></div>
-          }
+            {this.state.currentIdx !== 0 ? (
+              <button onClick={this.previous}>Previous</button>
+            ) : (
+              <div></div>
+            )}
+            {this.state.currentIdx !== this.state.length - 3 ? (
+              <button onClick={this.next}>Next</button>
+            ) : (
+              <div></div>
+            )}
           </div>
         );
       } else {
