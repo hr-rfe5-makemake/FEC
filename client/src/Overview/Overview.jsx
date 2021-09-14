@@ -26,6 +26,7 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.currentItem_ID);
     let id = this.props.currentItem_ID || 37311;
     axios.get(`${url}/products/${id}`)
       .then(result => {
@@ -87,6 +88,10 @@ class Overview extends React.Component {
     })
   }
 
+  onAddToCart(event) {
+
+  }
+
   render() {
     return (
       <div>
@@ -104,10 +109,12 @@ class Overview extends React.Component {
               currentStyle={this.state.currentStyle}
               onClick={this.onClickStyle.bind(this)}/>
             <Cart
-              sku = {this.state.sku}
+              sku={this.state.sku}
+              quantity={this.state.quantity}
               currentStyle={this.state.currentStyle}
               onChangeSize={this.onChangeSize.bind(this)}
-              onChangeQuantity={this.onChangeQuantity.bind(this)}/>
+              onChangeQuantity={this.onChangeQuantity.bind(this)}
+              onClick={this.onAddToCart.bind(this)}/>
           </div>
         </div>
         <ProductOverview

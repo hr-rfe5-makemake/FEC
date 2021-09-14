@@ -36,7 +36,7 @@ const Cart = (props) => {
         <option value="default">-</ option>
         <GetQuantity skus={props.currentStyle.skus} currentSku={props.sku}/>
       </select><br></br>
-      <button>Add to Cart</button>
+      <button onClick={() => { props.onClick(); }} disabled={props.quantity === null ? true: null}>Add to Cart</button>
     </div>
   )
 }
