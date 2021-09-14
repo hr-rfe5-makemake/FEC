@@ -9,13 +9,22 @@
 #rr-left {
   grid-column: 1;
 }
-#rr-left div {
-  border: gray;
-  border-style: solid;
+
+#rr-left > *:not(img) {
+  margin: 10px;
 }
 
 #rr-right {
   grid-column: 2;
+}
+
+#rr-right > *:not(img) {
+  margin: 10px;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
 }
 
 /*------------------------------*/
@@ -42,6 +51,7 @@
 
 img {
   margin-left: 5px;
+
 }
 
 .tile-date {
@@ -71,4 +81,31 @@ img {
 
 button {
   margin: 5px;
+}
+
+/*---------------------------*/
+/*  Breakdown                */
+/*---------------------------*/
+#rating-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+#rating-summary > img {
+  margin-top: 10px;
+}
+
+
+#big-rating-summary {
+  font-size: 300%;
+  font-weight: bolder;
+}
+
+.star-container {
+  display: flex;
+}
+
+.star-container > * {
+  align-items: flex-start;
 }

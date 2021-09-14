@@ -30,7 +30,7 @@ function Stars({rating}) {
     for (var i = 0; i < emptyStars; i++) {
       stars.push(<img src="images/star (1).png"/>);
     }
-    return stars;
+    return <span className="star-container">{stars}</span>;
   }
 }
 

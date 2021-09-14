@@ -54,7 +54,7 @@ class IndividualTile extends React.Component {
         <Stars rating={this.props.review.rating}/>
         <span className="tile-date">Reviewed on {this.reformatDate(this.props.review.date)}</span>
         <ReviewSummary summary={this.props.review.summary}/>
-        <div className="tile-body">{this.props.review.body} (HANDLE PHOTOS)</div>
+        <div className="tile-body">{this.props.review.body}</div>
         <IRecommend recommend={this.props.review.recommend}/>
         <SellerResponse response={this.props.review.response}/>
         <div>Helpful?{' '}

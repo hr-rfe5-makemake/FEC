@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import urlFragment from './urlFragment.jsx';
+import AverageRating from './BreakdownFilterHelpers/AverageRating.jsx';
 
 class BreakdownFilter extends React.Component {
   constructor(props) {
@@ -10,22 +12,24 @@ class BreakdownFilter extends React.Component {
   }
 
   // GET meta data (ratings, recommended, characteristics) from /reviews/meta
-  getMetaData() {
-
+  getMetaData(product_id) {
+    axios.get(`${urlFragment}meta?product_id=${product_id}`)
+    .then(metaData => {
+      this.setState({
+        metaData: metaData
+      });
+    })
+    .catch(err => console.error(err))
   }
 
-  ComponentDidMount() {
-    getMetaData();
+  componentDidMount() {
+    this.getMetaData(this.props.product_id);
   }
 
   render() {
     return (
       <div>
-        <div>BREAKDOWN FILTER COMPONENT</div>
-
-        <div>-->Average Rating</div>
-        <div>Rating Summary (3.5)</div>
-        <div>Rating Summary: Stars</div>
+        <AverageRating metaData={this.state.metaData}/>
 
         <div>-->Rating Breakdown</div>
         <div className='filterOption' onClick={this.props.handleFilterClick}>5 Stars [BAR] [COUNT]</div>
