@@ -67,7 +67,7 @@ class ReviewList extends React.Component {
   // when dynamically generating IndividualTiles, only include reviews that match the filterOptions prop
   render() {
     if (!this.state.reviewsExist) {
-      return <i>This product has no reviews yet.</i>
+      return <button>ADD A REVIEW +</button>
     } else {
       return (
         <div>
