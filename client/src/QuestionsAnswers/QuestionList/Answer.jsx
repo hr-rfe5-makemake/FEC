@@ -16,8 +16,7 @@ class Answer extends React.Component{
     if(!this.state.userMarkedAnswerAsHelpful){
       axios.put(`/api/fec2/hr-rfe/qa/answers/${this.props.answer.answer_id}/helpful`)
       .then(response => {
-        this.state.userMarkedAnswerAsHelpful = true
-        console.log(response)
+        this.setState({userMarkedAnswerAsHelpful: true})
         this.props.updateAnswers()
       })
       .catch(err => {
@@ -45,15 +44,16 @@ class Answer extends React.Component{
       fontWeight: this.props.answer.answerer_name === 'Seller' ? 'bold' : 'normal'
     }
 
-    return (
-      <div>
-        <span>A:{this.props.answer.body}</span>
-        <div>
-          <span>by <span style={nameStyle}>{this.props.answer.answerer_name}</span>, {dateFormat(this.props.answer.date, 'mmmm d, yyyy')} |
-           Helpful? <a onClick={this.helpfulUpdater.bind(this)}><u>Yes</u>({this.props.answer.helpfulness})</a> | <a onClick={this.report.bind(this)}><u>Report</u></a> </span>
-        </div>
-      </div>
-    )
+      return (
+        <li>
+          <span>A:{this.props.answer.body}</span>
+          <div>
+            <span>by <span style={nameStyle}>{this.props.answer.answerer_name}</span>, {dateFormat(this.props.answer.date, 'mmmm d, yyyy')} |
+            Helpful? <u onClick={this.helpfulUpdater.bind(this)} style={{cursor: 'pointer'}}>Yes</u>({this.props.answer.helpfulness}) | <u onClick={this.report.bind(this)} style={{cursor: 'pointer'}}>Report</u> </span>
+          </div>
+        </li>
+      )
+
   }
 
 }

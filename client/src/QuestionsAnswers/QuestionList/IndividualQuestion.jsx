@@ -6,14 +6,48 @@ class Question extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      answers: []
+      renderAnswers: [],
+      allAnswers: [],
+      defaultAnswers: [],
+      alreadyVoted: false,
+      userAlreadyReported: false
     }
   }
 
   answersFetcher(){
-    axios.get(`/api/fec2/hr-rfe/qa/questions/${this.props.question.question_id}/answers?count=2`)
+    axios.get(`/api/fec2/hr-rfe/qa/questions/${this.props.question.question_id}/answers`)
     .then(response => {
-      this.setState({answers: response.data.results})
+      let result = []
+      let seller = []
+      for(let x =0; x < response.data.results.length; x++){
+        if(response.data.results[x].answerer_name === 'Seller'){
+          seller.push(response.data.results[x])
+        } else {
+          result.push(response.data.results[x])
+        }
+      }
+      let sortedArray = [...seller, ...result]
+      if(sortedArray.length === 0){
+        this.setState({
+          allAnswers: [],
+          defaultAnswers: [],
+          renderAnswers: []
+        })
+      } else {
+        if(sortedArray.length === 1){
+          this.setState({
+            allAnswers: sortedArray,
+            defaultAnswers: [sortedArray[0]],
+            renderAnswers: [sortedArray[0]]
+          })
+        } else {
+          this.setState({
+            allAnswers: sortedArray,
+            defaultAnswers: [sortedArray[0],sortedArray[1]],
+            renderAnswers: [sortedArray[0],sortedArray[1]]
+          })
+        }
+      }
     })
   }
 
@@ -23,24 +57,52 @@ class Question extends React.Component {
 
   helpfulUpdater(e){
     e.preventDefault()
-    axios.put(`/api/fec2/hr-rfe/qa/questions/${this.props.question.question_id}/helpful`)
-    .then(repsonse => {
-      this.props.updateQuestions()
-    })
-    .catch(err => console.log(err))
+    if(!this.state.alreadyVoted){
+      axios.put(`/api/fec2/hr-rfe/qa/questions/${this.props.question.question_id}/helpful`)
+      .then(repsonse => {
+        this.props.updateQuestions()
+        this.setState({alreadyVoted: true})
+      })
+      .catch(err => console.log(err))
+    } else {
+      alert('Already voted!')
+    }
+  }
+
+  reportQuesiton(e){
+    e.preventDefault()
+    if(!this.state.userAlreadyReported){
+      axios.put(`/api/fec2/hr-rfe/qa/questions/${this.props.question.question_id}/report`)
+      .then(response => {
+        e.target.innerText = 'Reported'
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    } else {
+      alert('You already reported relax!!')
+    }
   }
 
   render(){
+    let loadMoreAnswersStyle = {
+      cursor: 'pointer',
+      display: this.state.allAnswers.length > 2 ? 'block' : 'none'
+    }
+
     return (
-      <div className="question_entry">
+      <li className="question_entry">
         <span className="question">Q: {this.props.question.question_body}</span>
-        <span className="question_Rating/Add"> Helpful? <a onClick={this.helpfulUpdater.bind(this)}><u>Yes</u>({this.props.question.question_helpfulness})</a> | <a><u>Add Answer</u></a> | <a><u>Report</u></a></span>
-        {
-          this.state.answers.map(answer => (
-            <Answer key={answer.answer_id} answer={answer} updateQuestions={this.props.updateQuestions} updateAnswers={this.answersFetcher.bind(this)}/>
-          ))
-        }
-      </div>
+        <span className="question_Rating/Add"> Helpful? <u onClick={this.helpfulUpdater.bind(this)} style={{cursor: 'pointer'}}>Yes</u>({this.props.question.question_helpfulness}) | <u style={{cursor: 'pointer'}} >Add Answer</u> | <u onClick={this.reportQuesiton.bind(this)} style={{cursor: 'pointer'}} >Report</u></span>
+        <ul>
+          {
+            this.state.renderAnswers.map((answer, index) => (
+              <Answer key={answer.answer_id} answer={answer} updateQuestions={this.props.updateQuestions} updateAnswers={this.answersFetcher.bind(this)} index={index}/>
+            ))
+          }
+        </ul>
+        <p style={loadMoreAnswersStyle}>Load More Answers</p>
+      </li>
     )
   }
 
