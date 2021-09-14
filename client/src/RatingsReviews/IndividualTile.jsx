@@ -48,15 +48,12 @@ class IndividualTile extends React.Component {
 
   render() {
     return (
-      <div>
-        {console.log(this.props.review)}
-        <br></br>
-        <br></br>
+      <div className="individual-tile">
         <MyUsername username={this.props.review.reviewer_name} verified={this.state.verified}/>
         <Stars rating={this.props.review.rating}/>
-        <div className="tile-date">Reviewed on {this.reformatDate(this.props.review.date)}</div>
+        <span className="tile-date">Reviewed on {this.reformatDate(this.props.review.date)}</span>
         <ReviewSummary summary={this.props.review.summary}/>
-        <p>Review Body(HANDLE PHOTOS): {this.props.review.body}</p>
+        <div className="tile-body">{this.props.review.body} (HANDLE PHOTOS)</div>
         <IRecommend recommend={this.props.review.recommend}/>
         <SellerResponse response={this.props.review.response}/>
         <div>Helpful?{' '}

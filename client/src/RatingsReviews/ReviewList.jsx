@@ -47,7 +47,6 @@ class ReviewList extends React.Component {
   render() {
     return (
       <div>
-        <div>REVIEW LIST COMPONENT</div>
         <SortOptions changeSort={this.changeSort} count={this.state.allReviews.length}/>
         {this.state.allReviews.map(review => {
           return <IndividualTile

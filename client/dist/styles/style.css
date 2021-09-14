@@ -1,26 +1,58 @@
+/*---------------------------*/
+/*  RR Containers            */
+/*---------------------------*/
+
 #rr-container {
   display: grid;
 }
 
 #rr-left {
   grid-column: 1;
-  background-color: #b6701e;
 }
-
-#rr-right {
-  grid-column: 2;
-  background-color: #ff9e2c;
-}
-
-div {
+#rr-left div {
   border: gray;
   border-style: solid;
 }
 
-.filterOption {
-  // change color onHover
+#rr-right {
+  grid-column: 2;
+}
+
+/*------------------------------*/
+/*  RR Individual Review Tiles  */
+/*------------------------------*/
+
+.individual-tile {
+  border-bottom:gray;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.individual-tile > *:not(img) {
+  margin: 5px;
+}
+
+img {
+  margin-left: 5px;
+}
+
+.tile-date {
+  float: right;
+}
+
+#sort-options {
+  margin-left: 15px;
 }
 
 .seller-response {
-  background-color: green;
+  background-color: rgb(240, 240, 252);
+}
+
+/*---------------------------*/
+/*  RR Other                 */
+/*---------------------------*/
+.filterOption {
+  /* change color onHover */
 }
