@@ -42,6 +42,27 @@ class RelatedItemList extends React.Component {
               console.log("failed to get details of related products");
             })
             .then((id) => {
+              // get image of each related item
+              axios
+              .get("/api/fec2/hr-rfe/products/" + id + "/styles")
+              .then((result) => {
+                var styles = result.data.results;
+                console.log('styles',styles);
+                var idx = 0;
+                for (var i = 0; i < styles.length; i++) {
+                  if (styles[i]["default?"] === true) {
+                    idx = i;
+                  }
+                }
+                var newState = this.state[result.data.product_id];
+                newState.img = styles[idx].photos[0].thumbnail_url;
+                this.setState({
+                  [result.data.product_id]: newState,
+                });
+              })
+              .catch((err) => {
+                console.log("failed to get image");
+              });
               // get the ratings of each related item
               axios
                 .get("/api/fec2/hr-rfe/reviews/meta?product_id=" + id)
@@ -137,40 +158,36 @@ class RelatedItemList extends React.Component {
     } else {
       if (this.state.fetched) {
         return (
-          <div>
-            <div>
+          <div className='carouselWrapper'>
+            {this.state.currentIdx !== 0 ? (
+              <button className='previous' onClick={this.previous}>&lt;</button>
+            ) : (
+              <button className='previous hide' onClick={this.previous}>&lt;</button>
+            )}
+          <div className='carouselListContent'>
               <RelatedProductCard
                 currentItem={this.props.currentItem}
                 item={
                   this.state[this.state.relatedItems[this.state.currentIdx]]
                 }
               />
-            </div>
-            <div>
               <RelatedProductCard
                 currentItem={this.props.currentItem}
                 item={
                   this.state[this.state.relatedItems[this.state.currentIdx + 1]]
                 }
               />
-            </div>
-            <div>
               <RelatedProductCard
                 currentItem={this.props.currentItem}
                 item={
                   this.state[this.state.relatedItems[this.state.currentIdx + 2]]
                 }
               />
-            </div>
-            {this.state.currentIdx !== 0 ? (
-              <button onClick={this.previous}>Previous</button>
-            ) : (
-              <div></div>
-            )}
+          </div>
             {this.state.currentIdx !== this.state.length - 3 ? (
-              <button onClick={this.next}>Next</button>
+              <button className='next' onClick={this.next}>&gt;</button>
             ) : (
-              <div></div>
+              <button className='next hide' onClick={this.next}>&gt;</button>
             )}
           </div>
         );

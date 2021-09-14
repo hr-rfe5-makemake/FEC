@@ -7,78 +7,9 @@ class RelatedProductCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      img: null,
       showComparison: false
     }
-    this.fetch = this.fetch.bind(this);
     this.compare = this.compare.bind(this);
-  }
-
-  componentDidMount() {
-    axios
-      .get("/api/fec2/hr-rfe/products/" + this.props.item.id + "/styles")
-      .then((result) => {
-        var styles = result.data.results;
-        for (var i = 0; i < styles.length; i++) {
-          if (styles[i]["default?"] === true) {
-            var idx = i;
-          }
-        }
-        console.log(styles[idx].photos);
-        this.setState({
-          img: styles[idx].photos[0].thumbnail_url,
-        });
-      })
-      .catch((err) => {
-        console.log("error");
-      });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.item.id !== this.props.item.id) {
-        console.log(this.props.item.id);
-        axios
-        .get("/api/fec2/hr-rfe/products/" + this.props.item.id + "/styles")
-        .then((result) => {
-          var styles = result.data.results;
-          // set default idx to 0
-          var idx = 0;
-          for (var i = 0; i < styles.length; i++) {
-            if (styles[i]["default?"] === true) {
-              idx = i;
-            }
-          }
-          console.log(styles[idx]);
-          // MIGHT HAVE TO FIX THIS LATER BECAUSE FETCH AUTOMATICALLY CHANGES TO TRUE BEFORE FINISHING ALL FETCHES
-          this.setState({
-            img: styles[idx].photos[0].thumbnail_url,
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }
-
-  fetch() {
-    axios
-      .get("/api/fec2/hr-rfe/products/" + this.props.item.id + "/styles")
-      .then((result) => {
-        var styles = result.data.results;
-        for (var i = 0; i < styles.length; i++) {
-          if (styles[i]["default?"] === true) {
-            var idx = i;
-          }
-        }
-        console.log(styles[idx].photos);
-        // MIGHT HAVE TO FIX THIS LATER BECAUSE FETCH AUTOMATICALLY CHANGES TO TRUE BEFORE FINISHING ALL FETCHES
-        this.setState({
-          img: styles[idx].photos[0].thumbnail_url,
-        });
-      })
-      .catch((err) => {
-        console.log("error");
-      });
   }
 
   compare(event) {
@@ -91,7 +22,7 @@ class RelatedProductCard extends React.Component {
     return Object.keys(this.props.item).length !== 0 ? (
       <div className='productCard'>
         <div className='productImage'>
-          <img src ={this.state.img} alt='Photo Unavailable' />
+          <img className='productPhoto' src ={this.props.item.img} alt='Photo Unavailable' />
         </div>
         <div className="popup" onClick={this.compare}>
           {
