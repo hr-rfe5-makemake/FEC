@@ -2,9 +2,13 @@ import React from 'react';
 
 function SellerResponse({response}) {
   if (response) {
-    return <div className="seller-response">Response from seller: {response}</div>;
+    return (
+    <div className="seller-response">
+      <b style={{display: 'block'}}>Response from seller: </b>
+      <i>{response}</i>
+    </div>);
   } else {
-    return <div className="seller-response">The seller has not responded yet.</div>;
+    return null;
   }
 }
 
