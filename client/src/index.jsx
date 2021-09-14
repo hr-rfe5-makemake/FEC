@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 import Overview from './Overview/Overview.jsx';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
@@ -8,41 +9,41 @@ import QuestionsAnswers from './QuestionsAnswers/QuestionsAnswers.jsx';
 class App extends React.Component {
   constructor() {
     super();
-    this.state ={
+    this.state = {
       shoppingCart: [],
-      currentItem_ID: 0
+      currentItem: {}
     }
     this.changeCurrentProduct = this.changeCurrentProduct.bind(this);
   }
 
   //Add Item to cart/outfit
 
-
-  //Make A GET REQUEST and change state
-  databaseFetcher(){
-    axios.get('/API/[something]')
+  databaseFetcher() {
+    axios.get('/API/fec2/hr-rfe/products/')
     .then(data => {
       this.setState({
-        //FILL ME IN
+        currentItem: data.data[0]
       })
+    })
+    .catch(err => {
+      console.log(err);
     })
   }
 
-  changeCurrentProduct(newProduct){
+  changeCurrentProduct(newProduct) {
     this.setState({
       currentItem_ID: newProduct
     })
   }
 
-  ComponentDidMount() {
-    databaseFetcher()
+  componentDidMount() {
+    this.databaseFetcher();
   }
 
   render() {
     return (
       <div>
-        React is working!
-        <Overview currentItem={this.state.currentItem_ID}/>
+        <Overview currentItem_ID={this.state.currentItem.id}/>
         <RelatedItems changeCurrentProduct={this.changeCurrentProduct}/>
         <QuestionsAnswers />
         <RatingsReviews />

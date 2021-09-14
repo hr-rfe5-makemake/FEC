@@ -1,0 +1,75 @@
+#app, body{
+  width: 95%;
+  margin: 0 auto;
+}
+#header{
+  height: 100px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  position: relative;
+  /* border: 2px solid black; */
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+#logo{
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+  margin: auto;
+}
+
+#search{
+  position: absolute;
+  right: 10px;
+  bottom: 40px;
+}
+#search-field{
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #000000;
+  opacity: .75;
+}
+#search-btn:hover{
+  opacity: 0.5;
+}
+
+#main-overview{
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+#sale-price{
+  color: red;
+}
+
+#styles{
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-auto-rows: 60px;
+  /* column-gap: 4px; */
+}
+.crop{
+  position: relative;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: auto;
+}
+.style-thumbnail{
+  width: 75px;
+  height: auto;
+  position: absolute;
+  left: -15px;
+}
+.style-thumbnail:hover{
+  opacity: .75;
+}
+#overlay{
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: -5px;
+  left: -5px;
+  opacity: .50;
+}
