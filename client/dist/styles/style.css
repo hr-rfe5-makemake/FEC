@@ -37,7 +37,7 @@
 }
 
 .individual-tile > *:not(img) {
-  margin: 5px;
+  margin: 10px;
 }
 
 img {

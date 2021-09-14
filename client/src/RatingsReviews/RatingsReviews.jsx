@@ -41,7 +41,6 @@ class RatingsReviews extends React.Component {
             product_id={this.props.product_id}
             filterOptions={this.state.filterOption}
           />
-          <button>ADD A REVIEW +</button>
           <WriteReviewModal />
         </div>
       </div>

@@ -86,6 +86,7 @@ class ReviewList extends React.Component {
             })}
           </div>
           <MoreReviewsButton displayMore={this.displayMore} allDisplayed={this.state.allDisplayed}/>
+          <button>ADD A REVIEW +</button>
         </div>
       );
     }
