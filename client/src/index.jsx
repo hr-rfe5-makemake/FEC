@@ -42,10 +42,10 @@ class App extends React.Component {
     return (
       <div>
         React is working!
-        <Overview currentItem={this.state.currentItem_ID}/>
-        <RelatedItems changeCurrentProduct={this.changeCurrentProduct}/>
+        {/* <Overview currentItem={this.state.currentItem_ID}/> */}
+        {/* <RelatedItems changeCurrentProduct={this.changeCurrentProduct}/> */}
         <QuestionsAnswers />
-        <RatingsReviews />
+        {/* <RatingsReviews /> */}
       </div>
     )
   }
