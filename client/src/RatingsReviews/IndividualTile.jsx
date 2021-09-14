@@ -5,6 +5,7 @@ import SellerResponse from './ReviewListHelpers/SellerResponse.jsx';
 import ReviewSummary from './ReviewListHelpers/ReviewSummary.jsx';
 import axios from 'axios';
 import urlFragment from './urlFragment.jsx';
+// import star from './images/star-half.png'
 
 class IndividualTile extends React.Component {
   constructor(props) {
@@ -58,6 +59,7 @@ class IndividualTile extends React.Component {
         <br></br>
         <MyUsername username={this.props.review.reviewer_name} verified={this.state.verified}/>
         <div>Star Rating Container. Rating: {this.props.review.rating}</div>
+        <img src={'/Users/charlesewing3/Documents/HackReactor/Immersive/FEC/FEC/client/src/RatingsReviews/images/star full.png'}/>
         <div className="tile-date">Reviewed on {this.reformatDate(this.props.review.date)}</div>
         <ReviewSummary summary={this.props.review.summary}/>
         <p>Review Body(HANDLE PHOTOS): {this.props.review.body}</p>
