@@ -23,7 +23,6 @@ class ReviewList extends React.Component {
   getAllReviews(product_id, sort = this.state.sortOption, page = 1, count = 5) {
     axios.get(`${urlFragment}?product_id=${product_id}&sort=${sort}&page=${page}&count=${count}`)
       .then(allReviews => {
-        console.log('there are this many total reviews:', allReviews.data.results.length)
         this.setState({
           allReviews: allReviews.data.results,
           displayedReviews: allReviews.data.results.slice(0, 2),
@@ -55,9 +54,6 @@ class ReviewList extends React.Component {
         displayedReviews: this.state.displayedReviews.concat(this.state.allReviews.slice(numDisplayed, numDisplayed + 2))
       });
     }
-
-
-
   }
 
   rerender() {
