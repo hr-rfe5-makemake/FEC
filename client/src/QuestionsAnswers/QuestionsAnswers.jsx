@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios'
 import IndividualQuestion from './QuestionList/IndividualQuestion.jsx'
-
+import AddAQuestion from './AddNewQuestions/AddQuestion.jsx'
+import AddQuestionModal from './AddNewQuestions/AddQuestionModal.jsx'
+import AnswerAQuestion from './AnswerAQuestion.jsx'
 
 class QuestionsAnswers extends React.Component {
   constructor(props) {
@@ -15,7 +17,7 @@ class QuestionsAnswers extends React.Component {
   }
 
   questionsFetcher(){
-    axios.get('/api/fec2/hr-rfe/qa/questions/?product_id=37312')
+    axios.get('/api/fec2/hr-rfe/qa/questions/?product_id=37315')
       .then(data => {
         let questions = data.data.results;
         if (questions.length <= 2) {
@@ -56,16 +58,23 @@ class QuestionsAnswers extends React.Component {
     const moreQuestionsStyle={
       display: !this.state.renderedAllQuestion ? 'block' : 'none'
     }
+    const scroll = {
+      overflow:"scroll",
+      maxHeight: '50vh'
+    }
 
     return(
       <div>
         Questions & Answers
-        <ul>
+        <AddQuestionModal />
+        <AnswerAQuestion />
+        <ul style={scroll}>
           {this.state.allQuestions.slice(0,this.state.questionsRendered).map((question,index) => (
             <IndividualQuestion question= {question} key={question.question_id} updateQuestions={this.questionsFetcher.bind(this)} index={index}/>
           ))}
         </ul>
         <button style={moreQuestionsStyle} onClick={this.loadMoreQuestions.bind(this)} className='moreQuestions'>More Answered Questions</button>
+        <AddAQuestion />
       </div>
     )
   }

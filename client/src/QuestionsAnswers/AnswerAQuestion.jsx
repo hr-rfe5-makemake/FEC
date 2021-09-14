@@ -1,14 +1,12 @@
 import React from 'react'
 
-class AddAQuestionModal extends React.Component {
+class AnswerAQuestion extends React.Component{
   constructor(props){
     super(props)
-    this.state={
+    this.state = {
       display: false
     }
   }
-
-
 
   render(){
     const modalStyle={
@@ -17,12 +15,12 @@ class AddAQuestionModal extends React.Component {
     }
 
     return(
-      <div className="addQuestionModal" style={modalStyle}>
-          <h4>Add A New Question</h4>
+      <div className="answer_Question" style={modalStyle}>
+          <h4>Answer the question</h4>
       </div>
     )
   }
 
 }
 
-export default AddAQuestionModal
+export default AnswerAQuestion

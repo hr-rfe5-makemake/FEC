@@ -84,6 +84,13 @@ class Question extends React.Component {
     }
   }
 
+  answerClickHandler(){
+    let modal = document.getElementsByClassName('answer_Question')[0]
+    let display = modal.style.display
+    modal.style.display = display === 'none' ? 'block' : 'none'
+
+  }
+
   render(){
     let loadMoreAnswersStyle = {
       cursor: 'pointer',
@@ -93,7 +100,7 @@ class Question extends React.Component {
     return (
       <li className="question_entry">
         <span className="question">Q: {this.props.question.question_body}</span>
-        <span className="question_Rating/Add"> Helpful? <u onClick={this.helpfulUpdater.bind(this)} style={{cursor: 'pointer'}}>Yes</u>({this.props.question.question_helpfulness}) | <u style={{cursor: 'pointer'}} >Add Answer</u> | <u onClick={this.reportQuesiton.bind(this)} style={{cursor: 'pointer'}} >Report</u></span>
+        <span className="question_Rating/Add"> Helpful? <u onClick={this.helpfulUpdater.bind(this)} style={{cursor: 'pointer'}}>Yes</u>({this.props.question.question_helpfulness}) | <u style={{cursor: 'pointer'}} onClick={this.answerClickHandler.bind(this)}>Add Answer</u> | <u onClick={this.reportQuesiton.bind(this)} style={{cursor: 'pointer'}} >Report</u></span>
         <ul>
           {
             this.state.renderAnswers.map((answer, index) => (
