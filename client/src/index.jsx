@@ -10,7 +10,6 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      shoppingCart: [],
       currentItem: {}
     }
     this.changeCurrentProduct = this.changeCurrentProduct.bind(this);

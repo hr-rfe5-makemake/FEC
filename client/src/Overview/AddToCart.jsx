@@ -25,7 +25,7 @@ const GetQuantity = ({skus, currentSku}) => {
   return result;
 }
 
-const Cart = (props) => {
+const AddToCart = (props) => {
   return (
     <div id="add-to-cart">
       <select id="select-size" onChange={event => { props.onChangeSize(event); }}>
@@ -41,4 +41,4 @@ const Cart = (props) => {
   )
 }
 
-export default Cart;
+export default AddToCart;

@@ -6,7 +6,7 @@ import ImageGallery from './ImageGallery.jsx';
 import StarRating from './StarRating.jsx';
 import SocialMediaShare from './SocialMediaShare.jsx';
 import Styles from './Styles.jsx';
-import Cart from './Cart.jsx'
+import AddToCart from './AddToCart.jsx'
 ;import ProductOverview from './ProductOverview.jsx';
 
 const url = '/API/fec2/hr-rfe';
@@ -15,6 +15,7 @@ class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      cart: [],
       currentItem: {},
       styles: {},
       currentStyle: {},
@@ -26,7 +27,6 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.currentItem_ID);
     let id = this.props.currentItem_ID || 37311;
     axios.get(`${url}/products/${id}`)
       .then(result => {
@@ -88,8 +88,25 @@ class Overview extends React.Component {
     })
   }
 
-  onAddToCart(event) {
-
+  onAddToCart() {
+    for (let i = 0; i < this.state.quantity; i++) {
+      axios.post(`${url}/cart`, {sku_id: this.state.sku})
+        .then(() => {
+          console.log('Added to Cart');
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    }
+    axios.get(`${url}/cart`)
+      .then(result => {
+        this.setState({
+          cart: result.data
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   render() {
@@ -108,7 +125,7 @@ class Overview extends React.Component {
               styles={this.state.styles}
               currentStyle={this.state.currentStyle}
               onClick={this.onClickStyle.bind(this)}/>
-            <Cart
+            <AddToCart
               sku={this.state.sku}
               quantity={this.state.quantity}
               currentStyle={this.state.currentStyle}
