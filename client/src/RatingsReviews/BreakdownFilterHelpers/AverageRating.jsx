@@ -14,8 +14,8 @@ function AverageRating({metaData}) {
     }
 
     var avgRating = ratingSum / ratingCount;
-    avgRating = (Math.round(avgRating * 100) / 100).toFixed(1);
 
+    avgRating = (Math.round(avgRating * 100) / 100).toFixed(1);
     return (
       <div id="rating-summary">
         <span id="big-rating-summary">{avgRating}</span>

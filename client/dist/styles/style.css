@@ -109,3 +109,28 @@ button {
 .star-container > * {
   align-items: flex-start;
 }
+
+/*---------------------------*/
+/*  Bars                     */
+/*---------------------------*/
+
+.bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2%;
+}
+
+.filterOption > * {
+  padding: 10px;
+}
+
+.bar-green {
+  background-color: rgb(46, 85, 8);
+}
+
+.bar-grey {
+  flex-grow: 1;
+  background-color: rgb(211, 207, 207);
+  width: 200px;
+}

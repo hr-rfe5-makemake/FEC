@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import urlFragment from './urlFragment.jsx';
 import AverageRating from './BreakdownFilterHelpers/AverageRating.jsx';
+import Breakdown from './BreakdownFilterHelpers/Breakdown.jsx';
 
 class BreakdownFilter extends React.Component {
   constructor(props) {
@@ -11,7 +12,6 @@ class BreakdownFilter extends React.Component {
     };
   }
 
-  // GET meta data (ratings, recommended, characteristics) from /reviews/meta
   getMetaData(product_id) {
     axios.get(`${urlFragment}meta?product_id=${product_id}`)
     .then(metaData => {
@@ -29,16 +29,15 @@ class BreakdownFilter extends React.Component {
   render() {
     return (
       <div>
-        <AverageRating metaData={this.state.metaData}/>
+        <AverageRating
+          metaData={this.state.metaData}
+        />
+        <Breakdown
+          metaData={this.state.metaData}
+          handleRemoveFiltersClick={this.props.handleRemoveFiltersClick}
+          handleFilterClick={this.props.handleFilterClick}
+        />
 
-        <div>-->Rating Breakdown</div>
-        <div className='filterOption' onClick={this.props.handleFilterClick}>5 Stars [BAR] [COUNT]</div>
-        <div>4 Stars [BAR] [COUNT]</div>
-        <div>3 Stars [BAR] [COUNT]</div>
-        <div>2 Stars [BAR] [COUNT]</div>
-        <div>1 Stars [BAR] [COUNT]</div>
-        <div>"filters have been applied"</div>
-        <div onClick={this.props.handleRemoveFiltersClick}>Link: remove filters</div>
         <div>50% of reviewers recommend this product</div>
 
         <div>-->Product Breakdown (Factors)</div>
