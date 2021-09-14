@@ -29,8 +29,6 @@ class ReviewList extends React.Component {
   }
 
   changeSort(e) {
-    // handles changes to sort order
-    console.log(e.target.value)
     this.setState({
       sortOption: e.target.value
     });

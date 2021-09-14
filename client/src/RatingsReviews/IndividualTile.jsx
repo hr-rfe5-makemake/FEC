@@ -3,6 +3,7 @@ import IRecommend from './ReviewListHelpers/IRecommend.jsx';
 import MyUsername from './ReviewListHelpers/MyUsername.jsx';
 import SellerResponse from './ReviewListHelpers/SellerResponse.jsx';
 import ReviewSummary from './ReviewListHelpers/ReviewSummary.jsx';
+import Stars from './Stars.jsx';
 import axios from 'axios';
 import urlFragment from './urlFragment.jsx';
 
@@ -52,8 +53,7 @@ class IndividualTile extends React.Component {
         <br></br>
         <br></br>
         <MyUsername username={this.props.review.reviewer_name} verified={this.state.verified}/>
-        <div>Star Rating Container. Rating: {this.props.review.rating}</div>
-        <img />
+        <Stars rating={this.props.review.rating}/>
         <div className="tile-date">Reviewed on {this.reformatDate(this.props.review.date)}</div>
         <ReviewSummary summary={this.props.review.summary}/>
         <p>Review Body(HANDLE PHOTOS): {this.props.review.body}</p>

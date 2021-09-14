@@ -4,11 +4,11 @@ function ReviewSummary({summary}) {
   if (summary.length > 60) {
     return (
       <div className="tile-summary">
-        <b>Summary: {summary.slice(0, 60)}...</b>
+        <b>{summary.slice(0, 60)}...</b>
         <div>...{summary.slice(60)}</div>
       </div>)
   } else {
-    return <div className="tile-summary"><b>Summary: {summary}</b></div>
+    return <div className="tile-summary"><b>{summary}</b></div>
   }
 }
 
