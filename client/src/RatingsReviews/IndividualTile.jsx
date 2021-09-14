@@ -5,7 +5,6 @@ import SellerResponse from './ReviewListHelpers/SellerResponse.jsx';
 import ReviewSummary from './ReviewListHelpers/ReviewSummary.jsx';
 import axios from 'axios';
 import urlFragment from './urlFragment.jsx';
-// import star from './images/star-half.png'
 
 class IndividualTile extends React.Component {
   constructor(props) {
@@ -16,10 +15,6 @@ class IndividualTile extends React.Component {
       verified: Math.round(Math.random()) // either 1 or 0, since no API data
     };
     this.handleHelpfulClick = this.handleHelpfulClick.bind(this);
-  }
-
-  checkVerification() {
-    // call API to see if this user actually made a purchase, then pass this info to MyUsername
   }
 
   reformatDate(date) {
@@ -47,8 +42,7 @@ class IndividualTile extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.state.verified)
-    this.checkVerification();
+
   }
 
   render() {
@@ -59,7 +53,7 @@ class IndividualTile extends React.Component {
         <br></br>
         <MyUsername username={this.props.review.reviewer_name} verified={this.state.verified}/>
         <div>Star Rating Container. Rating: {this.props.review.rating}</div>
-        <img src={'/Users/charlesewing3/Documents/HackReactor/Immersive/FEC/FEC/client/src/RatingsReviews/images/star full.png'}/>
+        <img />
         <div className="tile-date">Reviewed on {this.reformatDate(this.props.review.date)}</div>
         <ReviewSummary summary={this.props.review.summary}/>
         <p>Review Body(HANDLE PHOTOS): {this.props.review.body}</p>
