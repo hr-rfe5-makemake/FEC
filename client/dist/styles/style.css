@@ -8,6 +8,8 @@
 
 .carouselWrapper {
   display: flex;
+  align-items: center;
+  position: relative;
 }
 
 .carouselListContent {
@@ -19,16 +21,19 @@
 
 .productCard {
   transition: all 250ms linear;
-  width: 30%;
+  width: calc(100%/3);
   border: solid;
   position: relative;
 }
 
 .addOutfitCard {
   transition: all 250ms linear;
-  width: 30%;
+  width: calc(100%/3);
   border: solid;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .productImage {
@@ -37,13 +42,16 @@
   overflow: hidden;
 }
 
-.productPhoto{
+.productPhoto {
   width: auto;
   height: auto;
   max-height: 50%;
   max-width: 100%;
 }
 
+.productName {
+  font-weight: bold;
+}
 
 .productDetails {
   position:absolute;
@@ -63,13 +71,59 @@
   z-index: 1;
   top: 50%;
   /* transform: translateY(-50%); */
-  width: 48px;
-  height: 48px;
+  width: 5%;
+  height: 100px;
   border-radius: 24px;
   background-color: white;
   border: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.modal {
+  display: block;
+  top: 0;
+  min-width: 250px;
+  width: auto;
+  height: 400px;
+  margin: 0 auto;
+  position: fixed;
+  z-index: 40001;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #000;
+  margin-top: 30px;
+  margin-left: 10%;
+  overflow: scroll;
+
+  animation-name: fadeIn_Modal;
+  animation-duration: 0.8s;
+
+}
+
+.header {
+  background-color: grey;
+  width: 100%;
+  height: 30px;
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: 2px solid #ccc;
+}
+
+.header a {
+  text-decoration: none;
+  float: right;
+  line-height: 30px;
+  margin-right: 20px;
+  color: #aaa;
 }
 
 .hide {
-  display:none;
+  visibility:hidden;
 }

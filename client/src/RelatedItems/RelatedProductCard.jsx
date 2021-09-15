@@ -11,6 +11,7 @@ class RelatedProductCard extends React.Component {
     }
     this.compare = this.compare.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.closeCompare = this.closeCompare.bind(this);
   }
 
   compare(event) {
@@ -20,11 +21,19 @@ class RelatedProductCard extends React.Component {
     })
   }
 
+  closeCompare(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.setState({
+      showComparison: !this.state.showComparison
+    })
+  }
+
   handleClick(event) {
     console.log('click');
     console.log(this.props.item.id);
-    // this.props.changeCurrentProduct(this.props.item.id);
-    // this.props.updateRelated(this.props.item.id);
+    this.props.changeCurrentProduct(this.props.item.id);
+    this.props.updateRelated(this.props.item.id);
 
   }
 
@@ -40,7 +49,7 @@ class RelatedProductCard extends React.Component {
         </button>
           {
             this.state.showComparison ?
-          <RelatedItemComparison currentItem={this.props.currentItem} comparedItem={this.props.item}/> :
+          <RelatedItemComparison currentItem={this.props.currentItem} comparedItem={this.props.item} closeCompare={this.closeCompare}/> :
           <div>No PopUp</div>
           }
         <div className='productDetails'>

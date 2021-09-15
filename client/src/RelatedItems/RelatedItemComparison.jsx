@@ -39,7 +39,13 @@ class RelatedItemComparison extends React.Component {
 
   render() {
     return (
-      <div className='modal'>
+      <div className="modal" onClick={function(event){event.stopPropagation();
+      }}>
+        <div className="header">
+          <a href="#" onClick={this.props.closeCompare} className="cancel">
+            X
+          </a>
+        </div>
         <table>
           <caption>Comparing</caption>
           <tbody>
@@ -59,7 +65,6 @@ class RelatedItemComparison extends React.Component {
             })}
           </tbody>
         </table>
-        YOU ARE IN THE POPUP
       </div>
     );
   }

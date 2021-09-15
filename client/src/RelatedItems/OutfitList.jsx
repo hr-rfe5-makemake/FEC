@@ -142,11 +142,11 @@ class OutfitList extends React.Component {
           )}
           {this.props.outfitList.length === 0 ? (
             <div className="carouselListContent">
-              <div className="addOutfitCard" onClick={this.addOutfit} >ADD AN ITEM</div>
+              <div className="addOutfitCard" onClick={this.addOutfit} >ADD CURRENT ITEM</div>
             </div>
           ) : this.props.outfitList.length === 1 ? (
             <div className="carouselListContent">
-              <div className="addOutfitCard" onClick={this.addOutfit}>ADD AN ITEM</div>
+              <div className="addOutfitCard" onClick={this.addOutfit}>ADD CURRENT ITEM</div>
               <OutfitProductCard
                 item={this.state[this.props.outfitList[this.state.currentIdx + 1]]}
                 changeCurrentProduct={this.props.changeCurrentProduct}
@@ -156,7 +156,7 @@ class OutfitList extends React.Component {
             </div>
           ) : this.state.currentIdx === -1 ? (
             <div className="carouselListContent">
-              <div className="addOutfitCard" onClick={this.addOutfit}>ADD AN ITEM</div>
+              <div className="addOutfitCard" onClick={this.addOutfit}>ADD CURRENT ITEM</div>
               <OutfitProductCard
                 item={this.state[this.props.outfitList[this.state.currentIdx + 1]]}
                 changeCurrentProduct={this.props.changeCurrentProduct}

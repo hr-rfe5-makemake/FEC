@@ -170,35 +170,6 @@ class RelatedItemList extends React.Component {
     }
   }
 
-  // fetch() {
-  //   axios
-  //     .get("/api/fec2/hr-rfe/products/" + this.props.itemId)
-  //     .then((result) => {
-  //       this.setState({
-  //         item: result.data,
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       console.log("error");
-  //     });
-  //   axios
-  //     .get("/api/fec2/hr-rfe/reviews/meta?product_id=" + this.props.itemId)
-  //     .then((result) => {
-  //       if (Object.keys(result.data.ratings).length > 0) {
-  //         var totalCount = 0;
-  //         var totalRatings = 0;
-  //         for (var key in result.data.ratings) {
-  //           totalRatings += parseInt(result.data.ratings[key]) * key;
-  //           totalCount += parseInt(result.data.ratings[key]);
-  //         }
-  //         var avgRating = totalRatings / totalCount;
-  //         this.setState({
-  //           rating: avgRating,
-  //         });
-  //       }
-  //     })
-  //   }
-
   render() {
     if (this.props.relatedList.length === 0) {
       return <div></div>;
@@ -218,13 +189,13 @@ class RelatedItemList extends React.Component {
         return (
           <div className="carouselWrapper">
             {this.state.currentIdx !== 0 ? (
-              <button className="previous" onClick={this.previous}>
+              <div className="previous" onClick={this.previous}>
                 &lt;
-              </button>
+              </div>
             ) : (
-              <button className="previous hide" onClick={this.previous}>
+              <div className="previous hide" onClick={this.previous}>
                 &lt;
-              </button>
+              </div>
             )}
             <div className="carouselListContent">
               <RelatedProductCard
@@ -253,13 +224,13 @@ class RelatedItemList extends React.Component {
               />
             </div>
             {this.state.currentIdx !== this.props.relatedList.length - 3 ? (
-              <button className="next" onClick={this.next}>
+              <div className="next" onClick={this.next}>
                 &gt;
-              </button>
+              </div>
             ) : (
-              <button className="next hide" onClick={this.next}>
+              <div className="next hide" onClick={this.next}>
                 &gt;
-              </button>
+              </div>
             )}
           </div>
         );
