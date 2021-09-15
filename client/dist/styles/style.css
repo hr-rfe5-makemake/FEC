@@ -1,21 +1,26 @@
 #app, body{
   width: 95%;
   margin: 0 auto;
+  font-family: Lato, sans-serif;
 }
 #header{
   height: 100px;
   display: grid;
   grid-template-columns: 15% 85%;
   position: relative;
-  /* border: 2px solid black; */
   margin-top: 0;
   margin-bottom: 5px;
 }
 #logo{
   width: 100px;
   height: 100px;
-  border: 2px solid black;
-  margin: auto;
+  font-family: Lato, sans-serif;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-size: 48px;
+  font-style: italic;
+  text-decoration: underline;
 }
 
 #search{
@@ -33,20 +38,113 @@
   opacity: 0.5;
 }
 
+/* Overview */
 #main-overview{
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 67.5% 30%;
+  column-gap: 2.5%;
+  grid-template-rows: 450px;
 }
-
+#main-image-container{
+  border: 2px solid black;
+  width: 100%;
+  height: 450px;
+  display: flex;
+  align-content: center;
+  position: relative;
+}
+#product-img{
+  display: grid;
+  width: 75px;
+  height: 450px;
+  grid-auto-rows: 60px;
+  row-gap: 5px;
+  overflow: scroll;
+  position: absolute;
+  background-color: rgba(255, 255, 255, .5);
+  z-index: 1;
+}
+.image-gallery{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#selected{
+  border: 4px solid green;
+  border-radius: 50%;
+}
+.image-gallery:hover{
+  opacity: .75;
+}
+#left, #right{
+  position: absolute;
+  top: 200px;
+}
+#left:hover, #right:hover{
+  opacity: .5;
+}
+#left{
+  left: 60px;
+}
+#right{
+  right: 0;
+}
+#main-image{
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  margin: auto;
+}
+#main-image:hover{
+  cursor: url(../img/magnifier.png), auto;
+}
+.image{
+  width: 100px;
+  height: auto;
+}
+#overview-rating{
+  display: flex;
+  align-items: center;
+}
+#to-reviews{
+  width: 100px;
+  font-size: 10px;
+  margin: 0;
+  display: inline-block;
+}
+#category{
+  margin: 5px 5px 5px 0;
+  font-size: 14px;
+}
+#product-name{
+  margin: 0;
+  font-size: 40px;
+  font-style: italic;
+}
+.price{
+  margin: 0;
+  font-size: 30px;
+}
 #sale-price{
   color: red;
 }
-
+#share{
+  margin: 5px 0;
+  display: flex;
+  justify-content: right;
+}
+.social-icon{
+  margin: 0;
+  margin-left: 5px;
+}
+#style-name{
+  margin: 0;
+}
 #styles{
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   grid-auto-rows: 60px;
-  /* column-gap: 4px; */
+  margin: 10px 0;
 }
 .crop{
   position: relative;
@@ -72,4 +170,12 @@
   top: -5px;
   left: -5px;
   opacity: .50;
+}
+#add-to-cart{
+  height: 103px;
+  display: grid;
+  grid-template-columns: 70% 28%;
+  column-gap: 2%;
+  grid-auto-rows: 50px;
+  row-gap: 3px;
 }

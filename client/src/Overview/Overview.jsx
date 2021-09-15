@@ -21,8 +21,11 @@ class Overview extends React.Component {
       currentStyle: {},
       reviews: {},
       sku: null,
-      quantity: null,
-      price: 0
+      quantity: 1,
+      price: 0,
+      currentStyleImages: [],
+      currentImage: '',
+      currentImageIndex: 0
     }
   }
 
@@ -38,7 +41,9 @@ class Overview extends React.Component {
         .then(result => {
           this.setState({
             styles: result.data,
-            currentStyle: result.data.results[0]
+            currentStyle: result.data.results[0],
+            currentStyleImages: result.data.results[0].photos,
+            currentImage: result.data.results[0].photos[0].url
           })
         })
         axios.get(`${url}/reviews/meta/?product_id=${id}`)
@@ -70,9 +75,55 @@ class Overview extends React.Component {
 
   }
 
+  onChangeImageClick(index) {
+    this.setState({
+      currentStyleImages: this.state.currentStyleImages,
+      currentImage: this.state.currentStyleImages[index].url,
+      currentImageIndex: index
+    })
+  }
+
+  onLeftClick() {
+    let currentIndex = this.state.currentImageIndex;
+    let length = this.state.currentStyleImages.length;
+    if (currentIndex === 0) {
+      this.setState({
+        currentImage: this.state.currentStyleImages[length - 1].url,
+        currentImageIndex: length - 1,
+      })
+    } else {
+      this.setState({
+        currentImage: this.state.currentStyleImages[currentIndex - 1].url,
+        currentImageIndex: currentIndex - 1
+      })
+    }
+    let element = document.getElementById('selected');
+    element.scrollIntoView({behavior: "smooth"});
+  }
+
+  onRightClick() {
+    let currentIndex = this.state.currentImageIndex;
+    let length = this.state.currentStyleImages.length;
+    if (currentIndex === length - 1) {
+      this.setState({
+        currentImage: this.state.currentStyleImages[0].url,
+        currentImageIndex: 0,
+      })
+    } else {
+      this.setState({
+        currentImage: this.state.currentStyleImages[currentIndex + 1].url,
+        currentImageIndex: currentIndex + 1
+      })
+    }
+    let element = document.getElementById('selected');
+    element.scrollIntoView({behavior: "smooth"});
+  }
+
   onClickStyle(style) {
     this.setState({
-      currentStyle: style
+      currentStyle: style,
+      currentImage: style.photos[0].url,
+      currentStyleImages: style.photos
     })
   }
 
@@ -114,12 +165,20 @@ class Overview extends React.Component {
       <div>
         <Header />
         <div id="main-overview">
-          <ImageGallery gallery={this.state.styles.results}/>
+          <div id="main-image-container">
+            <ImageGallery
+              urls={this.state.currentStyle.photos}
+              currentIndex={this.state.currentImageIndex}
+              onClick={this.onChangeImageClick.bind(this)}/>
+            <img id="left" src=".././img/left-arrow.png" onClick={() => { this.onLeftClick(); }}/>
+            <img id="main-image" src={this.state.currentImage}/>
+            <img id="right" src=".././img/right-arrow.png" onClick={() => { this.onRightClick(); }}/>
+          </div>
           <div id="product-details">
             <StarRating rating={this.getStarRating()}/>
             <h3 id="category">{this.state.currentItem.category}</h3>
             <h1 id="product-name">{this.state.currentItem.name}</h1>
-            {this.state.currentStyle.sale_price ? (<h2 id="sale-price">${this.state.currentStyle.sale_price}</h2>) : (<h2 id="original-price">${this.state.currentStyle.original_price}</h2>)}
+            {this.state.currentStyle.sale_price ? (<h2 id="sale-price" className="price">${this.state.currentStyle.sale_price}</h2>) : (<h2 id="original-price" className="price">${this.state.currentStyle.original_price}</h2>)}
             <SocialMediaShare />
             <Styles
               styles={this.state.styles}

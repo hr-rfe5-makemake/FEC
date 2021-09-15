@@ -23,7 +23,7 @@ const Rating = ({rating}) => {
 }
 
 const StarRating = (props) => (
-  <div>
+  <div id='overview-rating'>
     <Rating rating={props.rating.avg}/>
     <h5 id="to-reviews">Read all {props.rating.count} Reviews</h5>
   </div>

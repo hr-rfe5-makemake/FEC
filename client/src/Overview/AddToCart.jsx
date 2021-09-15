@@ -19,24 +19,43 @@ const GetQuantity = ({skus, currentSku}) => {
     return [];
   }
   let result = [];
-  for (let i = 1; i <= skus[currentSku].quantity && i <= 15; i++) {
+  for (let i = 2; i <= skus[currentSku].quantity && i <= 15; i++) {
     result.push(<option key={`${currentSku}_${i}`} value={i}>{i}</option>)
   }
   return result;
 }
 
+const CheckStock = (skus) => {
+  if (skus === undefined) {
+    return false;
+  }
+  for (let key in skus) {
+    if (skus[key].quantity > 0) {
+      return true;
+    }
+  }
+  return false;
+}
+
 const AddToCart = (props) => {
+  let stock = CheckStock(props.currentStyle.skus);
   return (
     <div id="add-to-cart">
-      <select id="select-size" onChange={event => { props.onChangeSize(event); }}>
-        <option value="default">Select Size</option>
+      <select id="select-size" onChange={event => { props.onChangeSize(event); }} disabled={!stock}>
+        <option value="default">
+          {stock ? ('Select Size') : ('OUT OF STOCK')}
+        </option>
         <GetSizes skus={props.currentStyle.skus}/>
       </select>
-      <select id="select-quantity" onChange={event => { props.onChangeQuantity(event); }} disabled={props.sku === null ? true : null}>
-        <option value="default">-</ option>
+      <select id="select-quantity" onChange={event => { props.onChangeQuantity(event); }} disabled={props.sku === null}>
+        {props.sku ? <option value="1">1</option> : <option value="default">-</option>}
         <GetQuantity skus={props.currentStyle.skus} currentSku={props.sku}/>
-      </select><br></br>
-      <button onClick={() => { props.onClick(); }} disabled={props.quantity === null ? true: null}>Add to Cart</button>
+      </select>
+      <button
+        onClick={() => { props.sku ? () => {props.onClick()} : null; }}
+        hidden={!stock}>
+        Add To Cart
+      </button>
     </div>
   )
 }

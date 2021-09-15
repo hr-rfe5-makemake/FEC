@@ -2,8 +2,8 @@ import React from 'react';
 
 const ProductOverview = (props) => (
   <div id="product-overview">
-    <p>{props.slogan}</p>
-    <p>{props.description}</p>
+    <p hidden={!props.slogan}>{props.slogan}</p>
+    <p hidden={!props.description}>{props.description}</p>
   </div>
 )
 
