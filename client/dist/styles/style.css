@@ -7,6 +7,10 @@
   grid-template-columns: 1fr 2fr;
 }
 
+#rr-container h4 {
+  margin-left: 20px;
+}
+
 #rr-left {
   grid-column: 1;
 }
@@ -18,6 +22,10 @@
 #breakdown {
   display: flex;
   flex-direction: column;
+}
+
+#filters {
+  margin: 10px;
 }
 
 #percent-recommend {
@@ -100,10 +108,11 @@ button {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
+  margin-left: 10px;
 }
 
-#rating-summary > img {
-  margin-top: 10px;
+#rating-summary .star-container > img {
+  margin-top: 9px;
 }
 
 

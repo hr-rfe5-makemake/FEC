@@ -27,7 +27,7 @@ function Breakdown({metaData, handleRemoveFiltersClick, handleFilterClick, filte
       <div>
         <div className='filterOption'>{bars}</div>
         {filterOptions.length > 0 ?
-          <div>
+          <div id="filters">
             <span><b>Current filters: </b>{filterOptions.join(', ')}</span>
             <span onClick={handleRemoveFiltersClick} style={{float: 'right', cursor: 'pointer'}}><u>Clear all filters</u></span>
           </div>
@@ -47,10 +47,10 @@ function Breakdown({metaData, handleRemoveFiltersClick, handleFilterClick, filte
       )
     }
     return (
-      <div>
+      <div id="filters">
         <div className='filterOption'>{bars}</div>
         {filterOptions.length > 0 ?
-          <div>
+          <div id="filters">
             <span><b>Current filters: </b>{filterOptions.join(', ')}</span>
             <span onClick={handleRemoveFiltersClick} style={{float: 'right', cursor: 'pointer'}}><u>Clear all filters</u></span>
           </div>
