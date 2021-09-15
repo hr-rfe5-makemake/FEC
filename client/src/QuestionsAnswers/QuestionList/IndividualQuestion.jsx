@@ -6,9 +6,8 @@ class Question extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      renderAnswers: [],
       allAnswers: [],
-      defaultAnswers: [],
+      renderedAnswers: 2,
       alreadyVoted: false,
       userAlreadyReported: false
     }
@@ -27,27 +26,9 @@ class Question extends React.Component {
         }
       }
       let sortedArray = [...seller, ...result]
-      if(sortedArray.length === 0){
-        this.setState({
-          allAnswers: [],
-          defaultAnswers: [],
-          renderAnswers: []
-        })
-      } else {
-        if(sortedArray.length === 1){
-          this.setState({
-            allAnswers: sortedArray,
-            defaultAnswers: [sortedArray[0]],
-            renderAnswers: [sortedArray[0]]
-          })
-        } else {
-          this.setState({
-            allAnswers: sortedArray,
-            defaultAnswers: [sortedArray[0],sortedArray[1]],
-            renderAnswers: [sortedArray[0],sortedArray[1]]
-          })
-        }
-      }
+      this.setState({
+        allAnswers: sortedArray
+      })
     })
   }
 
@@ -91,6 +72,20 @@ class Question extends React.Component {
 
   }
 
+  lodaMoreAnswers(e){
+    if(e.target.innerText === 'Load More Answers'){
+      this.setState({
+        renderedAnswers: this.state.allAnswers.length
+      })
+      event.target.innerText = 'Less Answers'
+    } else if(e.target.innerText === 'Less Answers'){
+      this.setState({
+        renderedAnswers: 2
+      })
+      e.target.innerText = 'Load More Answers'
+    }
+  }
+
   render(){
     let loadMoreAnswersStyle = {
       cursor: 'pointer',
@@ -103,12 +98,12 @@ class Question extends React.Component {
         <span className="question_Rating/Add"> Helpful? <u onClick={this.helpfulUpdater.bind(this)} style={{cursor: 'pointer'}}>Yes</u>({this.props.question.question_helpfulness}) | <u style={{cursor: 'pointer'}} onClick={this.answerClickHandler.bind(this)}>Add Answer</u> | <u onClick={this.reportQuesiton.bind(this)} style={{cursor: 'pointer'}} >Report</u></span>
         <ul>
           {
-            this.state.renderAnswers.map((answer, index) => (
+            this.state.allAnswers.slice(0,this.state.renderedAnswers).map((answer, index) => (
               <Answer key={answer.answer_id} answer={answer} updateQuestions={this.props.updateQuestions} updateAnswers={this.answersFetcher.bind(this)} index={index}/>
             ))
           }
         </ul>
-        <p style={loadMoreAnswersStyle}>Load More Answers</p>
+        <p style={loadMoreAnswersStyle} onClick={this.lodaMoreAnswers.bind(this)}>Load More Answers</p>
       </li>
     )
   }
