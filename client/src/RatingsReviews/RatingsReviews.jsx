@@ -7,16 +7,28 @@ class RatingsReviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filterOptions: [1, 2, 3, 4, 5]
+      filterOptions: []
     };
     this.handleFilterClick = this.handleFilterClick.bind(this);
     this.handleRemoveFiltersClick = this.handleRemoveFiltersClick.bind(this);
   }
 
-  handleFilterClick() {
-    console.log('add/remove one filter')
-    // toggle on/off
-    // additive
+  handleFilterClick(e) {
+    var rating = parseInt(e.currentTarget.getAttribute('identifier'));
+    if (this.state.filterOptions.indexOf(rating) === -1) {
+      var newFilters = this.state.filterOptions.slice();
+      newFilters.push(rating);
+      this.setState({
+        filterOptions: newFilters
+      });
+    } else {
+      var index = this.state.filterOptions.indexOf(rating);
+      var newFilters = this.state.filterOptions.slice();
+      newFilters.splice(index, 1);
+      this.setState({
+        filterOptions: newFilters
+      });
+    }
     // render a "filters have been applied" message and "remove all filters" link
   }
 
@@ -40,7 +52,8 @@ class RatingsReviews extends React.Component {
           <br></br>
           <ReviewList
             product_id={this.props.product_id}
-            filterOptions={this.state.filterOption}
+            filterOptions={this.state.filterOptions}
+            // filterOptions={[2, 4, 5]}
           />
           <WriteReviewModal />
         </div>

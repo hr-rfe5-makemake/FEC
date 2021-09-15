@@ -119,17 +119,33 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 2%;
+  z-index: 1;
 }
 
 .filterOption > * {
   padding: 10px;
 }
 
+.filterOption :hover {
+  background-color: rgb(240, 240, 252);
+  cursor: pointer;
+}
+
 .bar-green {
+  background-color: rgb(46, 85, 8);
+  z-index: 10;
+}
+
+.bar-green:hover {
   background-color: rgb(46, 85, 8);
 }
 
 .bar-grey {
+  flex-grow: 1;
+  background-color: rgb(211, 207, 207);
+  width: 200px;
+}
+.bar-grey:hover{
   flex-grow: 1;
   background-color: rgb(211, 207, 207);
   width: 200px;
