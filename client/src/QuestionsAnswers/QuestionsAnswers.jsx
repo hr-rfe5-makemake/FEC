@@ -64,10 +64,10 @@ class QuestionsAnswers extends React.Component {
     }
 
     return(
-      <div class='questions_answers'>
+      <div className='questions_answers'>
         Questions & Answers
         <AddQuestionModal productID={37311}/>
-        <div class='modal-placeHolder'></div>
+        <div className='modal-placeHolder'></div>
         <ul style={scroll}>
           {this.state.allQuestions.slice(0,this.state.questionsRendered).map((question,index) => (
             <IndividualQuestion question= {question} key={question.question_id} updateQuestions={this.questionsFetcher.bind(this)} index={index}/>

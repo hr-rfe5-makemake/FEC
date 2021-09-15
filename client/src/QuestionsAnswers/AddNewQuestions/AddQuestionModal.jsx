@@ -70,7 +70,7 @@ class AddAQuestionModal extends React.Component {
       <div className='questionModalBackground' style={modalBackGround}>
         <button onClick={this.closeModal}> X </button>
         <div className="addQuestionModal" style={modalStyle}>
-            <h4>Ask A New Question</h4>
+            <h1>Ask A New Question</h1>
             <form onSubmit={this.newQuestionSubmit.bind(this)}>
               <label>
                 *Your Question:
