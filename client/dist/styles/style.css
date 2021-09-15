@@ -4,6 +4,7 @@
 
 #rr-container {
   display: grid;
+  grid-template-columns: 1fr 2fr;
 }
 
 #rr-left {
@@ -11,6 +12,15 @@
 }
 
 #rr-left > *:not(img) {
+  margin: 10px;
+}
+
+#breakdown {
+  display: flex;
+  flex-direction: column;
+}
+
+#percent-recommend {
   margin: 10px;
 }
 
