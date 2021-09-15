@@ -5,6 +5,7 @@
 #rr-container {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  /* font-size: 20px; */
 }
 
 #rr-container h4 {
@@ -129,6 +130,33 @@ button {
   align-items: flex-start;
 }
 
+.range {
+  display: flex;
+  justify-content: space-between;
+}
+
+.char-bar {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.char-bar > * :not(.bar-grey) :not(.bar-green){
+  margin: 10px;
+}
+
+.char-bar .bar-grey {
+  display: flex;
+  height: 10px;
+  width: 100%;
+  position: relative;
+}
+
+
+#factor-bars > * {
+  padding: 10px;
+}
+
 /*---------------------------*/
 /*  Bars                     */
 /*---------------------------*/
@@ -138,7 +166,6 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 2%;
-  z-index: 1;
 }
 
 .filterOption > * {
@@ -152,7 +179,6 @@ button {
 
 .bar-green {
   background-color: rgb(46, 85, 8);
-  z-index: 10;
 }
 
 .bar-green:hover {
@@ -164,7 +190,12 @@ button {
   background-color: rgb(211, 207, 207);
   width: 200px;
 }
-.bar-grey:hover{
+
+.bar-white {
+  background-color: white;
+}
+
+.filterOption .bar-grey:hover{
   flex-grow: 1;
   background-color: rgb(211, 207, 207);
   width: 200px;

@@ -3,6 +3,7 @@ import axios from 'axios';
 import urlFragment from './urlFragment.jsx';
 import AverageRating from './BreakdownFilterHelpers/AverageRating.jsx';
 import Breakdown from './BreakdownFilterHelpers/Breakdown.jsx';
+import FactorBreakdown from './BreakdownFilterHelpers/FactorBreakdown.jsx';
 
 class BreakdownFilter extends React.Component {
   constructor(props) {
@@ -17,7 +18,6 @@ class BreakdownFilter extends React.Component {
   getMetaData(product_id) {
     axios.get(`${urlFragment}meta?product_id=${product_id}`)
     .then(metaData => {
-      console.log(metaData)
       this.setState({
         metaData: metaData
       });
@@ -59,15 +59,7 @@ class BreakdownFilter extends React.Component {
         />
 
         <br></br>
-
-        <div>-->Product Breakdown (Factors)</div>
-        <div>Size [SCALE]</div>
-        <div>Width [SCALE]</div>
-        <div>Comfort [SCALE]</div>
-        <div>Quality [SCALE]</div>
-        <div>Length [SCALE]</div>
-        <div>Fit [SCALE]</div>
-        <div>(^Iterate through characteristics and show scale for each relevant one)</div>
+        <FactorBreakdown metaData={this.state.metaData}/>
       </div>
     );
   }
