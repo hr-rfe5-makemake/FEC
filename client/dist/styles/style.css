@@ -24,7 +24,14 @@
   position: relative;
 }
 
-/* .productImage {
+.addOutfitCard {
+  transition: all 250ms linear;
+  width: 30%;
+  border: solid;
+  position: relative;
+}
+
+.productImage {
   max-height: 50%;
   max-width: 100%;
   overflow: hidden;
@@ -35,7 +42,7 @@
   height: auto;
   max-height: 50%;
   max-width: 100%;
-} */
+}
 
 
 .productDetails {

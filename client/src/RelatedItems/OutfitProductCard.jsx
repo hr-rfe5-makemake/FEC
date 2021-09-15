@@ -1,31 +1,25 @@
 import React from "react";
 import axios from "axios";
 import RelatedProductRating from './RelatedProductRating.jsx';
-import RelatedItemComparison from "./RelatedItemComparison.jsx";
 
-class RelatedProductCard extends React.Component {
+class OutfitProductCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showComparison: false
     }
-    this.compare = this.compare.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
-  compare(event) {
+  removeItem(event) {
     event.stopPropagation();
-    this.setState({
-      showComparison: !this.state.showComparison
-    })
+    this.props.removeOutfit(this.props.item.id);
   }
 
   handleClick(event) {
     console.log('click');
-    console.log(this.props.item.id);
     // this.props.changeCurrentProduct(this.props.item.id);
     // this.props.updateRelated(this.props.item.id);
-
   }
 
   render() {
@@ -36,13 +30,8 @@ class RelatedProductCard extends React.Component {
         <div className='productImage'>
           <img className='productPhoto' src ={this.props.item.img} alt='Photo Unavailable' />
         </div>
-        <button className="popup" onClick={this.compare}>Action
+        <button className="popup" onClick={this.removeItem}>X
         </button>
-          {
-            this.state.showComparison ?
-          <RelatedItemComparison currentItem={this.props.currentItem} comparedItem={this.props.item}/> :
-          <div>No PopUp</div>
-          }
         <div className='productDetails'>
         <div className='productCategory'>{this.props.item.category}</div>
         <div className='productName'>{this.props.item.name}</div>
@@ -69,4 +58,4 @@ class RelatedProductCard extends React.Component {
   }
 }
 
-export default RelatedProductCard;
+export default OutfitProductCard;

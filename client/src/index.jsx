@@ -11,7 +11,7 @@ class App extends React.Component {
     super();
     this.state ={
       shoppingCart: [],
-      currentItem_ID: 37315,
+      currentItem_ID: 37311,
       details: {}
     }
     this.changeCurrentProduct = this.changeCurrentProduct.bind(this);
@@ -29,7 +29,6 @@ class App extends React.Component {
   databaseFetcher() {
     axios.get('/api/fec2/hr-rfe/products/' + this.state.currentItem_ID)
     .then(data => {
-      console.log(data.data);
       this.setState({
         //FILL ME IN
         details: data.data
@@ -47,7 +46,6 @@ class App extends React.Component {
   updateDetails(newId) {
     axios.get('/api/fec2/hr-rfe/products/' + newId)
     .then(data => {
-      console.log(data.data);
       this.setState({
         //FILL ME IN
         currentItem_ID: newId,

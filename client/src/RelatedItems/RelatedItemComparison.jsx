@@ -3,11 +3,6 @@ import React from "react";
 class RelatedItemComparison extends React.Component {
   constructor(props) {
     super(props);
-    console.log(
-      "props",
-      props.comparedItem.features,
-      props.currentItem.features
-    );
     this.combiner = this.combiner.bind(this);
   }
 
@@ -39,13 +34,12 @@ class RelatedItemComparison extends React.Component {
       };
       combined.push(curFeature);
     }
-    console.log(combined);
     return combined;
   }
 
   render() {
     return (
-      <div>
+      <div className='modal'>
         <table>
           <caption>Comparing</caption>
           <tbody>
