@@ -1,6 +1,8 @@
 import React from 'react'
 import Answer from './Answer.jsx'
 import axios from 'axios'
+import AnswerAQuestionModal from '../AnswerAQuestionModal.jsx'
+import ReactDOM from 'react-dom'
 
 class Question extends React.Component {
   constructor(props){
@@ -66,10 +68,12 @@ class Question extends React.Component {
   }
 
   answerClickHandler(){
-    let modal = document.getElementsByClassName('answer_Question')[0]
-    let display = modal.style.display
-    modal.style.display = display === 'none' ? 'block' : 'none'
+    let modalLocation = document.querySelector('.modal-placeHolder')
+    ReactDOM.render(<AnswerAQuestionModal productID={this.props.question.question_id} closeModal={this.closeModal.bind(this)}/>, modalLocation)
+  }
 
+  closeModal(){
+    ReactDOM.unmountComponentAtNode(document.querySelector('.modal-placeHolder'));
   }
 
   lodaMoreAnswers(e){
@@ -99,7 +103,7 @@ class Question extends React.Component {
         <ul>
           {
             this.state.allAnswers.slice(0,this.state.renderedAnswers).map((answer, index) => (
-              <Answer key={answer.answer_id} answer={answer} updateQuestions={this.props.updateQuestions} updateAnswers={this.answersFetcher.bind(this)} index={index}/>
+              <Answer key={answer.answer_id} answer={answer} updateQuestions={this.props.updateQuestions} updateAnswers={this.answersFetcher.bind(this)} index={index} />
             ))
           }
         </ul>

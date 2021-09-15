@@ -11,14 +11,14 @@ class AddAQuestion extends React.Component {
 
   handleButtonClick(e){
     e.preventDefault();
-    let modal = document.getElementsByClassName('addQuestionModal')[0]
+    let modal = document.getElementsByClassName('questionModalBackground')[0]
     let display = modal.style.display
-    modal.style.display = display === 'none' ? 'block' : 'none'
+    modal.style.display = 'block'
   }
 
   render(){
     return(
-      <button onClick={this.handleButtonClick.bind(this)}>Click Me</button>
+      <button onClick={this.handleButtonClick.bind(this)}>Add A QUESTION +</button>
     )
 
   }
