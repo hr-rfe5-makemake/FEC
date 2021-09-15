@@ -33,11 +33,13 @@ class BreakdownFilter extends React.Component {
           metaData={this.state.metaData}
         />
         <Breakdown
+          filterOptions={this.props.filterOptions}
           metaData={this.state.metaData}
           handleRemoveFiltersClick={this.props.handleRemoveFiltersClick}
           handleFilterClick={this.props.handleFilterClick}
         />
 
+        <br></br>
         <div>50% of reviewers recommend this product</div>
 
         <div>-->Product Breakdown (Factors)</div>

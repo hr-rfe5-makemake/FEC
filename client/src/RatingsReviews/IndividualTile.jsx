@@ -35,7 +35,6 @@ class IndividualTile extends React.Component {
       this.state.helpful = true;
       axios.put(`${urlFragment}${this.props.review.review_id}/helpful`)
         .then((reply) => {
-          console.log(reply)
           this.props.rerender();
         })
         .catch(err => console.error(err))
@@ -49,7 +48,6 @@ class IndividualTile extends React.Component {
   render() {
     return (
       <div className="individual-tile">
-        {console.log(this.props.review)}
         <MyUsername username={this.props.review.reviewer_name} verified={this.state.verified}/>
         <Stars rating={this.props.review.rating}/>
         <span className="tile-date">Reviewed on {this.reformatDate(this.props.review.date)}</span>

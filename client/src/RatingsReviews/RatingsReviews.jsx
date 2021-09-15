@@ -18,6 +18,7 @@ class RatingsReviews extends React.Component {
     if (this.state.filterOptions.indexOf(rating) === -1) {
       var newFilters = this.state.filterOptions.slice();
       newFilters.push(rating);
+      newFilters.sort((a, b) => b - a);
       this.setState({
         filterOptions: newFilters
       });
@@ -29,11 +30,12 @@ class RatingsReviews extends React.Component {
         filterOptions: newFilters
       });
     }
-    // render a "filters have been applied" message and "remove all filters" link
   }
 
   handleRemoveFiltersClick() {
-    console.log('remove all filters')
+    this.setState({
+      filterOptions: []
+    });
   }
 
   render() {
@@ -43,6 +45,7 @@ class RatingsReviews extends React.Component {
         <div id='rr-left'>
           <BreakdownFilter
             product_id={this.props.product_id}
+            filterOptions={this.state.filterOptions}
             handleFilterClick={this.handleFilterClick}
             handleRemoveFiltersClick={this.handleRemoveFiltersClick}
           />
@@ -53,7 +56,6 @@ class RatingsReviews extends React.Component {
           <ReviewList
             product_id={this.props.product_id}
             filterOptions={this.state.filterOptions}
-            // filterOptions={[2, 4, 5]}
           />
           <WriteReviewModal />
         </div>

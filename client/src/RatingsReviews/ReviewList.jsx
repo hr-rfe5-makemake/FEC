@@ -24,8 +24,6 @@ class ReviewList extends React.Component {
     axios.get(`${urlFragment}?product_id=${product_id}&sort=${sort}&page=${page}&count=${count}`)
       .then(allReviews => {
         var filteredReviews = [];
-        console.log(this.props.filterOptions)
-        console.log(allReviews)
         for (var i = 0; i < allReviews.data.results.length; i++) {
           if (this.props.filterOptions.length === 0) {
             filteredReviews = allReviews.data.results.slice();
@@ -84,7 +82,6 @@ class ReviewList extends React.Component {
     }
   }
 
-  // when dynamically generating IndividualTiles, only include reviews that match the filterOptions prop
   render() {
     if (!this.state.reviewsExist) {
       return <button>ADD A REVIEW +</button>

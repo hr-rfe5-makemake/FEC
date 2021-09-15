@@ -16,27 +16,27 @@ class WriteReviewModal extends React.Component {
           <input
             name="Overall Rating"
             type="text"
-            value="1, 2, 3, 4, 5 (star icons)"
+            //value="1, 2, 3, 4, 5 (star icons)"
           />
           <input
             name="Do you recommend this product?"
             type="text"
-            value="yes, no"
+            //value="yes, no"
           />
           <input
             name="Characteristics - 1"
             type="radio"
-            value="1, 2, 3, 4, 5"
+            //value="1, 2, 3, 4, 5"
           />
           <input
             name="Review Summary (optional)"
             type="text"
-            value="Placeholder = 'Example: Best purchase ever!'"
+            //value="Placeholder = 'Example: Best purchase ever!'"
           />
           <input
             name="Review Body"
             type="text"
-            value="Placeholder = 'Why did you like the product or not?' --> include character counter below"
+            //value="Placeholder = 'Why did you like the product or not?' --> include character counter below"
           />
           <button>Upload your photos</button>
           <input
