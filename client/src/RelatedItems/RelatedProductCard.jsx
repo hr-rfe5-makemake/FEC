@@ -28,6 +28,7 @@ class RelatedProductCard extends React.Component {
   }
 
   render() {
+    console.log(this.props.item);
     return (
       Object.keys(this.props.item).length !== 0 ? (
       <div className='productCard' onClick={this.handleClick}>
@@ -44,7 +45,15 @@ class RelatedProductCard extends React.Component {
         <div className='productDetails'>
         <div className='productCategory'>Category: {this.props.item.category}</div>
         <div className='productName'>Name: {this.props.item.name}</div>
-        <div className='productPrice'>Price: {this.props.item.default_price}</div>
+        {
+          this.props.item.sale_price === null ?
+        <div className='productPrice'>${this.props.item.original_price}</div>
+        :
+        <div className='productPrice'>
+          <span className='sale-price'> ${this.props.item.sale_price} </span>
+          <span className='original-price'>${this.props.item.original_price}</span>
+          </div>
+        }
         {this.props.item.rating ? (
           <div className='productRating'><RelatedProductRating rating={this.props.item.rating} /></div>
         ) : (

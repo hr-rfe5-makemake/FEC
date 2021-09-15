@@ -24,9 +24,9 @@ class RelatedItemList extends React.Component {
       .then((result) => {
         this.setState({
           relatedItems: _.uniq(result.data),
-          length: result.data.length,
+          length: _.uniq(result.data).length,
         });
-        return result.data;
+        return _.uniq(result.data);
       })
       .then((data) => {
         // for each of the related items, we want their details
@@ -57,6 +57,8 @@ class RelatedItemList extends React.Component {
                 }
                 var newState = this.state[result.data.product_id];
                 newState.img = styles[idx].photos[0].thumbnail_url;
+                newState.sale_price = styles[idx].sale_price;
+                newState.original_price = styles[idx].original_price;
                 this.setState({
                   [result.data.product_id]: newState,
                 });
@@ -107,9 +109,9 @@ class RelatedItemList extends React.Component {
       .then((result) => {
         this.setState({
           relatedItems: _.uniq(result.data),
-          length: result.data.length,
+          length: _.uniq(result.data).length,
         });
-        return result.data;
+        return _.uniq(result.data);
       })
       .then((data) => {
         // for each of the related items, we want their details
@@ -140,6 +142,8 @@ class RelatedItemList extends React.Component {
                 }
                 var newState = this.state[result.data.product_id];
                 newState.img = styles[idx].photos[0].thumbnail_url;
+                newState.sale_price = styles[idx].sale_price;
+                newState.original_price = styles[idx].original_price;
                 this.setState({
                   [result.data.product_id]: newState,
                 });
