@@ -6,7 +6,8 @@ class WriteReviewModal extends React.Component {
     super(props);
     this.state = {
       starRating: 0,
-      recommend: null
+      recommend: null,
+      summary: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,6 +42,9 @@ class WriteReviewModal extends React.Component {
                 <input type="radio" value="Yes" name="recommend"/>Yes
                 <input type="radio" value="No" name="recommend"/>No
               </div>
+              <label> Review summary (optional):{'  '}
+                <input type="text" name="summary" value={this.state.summary} onChange={this.handleChange} placeholder={"Example: Best purchase ever!"} style={{width: "250px"}}/>
+              </label>
             </form>
           </div>
           <div className="modal-footer">
