@@ -153,6 +153,7 @@ class OutfitList extends React.Component {
                 updateRelated={this.props.updateRelated}
                 removeOutfit={this.removeOutfit}
               />
+              <div className='productCard' style={{border:'none'}}></div>
             </div>
           ) : this.state.currentIdx === -1 ? (
             <div className="carouselListContent">

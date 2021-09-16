@@ -70,8 +70,8 @@ class RelatedItemList extends React.Component {
                 });
               }
               this.setState({
-                fetched: true
-              })
+                fetched: true,
+              });
               return result.data.product_id;
             })
             .catch((err) => {
@@ -143,8 +143,8 @@ class RelatedItemList extends React.Component {
                 });
               }
               this.setState({
-                fetched: true
-              })
+                fetched: true,
+              });
               return result.data.product_id;
             })
             .catch((err) => {
@@ -172,17 +172,39 @@ class RelatedItemList extends React.Component {
 
   render() {
     if (this.props.relatedList.length === 0) {
-      return <div></div>;
+      return <div>No Related Products</div>;
     } else if (this.props.relatedList.length === 1) {
       return (
-        <div>
-          <div>Item {this.state.currentIdx}</div>
+        <div className="carouselWrapper">
+          <div className="carouselListContent">
+            <RelatedProductCard
+              currentItem={this.props.currentItem}
+              item={this.state[this.props.relatedList[this.state.currentIdx]]}
+              changeCurrentProduct={this.props.changeCurrentProduct}
+              updateRelated={this.props.updateRelated}
+              toggleOverlay={this.props.toggleOverlay}
+            />
+          </div>
         </div>
       );
     } else if (this.props.relatedList.length === 2) {
-      <div>
-        <div>Item {this.state.currentIdx}</div>
-        <div>Item {this.state.currentIdx + 1}</div>
+      <div className="carouselWrapper">
+        <div className="carouselListContent">
+          <RelatedProductCard
+            currentItem={this.props.currentItem}
+            item={this.state[this.props.relatedList[this.state.currentIdx]]}
+            changeCurrentProduct={this.props.changeCurrentProduct}
+            updateRelated={this.props.updateRelated}
+            toggleOverlay={this.props.toggleOverlay}
+          />
+          <RelatedProductCard
+            currentItem={this.props.currentItem}
+            item={this.state[this.props.relatedList[this.state.currentIdx + 1]]}
+            changeCurrentProduct={this.props.changeCurrentProduct}
+            updateRelated={this.props.updateRelated}
+            toggleOverlay={this.props.toggleOverlay}
+          />
+        </div>
       </div>;
     } else {
       if (this.state.fetched) {
@@ -200,11 +222,10 @@ class RelatedItemList extends React.Component {
             <div className="carouselListContent">
               <RelatedProductCard
                 currentItem={this.props.currentItem}
-                item={
-                  this.state[this.props.relatedList[this.state.currentIdx]]
-                }
+                item={this.state[this.props.relatedList[this.state.currentIdx]]}
                 changeCurrentProduct={this.props.changeCurrentProduct}
                 updateRelated={this.props.updateRelated}
+                toggleOverlay={this.props.toggleOverlay}
               />
               <RelatedProductCard
                 currentItem={this.props.currentItem}
@@ -213,6 +234,7 @@ class RelatedItemList extends React.Component {
                 }
                 changeCurrentProduct={this.props.changeCurrentProduct}
                 updateRelated={this.props.updateRelated}
+                toggleOverlay={this.props.toggleOverlay}
               />
               <RelatedProductCard
                 currentItem={this.props.currentItem}
@@ -221,6 +243,7 @@ class RelatedItemList extends React.Component {
                 }
                 changeCurrentProduct={this.props.changeCurrentProduct}
                 updateRelated={this.props.updateRelated}
+                toggleOverlay={this.props.toggleOverlay}
               />
             </div>
             {this.state.currentIdx !== this.props.relatedList.length - 3 ? (

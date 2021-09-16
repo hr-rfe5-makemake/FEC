@@ -14,11 +14,13 @@ class RelatedItems extends React.Component {
     this.state = {
       relatedItems: [],
       outfitList: outfitList,
-      fetched: false
+      fetched: false,
+      overlay: false
     }
     this.addOutfit = this.addOutfit.bind(this);
     this.updateRelated = this.updateRelated.bind(this);
     this.removeOutfit = this.removeOutfit.bind(this);
+    this.toggleOverlay = this.toggleOverlay.bind(this);
   }
 
   // componentDidMount() {
@@ -74,14 +76,23 @@ class RelatedItems extends React.Component {
     localStorage.setItem('outfitList', JSON.stringify(newOutfitList));
   }
 
+  toggleOverlay() {
+    this.setState({
+      overlay: !this.state.overlay
+    })
+  }
+
   render() {
     if (this.state.fetched) {
       return (
+        <div className='relatedItemsComponent'>
+        <div className="overlay" style={{display: this.state.overlay ? 'block' : 'none'}}></div>
         <div className='carouselList'>
-          Related Products
-          <RelatedItemList currentItemId={this.props.currentItemId} currentItem={this.props.currentItem} changeCurrentProduct={this.props.changeCurrentProduct} relatedList={this.state.relatedItems} updateRelated={this.updateRelated}/>
-          Your Outfit
+          <h4 className='componentHeader'>Related Products</h4>
+          <RelatedItemList currentItemId={this.props.currentItemId} currentItem={this.props.currentItem} changeCurrentProduct={this.props.changeCurrentProduct} relatedList={this.state.relatedItems} updateRelated={this.updateRelated} toggleOverlay={this.toggleOverlay}/>
+          <h4 className='componentHeader'>Your Outfit</h4>
           <OutfitList currentItemId={this.props.currentItemId} currentItem={this.props.currentItem} changeCurrentProduct={this.props.changeCurrentProduct} outfitList={this.state.outfitList} addOutfit={this.addOutfit} updateRelated={this.updateRelated} removeOutfit={this.removeOutfit}/>
+        </div>
         </div>
       )
 

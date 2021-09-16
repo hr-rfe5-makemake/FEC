@@ -23,14 +23,14 @@ class OutfitProductCard extends React.Component {
   }
 
   render() {
-    console.log(this.props.item);
+    // console.log(this.props.item);
     return (
-      Object.keys(this.props.item).length !== 0 ? (
+      this.props.item !== undefined ? (
       <div className='productCard' onClick={this.handleClick}>
         <div className='productImage'>
           <img className='productPhoto' src ={this.props.item.img} alt='Photo Unavailable' />
         </div>
-        <button className="popup" onClick={this.removeItem}>X
+        <button className="action" onClick={this.removeItem}>X
         </button>
         <div className='productDetails'>
         <div className='productCategory'>{this.props.item.category}</div>
@@ -52,7 +52,7 @@ class OutfitProductCard extends React.Component {
       </div>
         </div>
     ) : (
-      <div></div>
+      <div>LOADING</div>
     )
     );
   }

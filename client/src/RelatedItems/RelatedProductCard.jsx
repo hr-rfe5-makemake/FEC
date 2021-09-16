@@ -19,6 +19,7 @@ class RelatedProductCard extends React.Component {
     this.setState({
       showComparison: !this.state.showComparison
     })
+    this.props.toggleOverlay();
   }
 
   closeCompare(event) {
@@ -27,6 +28,7 @@ class RelatedProductCard extends React.Component {
     this.setState({
       showComparison: !this.state.showComparison
     })
+    this.props.toggleOverlay();
   }
 
   handleClick(event) {
@@ -38,19 +40,19 @@ class RelatedProductCard extends React.Component {
   }
 
   render() {
-    console.log(this.props.item);
+    // console.log(this.props.item);
     return (
-      Object.keys(this.props.item).length !== 0 ? (
+      this.props.item !== undefined ? (
       <div className='productCard' onClick={this.handleClick}>
         <div className='productImage'>
           <img className='productPhoto' src ={this.props.item.img} alt='Photo Unavailable' />
         </div>
-        <button className="popup" onClick={this.compare}>Action
+        <button className="action" onClick={this.compare}>&#9734;
         </button>
           {
             this.state.showComparison ?
           <RelatedItemComparison currentItem={this.props.currentItem} comparedItem={this.props.item} closeCompare={this.closeCompare}/> :
-          <div>No PopUp</div>
+          <div></div>
           }
         <div className='productDetails'>
         <div className='productCategory'>{this.props.item.category}</div>
