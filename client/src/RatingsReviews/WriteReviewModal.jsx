@@ -5,7 +5,7 @@ class WriteReviewModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      starRating: 3
+      starRating: 0
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,7 +34,6 @@ class WriteReviewModal extends React.Component {
             <h5 className="modal-subtitle">About the <i>{this.props.productName}</i></h5>
           </div>
           <div className="modal-body">
-            This is modal content
             <form id="modal-form" onSubmit={this.handleSubmit}>
               <StarSelector starRating={this.state.starRating} handleChange={this.handleChange}/>
             </form>
