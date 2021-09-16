@@ -1,5 +1,6 @@
 import React from 'react';
 import StarSelector from './ModalFormHelpers/StarSelector.jsx';
+import Characteristics from './ModalFormHelpers/Characteristics.jsx';
 import axios from 'axios';
 import urlFragment from './urlFragment.jsx';
 
@@ -18,6 +19,7 @@ class WriteReviewModal extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCharChange = this.handleCharChange.bind(this);
   }
 
   handleSubmit() {
@@ -48,6 +50,13 @@ class WriteReviewModal extends React.Component {
     });
   }
 
+  handleCharChange(newCharacteristics) {
+    console.log('handleCharChange')
+    // this.setState({
+    //   characteristics: newCharacteristics
+    // });
+  }
+
   render() {
     var bodyCounter;
     if (this.state.body.length >= 50) {
@@ -74,6 +83,11 @@ class WriteReviewModal extends React.Component {
                 <input type="radio" value="true" name="recommend" required/>Yes
                 <input type="radio" value="false" name="recommend" required/>No
               </div>
+              <Characteristics
+                handleCharChange={this.handleCharChange}
+                characteristics={this.state.characteristics}
+                product_id={this.props.product_id}
+              />
               <label> Review summary (optional){'  '}
                 <input type="text" name="summary" value={this.state.summary} onChange={this.handleChange} placeholder={"Example: Best purchase ever!"} style={{width: "250px"}} maxLength="60"/>
               </label>
