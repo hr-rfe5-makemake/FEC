@@ -4,32 +4,34 @@ import IndividualQuestion from './QuestionList/IndividualQuestion.jsx'
 import AddAQuestion from './AddNewQuestions/AddQuestion.jsx'
 import AddQuestionModal from './AddNewQuestions/AddQuestionModal.jsx'
 import AnswerAQuestion from './AnswerAQuestionModal.jsx'
+import SearchQuestion from './SearchQuestions/SearchQuestions.jsx'
 
 class QuestionsAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       allQuestions: [],
-      defaultQuestions: [],
+      renderQuestions: [],
       questionsRendered: 2,
+      oldQuestionsRendered: 2,
       renderedAllQuestion: false
     }
   }
 
   questionsFetcher(){
-    axios.get('/api/fec2/hr-rfe/qa/questions/?product_id=37311&count=10')
+    axios.get('/api/fec2/hr-rfe/qa/questions/?product_id=37315&count=10')
       .then(data => {
         let questions = data.data.results;
         if (questions.length <= 2) {
           this.setState({
             allQuestions: questions,
-            defaultQuestions: questions,
+            renderQuestions: questions,
             renderedAllQuestion: true
           })
         } else {
           this.setState({
             allQuestions: questions,
-            defaultQuestions: [questions[0],questions[1]]
+            renderQuestions: questions
           })
         }
 
@@ -44,14 +46,31 @@ class QuestionsAnswers extends React.Component {
     if(this.state.questionsRendered+2 >= this.state.allQuestions.length){
       this.setState({
         questionsRendered: this.state.questionsRendered+=2,
+        oldQuestionsRendered:this.state.oldQuestionsRendered += 2,
         renderedAllQuestion: true
       })
     } else {
       this.setState({
         questionsRendered: this.state.questionsRendered+=2,
+        oldQuestionsRendered: this.state.oldQuestionsRendered+=2
       })
     }
 
+  }
+
+  changeRenderArray(arr, isValid ,length){
+    if(isValid){
+      this.setState({
+        renderQuestions: arr,
+        questionsRendered: length
+
+      })
+    } else {
+      this.setState({
+        renderQuestions: arr,
+        questionsRendered: length
+      })
+    }
   }
 
   render(){
@@ -60,16 +79,17 @@ class QuestionsAnswers extends React.Component {
     }
     const scroll = {
       overflow:"scroll",
-      maxHeight: '50vh'
+      maxHeight: '70vh'
     }
 
     return(
       <div className='questions_answers'>
         Questions & Answers
-        <AddQuestionModal productID={37311}/>
+        <SearchQuestion questions={this.state.allQuestions} oldLength={this.state.oldQuestionsRendered} changeRenderArray={this.changeRenderArray.bind(this)}/>
+        <AddQuestionModal productID={37315} />
         <div className='modal-placeHolder'></div>
         <ul style={scroll}>
-          {this.state.allQuestions.slice(0,this.state.questionsRendered).map((question,index) => (
+          {this.state.renderQuestions.slice(0,this.state.questionsRendered).map((question,index) => (
             <IndividualQuestion question= {question} key={question.question_id} updateQuestions={this.questionsFetcher.bind(this)} index={index}/>
           ))}
         </ul>
