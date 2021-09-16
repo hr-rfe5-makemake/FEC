@@ -16,6 +16,7 @@ class IndividualTile extends React.Component {
       verified: Math.round(Math.random()) // either 1 or 0, since no API data
     };
     this.handleHelpfulClick = this.handleHelpfulClick.bind(this);
+    this.handleReport = this.handleReport.bind(this);
   }
 
   reformatDate(date) {
@@ -33,7 +34,7 @@ class IndividualTile extends React.Component {
   handleHelpfulClick() {
     if (!this.state.helpful) {
       this.state.helpful = true;
-      axios.put(`${urlFragment}${this.props.review.review_id}/helpful`)
+      axios.put(`${urlFragment}reviews/${this.props.review.review_id}/helpful`)
         .then((reply) => {
           this.props.rerender();
         })
@@ -41,8 +42,12 @@ class IndividualTile extends React.Component {
     }
   }
 
-  componentDidMount() {
-
+  handleReport() {
+    axios.put(`${urlFragment}reviews/${this.props.review.review_id}/report`)
+      .then(data => {
+        console.log('successfully reported', data);
+      })
+      .catch(err => console.error(err))
   }
 
   render() {
@@ -56,7 +61,7 @@ class IndividualTile extends React.Component {
         <IRecommend recommend={this.props.review.recommend}/>
         <SellerResponse response={this.props.review.response}/>
         <div>Helpful?{' '}
-          <u onClick={this.handleHelpfulClick} style={{cursor: 'pointer'}}>Yes</u> ({this.props.review.helpfulness})
+          <u onClick={this.handleHelpfulClick} style={{cursor: 'pointer'}}>Yes</u> ({this.props.review.helpfulness})&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<u onClick={this.handleReport} style={{cursor: 'pointer'}}>Report</u>
         </div>
       </div>
     );

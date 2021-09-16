@@ -35,6 +35,12 @@ class BreakdownFilter extends React.Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.timeToReRender !== prevProps.timeToReRender) {
+      this.getMetaData(this.props.product_id);
+    }
+  }
+
   componentDidMount() {
     this.getMetaData(this.props.product_id);
   }

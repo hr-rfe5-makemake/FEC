@@ -37,6 +37,7 @@ class WriteReviewModal extends React.Component {
         console.log('success!!:', data)
         this.props.toggleModal();
         this.props.getAllReviews(this.props.product_id);
+        this.props.timeToReRender();
       })
       .catch(err => console.error(err))
   }

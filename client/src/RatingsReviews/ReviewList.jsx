@@ -109,7 +109,14 @@ class ReviewList extends React.Component {
     {var addReviewElements = (
       <div id="addReviewElements">
         <button onClick={this.toggleModal}>ADD A REVIEW +</button>
-        <WriteReviewModal show={this.state.showModal} productName={this.state.productName} toggleModal={this.toggleModal} product_id={this.props.product_id} getAllReviews={this.getAllReviews}/>
+        <WriteReviewModal
+          show={this.state.showModal}
+          productName={this.state.productName}
+          toggleModal={this.toggleModal}
+          product_id={this.props.product_id}
+          getAllReviews={this.getAllReviews}
+          timeToReRender={this.props.timeToReRender}
+        />
       </div>
     )}
 

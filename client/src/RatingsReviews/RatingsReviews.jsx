@@ -6,10 +6,12 @@ class RatingsReviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filterOptions: []
+      filterOptions: [],
+      timeToReRender: false
     };
     this.handleFilterClick = this.handleFilterClick.bind(this);
     this.handleRemoveFiltersClick = this.handleRemoveFiltersClick.bind(this);
+    this.handleTimeToReRender = this.handleTimeToReRender.bind(this);
   }
 
   handleFilterClick(e) {
@@ -37,6 +39,12 @@ class RatingsReviews extends React.Component {
     });
   }
 
+  handleTimeToReRender() {
+    this.setState(prevState => ({
+      timeToReRender: !prevState.timeToReRender
+    }));
+  }
+
   render() {
     return (
       <div id='rr-container'>
@@ -47,6 +55,7 @@ class RatingsReviews extends React.Component {
             filterOptions={this.state.filterOptions}
             handleFilterClick={this.handleFilterClick}
             handleRemoveFiltersClick={this.handleRemoveFiltersClick}
+            timeToReRender={this.state.timeToReRender}
           />
         </div>
         <div id='rr-right'>
@@ -55,6 +64,7 @@ class RatingsReviews extends React.Component {
           <ReviewList
             product_id={this.props.product_id}
             filterOptions={this.state.filterOptions}
+            timeToReRender={this.handleTimeToReRender}
           />
         </div>
       </div>
