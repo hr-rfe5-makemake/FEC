@@ -5,7 +5,8 @@ class WriteReviewModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      starRating: 0
+      starRating: 0,
+      recommend: null
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,7 +17,6 @@ class WriteReviewModal extends React.Component {
   }
 
   handleChange(e) {
-    console.log(e.target.alt)
     this.setState({
       [e.target.name]: e.target.value || e.target.alt
     });
@@ -36,6 +36,11 @@ class WriteReviewModal extends React.Component {
           <div className="modal-body">
             <form id="modal-form" onSubmit={this.handleSubmit}>
               <StarSelector starRating={this.state.starRating} handleChange={this.handleChange}/>
+              <div id="recommendRadio" onChange={this.handleChange}>
+                Do you recommend this product?<span style={{color: "red"}}>*</span>
+                <input type="radio" value="Yes" name="recommend"/>Yes
+                <input type="radio" value="No" name="recommend"/>No
+              </div>
             </form>
           </div>
           <div className="modal-footer">
