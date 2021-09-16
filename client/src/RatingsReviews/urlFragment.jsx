@@ -1,3 +1,3 @@
-var urlFragment = '/api/fec2/hr-rfe/reviews/';
+var urlFragment = '/api/fec2/hr-rfe/';
 
 export default urlFragment;

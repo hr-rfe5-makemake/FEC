@@ -4,7 +4,7 @@ function MoreReviewsButton({displayMore, allDisplayed}) {
   if (allDisplayed) {
     return null;
   } else {
-    return <button onClick={displayMore}>MORE REVIEWS</button>
+    return <button onClick={displayMore}>MORE REVIEWS +</button>
 
   }
 }

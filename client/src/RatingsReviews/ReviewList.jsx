@@ -2,6 +2,8 @@ import React from 'react';
 import IndividualTile from './IndividualTile.jsx';
 import SortOptions from './ReviewListHelpers/SortOptions.jsx';
 import MoreReviewsButton from './ReviewListHelpers/MoreReviewsButton.jsx';
+import WriteReviewModal from './WriteReviewModal.jsx';
+
 import axios from 'axios';
 import urlFragment from './urlFragment.jsx';
 
@@ -9,19 +11,22 @@ class ReviewList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      productName: null,
       allReviews: [],
       displayedReviews: [],
       allDisplayed: false,
       reviewsExist: true,
-      sortOption: 'relevant'
+      sortOption: 'relevant',
+      showModal: false
     };
     this.rerender = this.rerender.bind(this);
     this.changeSort = this.changeSort.bind(this);
     this.displayMore = this.displayMore.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   getAllReviews(product_id, sort = this.state.sortOption, page = 1, count = 5) {
-    axios.get(`${urlFragment}?product_id=${product_id}&sort=${sort}&page=${page}&count=${count}`)
+    axios.get(`${urlFragment}reviews/?product_id=${product_id}&sort=${sort}&page=${page}&count=${count}`)
       .then(allReviews => {
         var filteredReviews = [];
         for (var i = 0; i < allReviews.data.results.length; i++) {
@@ -40,6 +45,16 @@ class ReviewList extends React.Component {
           displayedReviews: filteredReviews.slice(0, 2),
           allDisplayed: (filteredReviews.length <= 2 ? true : false),
           reviewsExist: (filteredReviews.length !== 0 ? true : false)
+        });
+      })
+      .catch(err => console.error(err))
+  }
+
+  getProductName(product_id) {
+    axios.get(`${urlFragment}products/${product_id}`)
+      .then(productInfo => {
+        this.setState({
+          productName: productInfo.data.name
         });
       })
       .catch(err => console.error(err))
@@ -68,12 +83,19 @@ class ReviewList extends React.Component {
     }
   }
 
+  toggleModal() {
+    this.setState(prevState => ({
+      showModal: !prevState.showModal
+    }));
+  }
+
   rerender() {
     this.getAllReviews(this.props.product_id);
   }
 
   componentDidMount() {
     this.getAllReviews(this.props.product_id);
+    this.getProductName(this.props.product_id);
   }
 
   componentDidUpdate(prevProps) {
@@ -83,8 +105,15 @@ class ReviewList extends React.Component {
   }
 
   render() {
+    {var addReviewElements = (
+      <div id="addReviewElements">
+        <button onClick={this.toggleModal}>ADD A REVIEW +</button>
+        <WriteReviewModal show={this.state.showModal} productName={this.state.productName} toggleModal={this.toggleModal}/>
+      </div>
+    )}
+
     if (!this.state.reviewsExist) {
-      return <button>ADD A REVIEW +</button>
+      return addReviewElements;
     } else {
       return (
         <div>
@@ -99,7 +128,7 @@ class ReviewList extends React.Component {
             })}
           </div>
           <MoreReviewsButton displayMore={this.displayMore} allDisplayed={this.state.allDisplayed}/>
-          <button>ADD A REVIEW +</button>
+          {addReviewElements}
         </div>
       );
     }
