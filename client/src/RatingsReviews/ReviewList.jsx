@@ -23,9 +23,10 @@ class ReviewList extends React.Component {
     this.changeSort = this.changeSort.bind(this);
     this.displayMore = this.displayMore.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.getAllReviews = this.getAllReviews.bind(this);
   }
 
-  getAllReviews(product_id, sort = this.state.sortOption, page = 1, count = 5) {
+  getAllReviews(product_id, sort = this.state.sortOption, page = 1, count = 20) {
     axios.get(`${urlFragment}reviews/?product_id=${product_id}&sort=${sort}&page=${page}&count=${count}`)
       .then(allReviews => {
         var filteredReviews = [];
@@ -108,7 +109,7 @@ class ReviewList extends React.Component {
     {var addReviewElements = (
       <div id="addReviewElements">
         <button onClick={this.toggleModal}>ADD A REVIEW +</button>
-        <WriteReviewModal show={this.state.showModal} productName={this.state.productName} toggleModal={this.toggleModal}/>
+        <WriteReviewModal show={this.state.showModal} productName={this.state.productName} toggleModal={this.toggleModal} product_id={this.props.product_id} getAllReviews={this.getAllReviews}/>
       </div>
     )}
 

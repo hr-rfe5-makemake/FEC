@@ -1,5 +1,7 @@
 import React from 'react';
 import StarSelector from './ModalFormHelpers/StarSelector.jsx';
+import axios from 'axios';
+import urlFragment from './urlFragment.jsx';
 
 class WriteReviewModal extends React.Component {
   constructor(props) {
@@ -7,14 +9,36 @@ class WriteReviewModal extends React.Component {
     this.state = {
       starRating: 0,
       recommend: null,
-      summary: ''
+      summary: '',
+      body: '',
+      nickname: '',
+      email: '',
+      photos: [],
+      characteristics: {}
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit() {
-    //post request
+    var data = {
+      "product_id": 37314,
+      "rating": 5,
+      "summary": this.state.summary,
+      "body": this.state.body,
+      "recommend": Boolean(this.state.recommend),
+      "name": this.state.nickname,
+      "email": this.state.email,
+      "photos": [],
+      "characteristics": {}
+  }
+    axios.post(`${urlFragment}reviews`, data)
+      .then(data => {
+        console.log('success!!:', data)
+        this.props.toggleModal();
+        this.props.getAllReviews(this.props.product_id);
+      })
+      .catch(err => console.error(err))
   }
 
   handleChange(e) {
@@ -24,6 +48,13 @@ class WriteReviewModal extends React.Component {
   }
 
   render() {
+    var bodyCounter;
+    if (this.state.body.length >= 50) {
+      bodyCounter = <div id="bodyCount"><i>Minimum reached</i></div>
+    } else {
+      bodyCounter = <div id="bodyCount"><i>Minimum required characters left: {50 - this.state.body.length}</i></div>;
+    }
+
     if (!this.props.show) {
       return null;
     }
@@ -39,56 +70,33 @@ class WriteReviewModal extends React.Component {
               <StarSelector starRating={this.state.starRating} handleChange={this.handleChange}/>
               <div id="recommendRadio" onChange={this.handleChange}>
                 Do you recommend this product?<span style={{color: "red"}}>*</span>
-                <input type="radio" value="Yes" name="recommend"/>Yes
-                <input type="radio" value="No" name="recommend"/>No
+                <input type="radio" value="true" name="recommend" required/>Yes
+                <input type="radio" value="false" name="recommend" required/>No
               </div>
-              <label> Review summary (optional):{'  '}
-                <input type="text" name="summary" value={this.state.summary} onChange={this.handleChange} placeholder={"Example: Best purchase ever!"} style={{width: "250px"}}/>
+              <label> Review summary (optional){'  '}
+                <input type="text" name="summary" value={this.state.summary} onChange={this.handleChange} placeholder={"Example: Best purchase ever!"} style={{width: "250px"}} maxLength="60"/>
+              </label>
+              <br></br>
+              <label> Review body<span style={{color: "red"}}>*</span>{'  '}
+                <input type="text" name="body" value={this.state.body} onChange={this.handleChange} placeholder={"Why did you like the product or not?"} style={{width: "250px"}} maxLength="1000" minLength="50" required/>
+                {bodyCounter}
+              </label>
+            {/* <div id="image-upload">
+              Select image to upload:<input type="file" name="fileToUpload" id="fileToUpload"/>
+            </div> */}
+              <label> What is your nickname?<span style={{color: "red"}}>*</span>{'  '}
+                <input type="text" name="nickname" value={this.state.nickname} onChange={this.handleChange} placeholder={"Example: jackson11"} style={{width: "250px"}} maxLength="60" required/> <div><i>For privacy reasons, do not use your full name or email address</i></div>
+              </label>
+              <label>Your email<span style={{color: "red"}}>*</span>{'  '}
+                <input type="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder={"Example: jackson11@email.com"} style={{width: "250px"}} maxLength="60" required/> <div><i>For authentication reasons, you will not be emailed</i></div>
               </label>
             </form>
           </div>
           <div className="modal-footer">
-            <button className="modal-button" onClick={this.props.toggleModal}>Close</button>
+            <input type="submit" value="Submit Review" name="submit" onClick={this.handleSubmit}/>
           </div>
-
         </div>
-
-        {/* <form>
-          <input
-          name="Overall Rating"
-          type="text"
-          //value="1, 2, 3, 4, 5 (star icons)"
-          />
-          <input
-          name="Do you recommend this product?"
-          type="text"
-          //value="yes, no"
-          />
-          <input
-          name="Characteristics - 1"
-          type="radio"
-          //value="1, 2, 3, 4, 5"
-          />
-          <input
-          name="Review Summary (optional)"
-          type="text"
-          //value="Placeholder = 'Example: Best purchase ever!'"
-          />
-          <input
-          name="Review Body"
-          type="text"
-          //value="Placeholder = 'Why did you like the product or not?' --> include character counter below"
-          />
-          <button>Upload your photos</button>
-          <input
-          name="what is your nickname?"
-          />
-          <input
-          name="Your email"
-          />
-          <button>Submit Review</button>
-        </form> */}
-        </div>
+      </div>
     );
   }
 
