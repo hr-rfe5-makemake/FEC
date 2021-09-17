@@ -10,10 +10,17 @@ const RenderStyles = ({currentStyle, styles, onClick}) => {
   let result = [];
   for (let i = 0; i < styles.results.length; i++) {
     if (currentStyle.name === styles.results[i].name) {
-      result.push(<div className="crop" key={styles.results[i].style_id}><img className="style-thumbnail" src={styles.results[i].photos[0].thumbnail_url} onClick={event => { click(styles.results[i]); }}/>
-      <img id="overlay" src=".././img/greenCheckMark.png"/></div>);
+      result.push(<div className="crop"
+        key={styles.results[i].style_id}><img
+        className="style-thumbnail" src={styles.results[i].photos[0].thumbnail_url}
+        onClick={event => { click(styles.results[i]); }}/>
+        <img id="overlay" src=".././img/greenCheckMark.png"/>
+      </div>);
     } else {
-      result.push(<div className="crop" key={styles.results[i].style_id}><img className="style-thumbnail" src={styles.results[i].photos[0].thumbnail_url} onClick={event => { click(styles.results[i]); }}/></div>);
+      result.push(<div className="crop"
+        key={styles.results[i].style_id}><img
+        className="style-thumbnail" src={styles.results[i].photos[0].thumbnail_url}
+        onClick={event => { click(styles.results[i]); }}/></div>);
     }
   }
   return result;

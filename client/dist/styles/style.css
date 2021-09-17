@@ -76,17 +76,17 @@
 .image-gallery:hover{
   opacity: .75;
 }
-#left, #right{
+.left, .right{
   position: absolute;
   top: 200px;
 }
-#left:hover, #right:hover{
+.left:hover, .right:hover{
   opacity: .5;
 }
-#left{
+.left{
   left: 60px;
 }
-#right{
+.right{
   right: 0;
 }
 #main-image{
@@ -97,6 +97,94 @@
 }
 #main-image:hover{
   cursor: url(../img/magnifier.png), auto;
+}
+dialog{
+  border: none;
+  padding: 0;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0 8px 6px -6px black;
+  position: absolute;
+  top: 0;
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#dialog-background {
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, .5);
+}
+#expanded-img{
+  position: absolute;
+  z-index: 4;
+  max-width: 800px;
+  max-height: 700px;
+  margin: 0;
+}
+#expanded-img-zoom{
+  position: absolute;
+  z-index: 4;
+  width: 2000px;
+  height: auto;
+  margin: 0;
+}
+.plus:hover{
+  cursor: url(../img/plus.png), auto;
+}
+.minus:hover{
+  cursor: url(../img/remove.png), auto;
+}
+#magnified-img-container{
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  z-index: 6;
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  overflow: hidden;
+}
+#magnified-img{
+  width: 250%;
+  height: auto;
+}
+.dialog-left, .dialog-right{
+  background-color: rgba(255, 255, 255, .25);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+}
+.dialog-left:hover, .dialog-right:hover{
+  opacity: .75;
+}
+.dialog-left{
+  left: 10%;
+}
+.dialog-right{
+  right: 10%;
+}
+#product-img-expanded {
+  max-height: 40px;
+  position: absolute;
+  top: 10px;
+  z-index: 5;
+  display: flex;
+  align-content: center;
+}
+.expanded-crop{
+  display: inline-flex;
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: auto;
 }
 .image{
   width: 100px;

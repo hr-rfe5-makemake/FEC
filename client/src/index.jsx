@@ -42,7 +42,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Overview currentItem_ID={this.state.currentItem.id}/>
+        <Overview currentItem_ID={this.state.currentItem.id || 37311}/>
         <RelatedItems changeCurrentProduct={this.changeCurrentProduct}/>
         <QuestionsAnswers />
         <RatingsReviews />

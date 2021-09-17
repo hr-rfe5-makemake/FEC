@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GetImages = ({urls, onClick, index}) => {
+const GetImages = ({urls, onClick, index, isOpen}) => {
   if (urls === undefined) {
     return [];
   }
@@ -25,7 +25,7 @@ const GetImages = ({urls, onClick, index}) => {
 
 const ImageGallery = (props) => (
   <div id="product-img">
-    <GetImages urls={props.urls} index={props.currentIndex} onClick={props.onClick}/>
+    <GetImages urls={props.urls} index={props.currentIndex} onClick={props.onClick} isOpen={props.isOpen}/>
   </div>
 )
 
