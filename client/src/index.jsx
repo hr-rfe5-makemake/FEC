@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 import Overview from './Overview/Overview.jsx';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import QuestionsAnswers from './QuestionsAnswers/QuestionsAnswers.jsx';
-import axios from 'axios';
 
 class App extends React.Component {
   constructor() {
@@ -60,8 +60,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        React is working!
-        <Overview currentItem={this.state.currentItem_ID}/>
+        <Overview currentItem_ID={this.state.currentItem_ID}/>
         <RelatedItems changeCurrentProduct={this.changeCurrentProduct} currentItemId={this.state.currentItem_ID} currentItem={this.state.details}/>
         <QuestionsAnswers />
         <RatingsReviews />
