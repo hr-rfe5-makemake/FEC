@@ -73,23 +73,24 @@ class WriteReviewModal extends React.Component {
     } else if (this.state.photos.length < 5) {
       var images = [];
       for (var i = 0; i < this.state.photos.length; i++) {
-        images.push(<img src={this.state.photos[i]} style={{height: "50px", width: "auto"}}></img>);
+        images.push(<img src={this.state.photos[i]} style={{height: "100px", width: "auto"}}></img>);
       }
       return (
         <div>
           Add up to 5 images:&nbsp;&nbsp;
           <input type="text" value={this.state.currImageValue} id="image-input" placeholder="Paste URL here"/>
           <button id="addImageBtn" onClick={this.handleImageChange}>Add</button>
-          <br></br>{images}
+          <div id="imageContainer" style={{display: "flex", gap: "10px"}}>{images}</div>
         </div>)
     } else {
       var images = [];
       for (var i = 0; i < this.state.photos.length; i++) {
-        images.push(<img src={this.state.photos[i]} style={{height: "50px", width: "auto"}}></img>);
+        images.push(<img src={this.state.photos[i]} style={{height: "100px", width: "auto"}}></img>);
       }
       return (
         <div>
-          <div>5 images added</div>{images}
+          <div>5 images added</div>
+          <div id="imageContainer" style={{display: "flex", gap: "10px"}}>{images}</div>
         </div>)
     }
   }

@@ -17,6 +17,7 @@ class IndividualTile extends React.Component {
     };
     this.handleHelpfulClick = this.handleHelpfulClick.bind(this);
     this.handleReport = this.handleReport.bind(this);
+    this.generateThumbnails = this.generateThumbnails.bind(this);
   }
 
   reformatDate(date) {
@@ -50,6 +51,24 @@ class IndividualTile extends React.Component {
       .catch(err => console.error(err))
   }
 
+  generateThumbnails() {
+    var photos = this.props.review.photos;
+    if (!photos.length) {
+      return null;
+    } else {
+      var thumbnails = [];
+      for (var i = 0; i < photos.length; i++) {
+        console.log(photos[i])
+        thumbnails.push(<img src={photos[i].url} height="100px" width="auto"></img>)
+      }
+      return <div className="thumbnail-container" style={{display: "flex", gap: "10px"}}>{thumbnails}</div>
+    }
+  }
+
+  componentDidMount() {
+    console.log(this.props.review)
+  }
+
   render() {
     return (
       <div className="individual-tile">
@@ -58,6 +77,7 @@ class IndividualTile extends React.Component {
         <span className="tile-date">Reviewed on {this.reformatDate(this.props.review.date)}</span>
         <ReviewSummary summary={this.props.review.summary}/>
         <div className="tile-body">{this.props.review.body}</div>
+        {this.generateThumbnails()}
         <IRecommend recommend={this.props.review.recommend}/>
         <SellerResponse response={this.props.review.response}/>
         <div>Helpful?{' '}
