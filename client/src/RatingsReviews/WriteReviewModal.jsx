@@ -20,6 +20,7 @@ class WriteReviewModal extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCharChange = this.handleCharChange.bind(this);
+    this.handleImageChange = this.handleImageChange.bind(this);
   }
 
   handleSubmit() {
@@ -58,6 +59,47 @@ class WriteReviewModal extends React.Component {
     characteristics[charId] = charValue;
     this.setState({
       characteristics: characteristics
+    });
+  }
+
+  addAnImage() {
+    if (!this.state.photos.length) {
+      return (
+      <div>
+        Add up to 5 images:&nbsp;&nbsp;
+        <input type="text" value={this.state.currImageValue} id="image-input" placeholder="Paste URL here"/>
+        <button id="addImageBtn" onClick={this.handleImageChange}>Add</button>
+      </div>)
+    } else if (this.state.photos.length < 5) {
+      var images = [];
+      for (var i = 0; i < this.state.photos.length; i++) {
+        images.push(<img src={this.state.photos[i]} style={{height: "50px", width: "auto"}}></img>);
+      }
+      return (
+        <div>
+          Add up to 5 images:&nbsp;&nbsp;
+          <input type="text" value={this.state.currImageValue} id="image-input" placeholder="Paste URL here"/>
+          <button id="addImageBtn" onClick={this.handleImageChange}>Add</button>
+          <br></br>{images}
+        </div>)
+    } else {
+      var images = [];
+      for (var i = 0; i < this.state.photos.length; i++) {
+        images.push(<img src={this.state.photos[i]} style={{height: "50px", width: "auto"}}></img>);
+      }
+      return (
+        <div>
+          <div>5 images added</div>{images}
+        </div>)
+    }
+  }
+
+  handleImageChange(e) {
+    var input = document.getElementById("image-input")
+    var photos = this.state.photos;
+    photos.push(input.value);
+    this.setState({
+      photos: photos
     });
   }
 
@@ -100,9 +142,12 @@ class WriteReviewModal extends React.Component {
                 <input type="text" name="body" value={this.state.body} onChange={this.handleChange} placeholder={"Why did you like the product or not?"} style={{width: "250px"}} maxLength="1000" minLength="50" required/>
                 {bodyCounter}
               </label>
-            {/* <div id="image-upload">
-              Select image to upload:<input type="file" name="fileToUpload" id="fileToUpload"/>
-            </div> */}
+              {this.addAnImage()}
+
+              {/* <div id="image-upload" onChange={this.handleImageChange}>
+                Enter an image URL:<input type="text" name= id="fileToUpload" multiple/>
+              </div> */}
+              {/* {this.displayThumbnails()} */}
               <label> What is your nickname?<span style={{color: "red"}}>*</span>{'  '}
                 <input type="text" name="nickname" value={this.state.nickname} onChange={this.handleChange} placeholder={"Example: jackson11"} style={{width: "250px"}} maxLength="60" required/> <div><i>For privacy reasons, do not use your full name or email address</i></div>
               </label>
