@@ -24,8 +24,8 @@ class WriteReviewModal extends React.Component {
 
   handleSubmit() {
     var data = {
-      "product_id": 37314,
-      "rating": 5,
+      "product_id": this.props.product_id,
+      "rating": parseInt(this.state.starRating),
       "summary": this.state.summary,
       "body": this.state.body,
       "recommend": Boolean(this.state.recommend),
@@ -34,6 +34,7 @@ class WriteReviewModal extends React.Component {
       "photos": this.state.photos,
       "characteristics": this.state.characteristics
   }
+    console.log('dataaa:', data)
     axios.post(`${urlFragment}reviews`, data)
       .then(data => {
         console.log('success!!:', data)

@@ -35,12 +35,10 @@ class Characteristics extends React.Component {
 
     var chars = this.state.metaData.data.characteristics;
     var charInputs = [];
-    console.log('CHARS:', chars)
 
     for (var key in chars) {
       var radios = [];
 
-      //  console.log(key, options[key])
       for (var i = 0; i < options[key].length; i++) {
         console.log(options[key][i])
         radios.push(<span><input type="radio" value={options[key][i][0]} name={chars[key].id} required/>{options[key][i][1]}</span>)
@@ -48,10 +46,8 @@ class Characteristics extends React.Component {
       charInputs.push(<div key={key} id={`${key}-label`}><b>{key}<span style={{color: "red"}}>*</span>  </b>{radios}</div>);
     }
 
-
     return <div id="char-input-container" onChange={this.props.handleCharChange}>{charInputs}</div>;
   }
-
 
   componentDidMount() {
     this.getMetaData(this.props.product_id);
