@@ -14,12 +14,13 @@ class QuestionsAnswers extends React.Component {
       renderQuestions: [],
       questionsRendered: 2,
       oldQuestionsRendered: 2,
-      renderedAllQuestion: false
+      renderedAllQuestion: false,
+      product_name: ''
     }
   }
 
   questionsFetcher(){
-    axios.get('/api/fec2/hr-rfe/qa/questions/?product_id=37315&count=10')
+    axios.get('/api/fec2/hr-rfe/qa/questions/?product_id=37311&count=10')
       .then(data => {
         let questions = data.data.results;
         if (questions.length <= 2) {
@@ -40,6 +41,13 @@ class QuestionsAnswers extends React.Component {
 
   componentDidMount(){
     this.questionsFetcher()
+      axios.get(`/api/fec2/hr-rfe/products/${37311}`)
+      .then(response => {
+        this.setState({
+          product_name: response.data.name
+        })
+      })
+
   }
 
   loadMoreQuestions(){
@@ -86,11 +94,11 @@ class QuestionsAnswers extends React.Component {
       <div className='questions_answers'>
         Questions & Answers
         <SearchQuestion questions={this.state.allQuestions} oldLength={this.state.oldQuestionsRendered} changeRenderArray={this.changeRenderArray.bind(this)}/>
-        <AddQuestionModal productID={37315} />
+        <AddQuestionModal product={this.state.product_name} />
         <div className='modal-placeHolder'></div>
         <ul style={scroll}>
           {this.state.renderQuestions.slice(0,this.state.questionsRendered).map((question,index) => (
-            <IndividualQuestion question= {question} key={question.question_id} updateQuestions={this.questionsFetcher.bind(this)} index={index}/>
+            <IndividualQuestion question= {question} key={question.question_id} updateQuestions={this.questionsFetcher.bind(this)} index={index} product={this.state.product_name}/>
           ))}
         </ul>
         <button style={moreQuestionsStyle} onClick={this.loadMoreQuestions.bind(this)} className='moreQuestions'>More Answered Questions</button>

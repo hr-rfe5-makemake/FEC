@@ -69,7 +69,7 @@ class Question extends React.Component {
 
   answerClickHandler(){
     let modalLocation = document.querySelector('.modal-placeHolder')
-    ReactDOM.render(<AnswerAQuestionModal productID={this.props.question.question_id} closeModal={this.closeModal.bind(this)}/>, modalLocation)
+    ReactDOM.render(<AnswerAQuestionModal questionID={this.props.question.question_id} closeModal={this.closeModal.bind(this)} question={this.props.question.question_body} product={this.props.product}/>, modalLocation)
   }
 
   closeModal(){

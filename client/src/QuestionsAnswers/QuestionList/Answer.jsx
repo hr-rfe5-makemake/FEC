@@ -1,6 +1,7 @@
 import React from 'react'
 import dateFormat from 'dateformat'
 import axios from 'axios'
+import AnswerImages from './AnswerImages.jsx'
 
 class Answer extends React.Component{
   constructor(props){
@@ -50,6 +51,11 @@ class Answer extends React.Component{
           <div>
             <span>by <span style={nameStyle}>{this.props.answer.answerer_name}</span>, {dateFormat(this.props.answer.date, 'mmmm d, yyyy')} |
             Helpful? <u onClick={this.helpfulUpdater.bind(this)} style={{cursor: 'pointer'}}>Yes</u>({this.props.answer.helpfulness}) | <u onClick={this.report.bind(this)} style={{cursor: 'pointer'}}>Report</u> </span>
+          </div>
+          <div className='answer-images'>
+            {this.props.answer.photos.map(photo => (
+              <AnswerImages photo={photo} />
+            ))}
           </div>
         </li>
       )
