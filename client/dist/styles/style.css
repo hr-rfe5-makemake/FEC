@@ -173,6 +173,23 @@ button {
 
 .bar-green {
   background-color: rgb(46, 85, 8);
+  animation-duration: 2s;
+  animation-name: slidein;
+}
+
+
+
+.bar-green-char {
+  background-color: rgb(46, 85, 8);
+  animation-duration: 3s;
+  animation-name: slidein;
+  position: absolute;
+}
+
+@keyframes slidein {
+  from {
+    left: 0px;
+  }
 }
 
 .bar-green:hover {
