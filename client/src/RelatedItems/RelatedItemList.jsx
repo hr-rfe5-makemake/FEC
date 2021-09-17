@@ -6,6 +6,8 @@ import _ from "underscore";
 class RelatedItemList extends React.Component {
   constructor(props) {
     super(props);
+    // currentIdx variable keeps track of which index of related list the carousel is on
+    // fetched variable keeps track of whether api calls finished fetching data
     this.state = {
       currentIdx: 0,
       fetched: false,
@@ -15,6 +17,7 @@ class RelatedItemList extends React.Component {
     this.updateRelated = this.updateRelated.bind(this);
   }
 
+  // fetch details of all the related products upon mount
   componentDidMount() {
     for (var i = 0; i < this.props.relatedList.length; i++) {
       axios
@@ -81,6 +84,7 @@ class RelatedItemList extends React.Component {
     }
   }
 
+  // fetch detail of all related items of new current item upon update
   updateRelated(newId) {
     this.setState({
       fetched: false,
@@ -154,6 +158,7 @@ class RelatedItemList extends React.Component {
     }
   }
 
+  // decrement currentIdx by 1 when previous button is clicked
   previous(event) {
     if (this.state.currentIdx > 0) {
       this.setState({
@@ -162,6 +167,7 @@ class RelatedItemList extends React.Component {
     }
   }
 
+  // increment currendIdx by 1 when next button is clicked
   next(event) {
     if (this.state.currentIdx < this.props.relatedList.length - 3) {
       this.setState({

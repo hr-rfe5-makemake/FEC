@@ -16,12 +16,14 @@ class OutfitList extends React.Component {
     this.removeOutfit = this.removeOutfit.bind(this);
   }
 
+  // fetch the details of items on outfit list upon mount
   componentDidMount() {
     for (var i = 0; i < this.props.outfitList.length; i++) {
       this.fetchData(this.props.outfitList[i]);
     }
   }
 
+  // method to fetch details of an item
   fetchData(id) {
     axios
       .get("/api/fec2/hr-rfe/products/" + id)
@@ -88,6 +90,7 @@ class OutfitList extends React.Component {
       });
   }
 
+  // remove selected product from outfit list
   removeOutfit(newId) {
     this.props.removeOutfit(newId);
     if (this.state.currentIdx !== -1) {
@@ -97,6 +100,7 @@ class OutfitList extends React.Component {
     }
   }
 
+  // add current product to outfit list
   addOutfit() {
     console.log('click add outfit')
     if (!this.props.outfitList.includes(this.props.currentItemId)){
@@ -110,6 +114,7 @@ class OutfitList extends React.Component {
     }
   }
 
+  // handle previous button for carousel list
   previous(event) {
     if (this.state.currentIdx > -1) {
       this.setState({
@@ -118,6 +123,7 @@ class OutfitList extends React.Component {
     }
   }
 
+    // handle next button for carousel list
   next(event) {
     if (this.state.currentIdx < this.props.outfitList.length - 3) {
       this.setState({
