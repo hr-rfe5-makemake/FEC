@@ -6,6 +6,7 @@ import RelatedItemComparison from "./RelatedItemComparison.jsx";
 class RelatedProductCard extends React.Component {
   constructor(props) {
     super(props);
+    // showComparison variable keeps track of whether the comparison modal should be shown or not
     this.state = {
       showComparison: false
     }
@@ -14,6 +15,7 @@ class RelatedProductCard extends React.Component {
     this.closeCompare = this.closeCompare.bind(this);
   }
 
+  // method to open comparison modal upon click on button
   compare(event) {
     event.stopPropagation();
     this.setState({
@@ -22,6 +24,7 @@ class RelatedProductCard extends React.Component {
     this.props.toggleOverlay();
   }
 
+  // method to close comparison modal upon click of a tag
   closeCompare(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -31,6 +34,7 @@ class RelatedProductCard extends React.Component {
     this.props.toggleOverlay();
   }
 
+  // method to change current item when user clicks on the item card
   handleClick(event) {
     console.log('click');
     console.log(this.props.item.id);

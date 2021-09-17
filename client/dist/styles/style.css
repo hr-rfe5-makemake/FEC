@@ -108,7 +108,7 @@ table, th, td {
   text-align: center;
 }
 
-.modal {
+.related-modal {
   display: block;
   top: 0;
   min-width: 250px;

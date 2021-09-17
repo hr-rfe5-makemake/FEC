@@ -40,7 +40,6 @@ class Characteristics extends React.Component {
       var radios = [];
 
       for (var i = 0; i < options[key].length; i++) {
-        console.log(options[key][i])
         radios.push(<span><input type="radio" value={options[key][i][0]} name={chars[key].id} required/>{options[key][i][1]}</span>)
       }
       charInputs.push(<div key={key} id={`${key}-label`}><b>{key}<span style={{color: "red"}}>*</span>  </b>{radios}</div>);
@@ -51,8 +50,6 @@ class Characteristics extends React.Component {
 
   componentDidMount() {
     this.getMetaData(this.props.product_id);
-    console.log('META:', this.state.metaData)
-
   }
 
   render() {
