@@ -47,7 +47,6 @@ class App extends React.Component {
     axios.get('/api/fec2/hr-rfe/products/' + newId)
     .then(data => {
       this.setState({
-        //FILL ME IN
         currentItem_ID: newId,
         details: data.data
       })
