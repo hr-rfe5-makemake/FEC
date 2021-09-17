@@ -31,8 +31,8 @@ class WriteReviewModal extends React.Component {
       "recommend": Boolean(this.state.recommend),
       "name": this.state.nickname,
       "email": this.state.email,
-      "photos": [],
-      "characteristics": {}
+      "photos": this.state.photos,
+      "characteristics": this.state.characteristics
   }
     axios.post(`${urlFragment}reviews`, data)
       .then(data => {
@@ -50,11 +50,14 @@ class WriteReviewModal extends React.Component {
     });
   }
 
-  handleCharChange(newCharacteristics) {
-    console.log('handleCharChange')
-    // this.setState({
-    //   characteristics: newCharacteristics
-    // });
+  handleCharChange(e) {
+    var charId = e.target.name;
+    var charValue = parseInt(e.target.value);
+    var characteristics = this.state.characteristics;
+    characteristics[charId] = charValue;
+    this.setState({
+      characteristics: characteristics
+    });
   }
 
   render() {
