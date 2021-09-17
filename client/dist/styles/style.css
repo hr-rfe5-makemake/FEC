@@ -1,0 +1,162 @@
+.carouselList {
+  /* width: 100%;
+  display: flex;
+  flex-direction: row; */
+  margin-left: 20%;
+  margin-right: 20%;
+  height: 100%;
+}
+
+.carouselWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5%;
+  height: 50%;
+}
+
+.carouselListContent {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex: 2;
+  justify-content: space-between;
+}
+
+.productCard {
+  flex-basis: 30%;
+  border: solid;
+  position: relative;
+  border-radius: 5px;
+  height: 450px
+}
+
+.addOutfitCard {
+  flex-basis: 30%;
+  border: solid;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  height: 450px
+}
+
+.productImage {
+  display: flex;
+  height: 75%;
+  max-height: 75%;
+  max-width: 100%;
+  overflow: hidden;
+  justify-content: center;
+  background-color: #ccc;
+}
+
+.productPhoto {
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.productName {
+  font-weight: bold;
+}
+
+.productDetails {
+  position:absolute;
+  bottom: 0;
+  text-align:left;
+  margin: 2%;
+}
+
+.action {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+}
+
+.sale-price {
+  color: red;
+}
+
+.original-price{
+  text-decoration: line-through;
+}
+
+.previous, .next {
+  top: 50%;
+  /* transform: translateY(-50%); */
+  width: 5%;
+  height: 100px;
+  border-radius: 24px;
+  background-color: white;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.modal {
+  display: block;
+  top: 0;
+  min-width: 250px;
+  width: auto;
+  height: 400px;
+  margin: 0 auto;
+  position: fixed;
+  z-index: 40001;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #000;
+  margin-top: 30px;
+  margin-left: 10%;
+  overflow: scroll;
+
+  animation-name: fadeIn_Modal;
+  animation-duration: 0.8s;
+
+}
+
+.header {
+  background-color: grey;
+  width: 100%;
+  height: 30px;
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: 2px solid #ccc;
+}
+
+.header a {
+  text-decoration: none;
+  float: right;
+  line-height: 30px;
+  margin-right: 20px;
+  color: #aaa;
+}
+
+.hide {
+  visibility:hidden;
+}
+
+.overlay {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  opacity: 0.9;
+  background: #222;
+  z-index: 40000;
+  top:0;
+  left: 0;
+  overflow: hidden;
+}
+
+.componentHeader {
+  margin-left: 5%;
+}

@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 app.use('/', proxy(`https://app-hrsei-api.herokuapp.com`, {
   proxyReqOptDecorator: function (proxyReqOpts, srcReq) {
     proxyReqOpts.headers = {...proxyReqOpts.headers, "Authorization": TOKEN.TOKEN};
-    console.log(proxyReqOpts)
+    // console.log(proxyReqOpts)
     return proxyReqOpts;
   }
 }));
