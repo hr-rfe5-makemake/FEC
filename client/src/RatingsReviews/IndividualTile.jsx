@@ -14,11 +14,13 @@ class IndividualTile extends React.Component {
       isVerified: false,
       helpful: false,
       verified: Math.round(Math.random()), // either 1 or 0, since no API data
-      imageModal: false
+      imageModal: false,
+      modalElement: null
     };
     this.handleHelpfulClick = this.handleHelpfulClick.bind(this);
     this.handleReport = this.handleReport.bind(this);
     this.generateThumbnails = this.generateThumbnails.bind(this);
+    this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
   }
 
   reformatDate(date) {
@@ -52,17 +54,12 @@ class IndividualTile extends React.Component {
       .catch(err => console.error(err))
   }
 
-  // handleThumbnailClick(e) {
-  //   console.log(e.target)
-  //   // toggleModal();
-  //   return (
-  //     <div className="modal">
-  //       <div className="modal-content">
-  //         {e.target}
-  //       </div>
-  //     </div>
-  //   );
-  // }
+  handleThumbnailClick(e) {
+    this.setState(prevState => ({
+      imageModal: !prevState.imageModal,
+      modalElement: e.target
+    }));
+  }
 
   generateThumbnails() {
     var photos = this.props.review.photos;
@@ -85,7 +82,7 @@ class IndividualTile extends React.Component {
   render() {
     return (
       <div className="individual-tile">
-        {/* {this.state.imageModal ?  <div className="modal"><div className="modal-content">{"image here"}</div></div> : null} */}
+        {this.state.imageModal ?  <div className="modal" onClick={this.handleThumbnailClick}><div className="modal-content" onClick={e => e.stopPropagation()}>{this.state.modalElement}</div></div> : null}
         <MyUsername username={this.props.review.reviewer_name} verified={this.state.verified}/>
         <Stars rating={this.props.review.rating}/>
         <span className="tile-date">Reviewed on {this.reformatDate(this.props.review.date)}</span>
