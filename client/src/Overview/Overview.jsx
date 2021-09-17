@@ -37,6 +37,10 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
+    this.apiFetcher()
+  }
+
+  apiFetcher() {
     let id = this.props.currentItem_ID;
     axios.get(`${url}/products/${id}`)
       .then(result => {
@@ -80,10 +84,6 @@ class Overview extends React.Component {
       count += Number(this.state.reviews.ratings[rating]);
     }
     return {avg: stars / count, count: count};
-  }
-
-  onSocialMediaClick() {
-
   }
 
   onChangeImageClick(index) {
@@ -198,6 +198,9 @@ class Overview extends React.Component {
   }
 
   render() {
+    if (this.props.currentItem_ID !== this.state.currentItem.id) {
+      this.apiFetcher();
+    }
     return (
       <div>
         <Header />
