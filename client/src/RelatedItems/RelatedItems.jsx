@@ -7,10 +7,13 @@ import _ from 'underscore';
 class RelatedItems extends React.Component {
   constructor(props) {
     super(props);
+    // if user has outfit list already fetch that otherwise set it as empty
     var outfitList = JSON.parse(localStorage.getItem('outfitList'));
     if (outfitList === null) {
       outfitList = [];
     }
+    // fetched variable to check if api requests are ran already
+    // overlay variable to know if modal is open or not
     this.state = {
       relatedItems: [],
       outfitList: outfitList,
@@ -23,24 +26,12 @@ class RelatedItems extends React.Component {
     this.toggleOverlay = this.toggleOverlay.bind(this);
   }
 
-  // componentDidMount() {
-  //   // get related items
-    // axios.get('/api/fec2/hr-rfe/products/' +  + this.props.currentItem + '/related')
-    // .then(result => {
-    //   console.log(result.data);
-    //   this.setState({
-    //     relatedItems: result.data
-    //   })
-    // })
-    // .catch(err => {
-    //   console.log('error');
-    // })
-  // }
-
+  // fetch list of related products on mount
   componentDidMount() {
     this.updateRelated(this.props.currentItemId);
   }
 
+  // when current item changes, we want to fetch new related products
   updateRelated(id) {
     this.setState({
       fetched: false
@@ -57,6 +48,7 @@ class RelatedItems extends React.Component {
     })
   }
 
+  // method to add current item to outfit list
   addOutfit (newId) {
     var newOutfitList = this.state.outfitList;
     newOutfitList = [...newOutfitList, newId]
@@ -66,6 +58,7 @@ class RelatedItems extends React.Component {
     localStorage.setItem('outfitList', JSON.stringify(newOutfitList));
   }
 
+  // method to remove selected outfit
   removeOutfit (newId) {
     var newOutfitList = this.state.outfitList;
     var idx = newOutfitList.findIndex(element => element === newId);
@@ -76,6 +69,7 @@ class RelatedItems extends React.Component {
     localStorage.setItem('outfitList', JSON.stringify(newOutfitList));
   }
 
+  // method to toggle overlay when modal is on/off
   toggleOverlay() {
     this.setState({
       overlay: !this.state.overlay

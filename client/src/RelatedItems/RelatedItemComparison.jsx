@@ -6,6 +6,7 @@ class RelatedItemComparison extends React.Component {
     this.combiner = this.combiner.bind(this);
   }
 
+  // method to combine the features of the current item and compared item such that features do not overlap and each feature is related to a value of current item and compared item
   combiner() {
     var currentItem = this.props.currentItem.features;
     var comparedItem = this.props.comparedItem.features;
@@ -39,7 +40,7 @@ class RelatedItemComparison extends React.Component {
 
   render() {
     return (
-      <div className="modal" onClick={function(event){event.stopPropagation();
+      <div className="related-modal" onClick={function(event){event.stopPropagation();
       }}>
         <div className="header">
           <a href="#" onClick={this.props.closeCompare} className="cancel">
