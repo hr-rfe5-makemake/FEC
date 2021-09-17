@@ -11,15 +11,16 @@ class OutfitProductCard extends React.Component {
     this.removeItem = this.removeItem.bind(this);
   }
 
+  // handles click event of action button to remove selected item from outfit list
   removeItem(event) {
     event.stopPropagation();
     this.props.removeOutfit(this.props.item.id);
   }
 
+  // handle click event to change current product
   handleClick(event) {
-    console.log('click');
-    // this.props.changeCurrentProduct(this.props.item.id);
-    // this.props.updateRelated(this.props.item.id);
+    this.props.changeCurrentProduct(this.props.item.id);
+    this.props.updateRelated(this.props.item.id);
   }
 
   render() {

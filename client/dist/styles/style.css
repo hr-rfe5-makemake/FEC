@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #app, body{
   width: 95%;
   margin: 0 auto;
@@ -109,7 +108,7 @@ table, th, td {
   text-align: center;
 }
 
-.modal {
+.related-modal {
   display: block;
   top: 0;
   min-width: 250px;
@@ -430,7 +429,6 @@ dialog{
   grid-auto-rows: 50px;
   row-gap: 3px;
 }
-=======
 /*---------------------------*/
 /*  RR Containers            */
 /*---------------------------*/
@@ -695,4 +693,3 @@ button {
 #star-selector-container {
   grid-column: 2;
 }
->>>>>>> d133facf9d486da7799debc81dde816c549d3e56
