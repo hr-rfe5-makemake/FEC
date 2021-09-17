@@ -14,11 +14,13 @@ class IndividualTile extends React.Component {
       isVerified: false,
       helpful: false,
       verified: Math.round(Math.random()), // either 1 or 0, since no API data
-      imageModal: false
+      imageModal: false,
+      modalURL: null
     };
     this.handleHelpfulClick = this.handleHelpfulClick.bind(this);
     this.handleReport = this.handleReport.bind(this);
     this.generateThumbnails = this.generateThumbnails.bind(this);
+    this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
   }
 
   reformatDate(date) {
@@ -52,17 +54,12 @@ class IndividualTile extends React.Component {
       .catch(err => console.error(err))
   }
 
-  // handleThumbnailClick(e) {
-  //   console.log(e.target)
-  //   // toggleModal();
-  //   return (
-  //     <div className="modal">
-  //       <div className="modal-content">
-  //         {e.target}
-  //       </div>
-  //     </div>
-  //   );
-  // }
+  handleThumbnailClick(e) {
+    this.setState(prevState => ({
+      imageModal: !prevState.imageModal,
+      modalURL: e.target.src
+    }));
+  }
 
   generateThumbnails() {
     var photos = this.props.review.photos;
@@ -71,21 +68,16 @@ class IndividualTile extends React.Component {
     } else {
       var thumbnails = [];
       for (var i = 0; i < photos.length; i++) {
-        console.log(photos[i])
-        thumbnails.push(<img src={photos[i].url} height="100px" width="auto" onClick={this.handleThumbnailClick}></img>);
+        thumbnails.push(<img src={photos[i].url} height="100px" width="auto" onClick={this.handleThumbnailClick} key={i}></img>);
       }
       return (<div className="thumbnail-container" style={{display: "flex", gap: "10px"}}>{thumbnails}</div>);
     }
   }
 
-  componentDidMount() {
-    console.log(this.props.review)
-  }
-
   render() {
     return (
       <div className="individual-tile">
-        {/* {this.state.imageModal ?  <div className="modal"><div className="modal-content">{"image here"}</div></div> : null} */}
+        {this.state.imageModal ?  <div className="modal" onClick={this.handleThumbnailClick}><img src={this.state.modalURL}></img></div> : null}
         <MyUsername username={this.props.review.reviewer_name} verified={this.state.verified}/>
         <Stars rating={this.props.review.rating}/>
         <span className="tile-date">Reviewed on {this.reformatDate(this.props.review.date)}</span>
