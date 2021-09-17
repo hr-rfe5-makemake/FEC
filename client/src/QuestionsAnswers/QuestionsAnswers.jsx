@@ -94,7 +94,7 @@ class QuestionsAnswers extends React.Component {
       <div className='questions_answers'>
         Questions & Answers
         <SearchQuestion questions={this.state.allQuestions} oldLength={this.state.oldQuestionsRendered} changeRenderArray={this.changeRenderArray.bind(this)}/>
-        <AddQuestionModal product={this.state.product_name} />
+        <AddQuestionModal product={this.state.product_name} product_id={37311}/>
         <div className='modal-placeHolder'></div>
         <ul style={scroll}>
           {this.state.renderQuestions.slice(0,this.state.questionsRendered).map((question,index) => (

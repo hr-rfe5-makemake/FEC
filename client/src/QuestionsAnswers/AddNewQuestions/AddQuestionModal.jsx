@@ -26,7 +26,7 @@ class AddAQuestionModal extends React.Component {
         body: this.state.question,
         name: this.state.username,
         email: this.state.email,
-        product_id: this.props.productID
+        product_id: this.props.product_id
       })
       .then(response => {
         console.log(response)
