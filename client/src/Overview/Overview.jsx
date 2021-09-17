@@ -54,7 +54,7 @@ class Overview extends React.Component {
             styles: result.data,
             currentStyle: result.data.results[0],
             currentStyleImages: result.data.results[0].photos,
-            currentImage: result.data.results[0].photos[0].url,
+            currentImage: result.data.results[0].photos[this.state.currentImageIndex].url,
             style: {
               backgroundImage: `url(${result.data.results[0].photos[0].url})`,
               backgroundPosition: this.state.style.backgroundPosition

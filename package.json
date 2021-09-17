@@ -21,6 +21,8 @@
   "homepage": "https://github.com/hr-rfe5-makemake/FEC#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "dataformat": "^1.0.0",
+    "dateformat": "^4.5.1",
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.2",
     "morgan": "^1.10.0",
