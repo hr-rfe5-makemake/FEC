@@ -5,7 +5,6 @@
 #rr-container {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  /* font-size: 20px; */
 }
 
 #rr-container h4 :not(.modal-title) {
@@ -93,9 +92,6 @@
 /*---------------------------*/
 /*  RR Other                 */
 /*---------------------------*/
-.filterOption {
-  /* change color onHover */
-}
 
 button {
   margin: 5px;
@@ -150,7 +146,6 @@ button {
   width: 100%;
   position: relative;
 }
-
 
 #factor-bars > * {
   padding: 10px;
