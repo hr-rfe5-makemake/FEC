@@ -17,13 +17,15 @@ class ReviewList extends React.Component {
       allDisplayed: false,
       reviewsExist: true,
       sortOption: 'relevant',
-      showModal: false
+      showModal: false,
+      notSubmitted: true
     };
     this.rerender = this.rerender.bind(this);
     this.changeSort = this.changeSort.bind(this);
     this.displayMore = this.displayMore.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.getAllReviews = this.getAllReviews.bind(this);
+    this.addComplete = this.addComplete.bind(this);
   }
 
   getAllReviews(product_id, sort = this.state.sortOption, page = 1, count = 20) {
@@ -105,10 +107,16 @@ class ReviewList extends React.Component {
     }
   }
 
+  addComplete() {
+    this.setState({
+      notSubmitted: false
+    });
+  }
+
   render() {
     {var addReviewElements = (
       <div id="addReviewElements">
-        <button onClick={this.toggleModal}>ADD A REVIEW +</button>
+        {this.state.notSubmitted ? <button onClick={this.toggleModal}>ADD A REVIEW +</button> : null}
         <WriteReviewModal
           show={this.state.showModal}
           productName={this.state.productName}
@@ -116,6 +124,7 @@ class ReviewList extends React.Component {
           product_id={this.props.product_id}
           getAllReviews={this.getAllReviews}
           timeToReRender={this.props.timeToReRender}
+          addComplete={this.addComplete}
         />
       </div>
     )}

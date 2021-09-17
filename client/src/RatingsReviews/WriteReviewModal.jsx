@@ -42,6 +42,7 @@ class WriteReviewModal extends React.Component {
         this.props.toggleModal();
         this.props.getAllReviews(this.props.product_id);
         this.props.timeToReRender();
+        this.props.addComplete();
       })
       .catch(err => console.error(err))
   }
@@ -158,7 +159,7 @@ class WriteReviewModal extends React.Component {
             </form>
           </div>
           <div className="modal-footer">
-            <input type="submit" value="Submit Review" name="submit" onClick={this.handleSubmit}/>
+            <input type="submit" value="Submit Review" name="submit" id="modal-submit" onClick={this.handleSubmit}/>
           </div>
         </div>
       </div>
