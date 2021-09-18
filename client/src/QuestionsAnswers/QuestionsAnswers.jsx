@@ -100,7 +100,7 @@ class QuestionsAnswers extends React.Component {
           <div className='modal-placeHolder'></div>
           <ul style={scroll}>
             {this.state.renderQuestions.slice(0,this.state.questionsRendered).map((question,index) => (
-              <IndividualQuestion question= {question} key={question.question_id} updateQuestions={this.questionsFetcher.bind(this)} index={index} product={this.state.product_name}/>
+              <IndividualQuestion question= {question} key={question.question_id} updateQuestions={this.questionsFetcher.bind(this)} index={index} product={this.props.product}/>
             ))}
           </ul>
           <button style={moreQuestionsStyle} onClick={this.loadMoreQuestions.bind(this)} className='moreQuestions'>More Answered Questions</button>
