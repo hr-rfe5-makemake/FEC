@@ -18,7 +18,9 @@ class ReviewList extends React.Component {
       reviewsExist: true,
       sortOption: 'relevant',
       showModal: false,
-      notSubmitted: true
+      notSubmitted: true,
+      searchTerm: '',
+      displayedReviewsWithSearch: []
     };
     this.rerender = this.rerender.bind(this);
     this.changeSort = this.changeSort.bind(this);
@@ -26,10 +28,11 @@ class ReviewList extends React.Component {
     this.toggleModal = this.toggleModal.bind(this);
     this.getAllReviews = this.getAllReviews.bind(this);
     this.addComplete = this.addComplete.bind(this);
+    this.handleKeywordSearch = this.handleKeywordSearch.bind(this);
   }
 
-  getAllReviews(product_id, sort = this.state.sortOption, page = 1, count = 20) {
-    axios.get(`${urlFragment}reviews/?product_id=${product_id}&sort=${sort}&page=${page}&count=${count}`)
+  getAllReviews(product_id, callback, page = 1, count = 20) {
+    axios.get(`${urlFragment}reviews/?product_id=${product_id}&sort=${this.state.sortOption}&page=${page}&count=${count}`)
       .then(allReviews => {
         var filteredReviews = [];
         for (var i = 0; i < allReviews.data.results.length; i++) {
@@ -49,6 +52,10 @@ class ReviewList extends React.Component {
           allDisplayed: (filteredReviews.length <= 2 ? true : false),
           reviewsExist: (filteredReviews.length !== 0 ? true : false)
         });
+
+        if (callback) {
+          callback();
+        }
       })
       .catch(err => console.error(err))
   }
@@ -66,8 +73,9 @@ class ReviewList extends React.Component {
   changeSort(e) {
     this.setState({
       sortOption: e.target.value
+    }, () => {
+      this.rerender()
     });
-    this.rerender()
   }
 
   displayMore() {
@@ -113,6 +121,36 @@ class ReviewList extends React.Component {
     });
   }
 
+  handleKeywordSearch(e) {
+    var prevLength = this.state.searchTerm.length;
+    var newLength = e.target.value.length;
+    this.setState({
+      searchTerm: e.target.value
+    }, () => {
+      this.getAllReviews(this.props.product_id, () => {
+        if (this.state.searchTerm.length >= 3) {
+          var filteredReviews = [];
+          for (var i = 0; i < this.state.allReviews.length; i++) {
+            var review = this.state.allReviews[i];
+            var indexTermInUsername = review.reviewer_name.toLowerCase().indexOf(this.state.searchTerm.toLowerCase());
+            var indexTermInSummary = review.summary.toLowerCase().indexOf(this.state.searchTerm.toLowerCase());
+            var indexTermInBody = review.body.toLowerCase().indexOf(this.state.searchTerm.toLowerCase());
+            var exists = element => element !== -1;
+            var options = [indexTermInUsername, indexTermInSummary, indexTermInBody];
+            if (options.some(exists)) {
+              filteredReviews.push(review);
+            }
+          }
+          this.setState({
+            allReviews: filteredReviews,
+            displayedReviews: filteredReviews,
+            allDisplayed: true
+          });
+        }
+      })
+    });
+  }
+
   render() {
     {var addReviewElements = (
       <div id="addReviewElements">
@@ -134,6 +172,8 @@ class ReviewList extends React.Component {
     } else {
       return (
         <div>
+          <span>Keyword Search: </span>
+          <input type="text" placeholder="Type 3+ characters to start filtering reviews" size="40" value={this.state.searchTerm} onChange={this.handleKeywordSearch}/>
           <SortOptions changeSort={this.changeSort} count={this.state.allReviews.length}/>
           <div id="review-tile-container">
             {this.state.displayedReviews.map(review => {
@@ -141,6 +181,7 @@ class ReviewList extends React.Component {
                 review={review}
                 key={review.review_id}
                 rerender={this.rerender}
+                searchTerm={this.state.searchTerm}
               />
             })}
           </div>
