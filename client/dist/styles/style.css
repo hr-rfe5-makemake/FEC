@@ -2,6 +2,8 @@
   width: 95%;
   margin: 0 auto;
   font-family: Lato, sans-serif;
+  background: rgb(220,255,248);
+  background: linear-gradient(0deg, rgba(220,255,248,1) 0%, rgba(240,234,214,1) 50%);
 }
 
 /* Related Products */

@@ -54,7 +54,7 @@ class Answer extends React.Component{
           </div>
           <div className='answer-images'>
             {this.props.answer.photos.map(photo => (
-              <AnswerImages photo={photo} />
+              <AnswerImages photo={photo} key={photo.id}/>
             ))}
           </div>
         </li>
