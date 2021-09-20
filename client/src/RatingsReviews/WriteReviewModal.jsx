@@ -35,10 +35,8 @@ class WriteReviewModal extends React.Component {
       "photos": this.state.photos,
       "characteristics": this.state.characteristics
   }
-    console.log('dataaa:', data)
     axios.post(`${urlFragment}reviews`, data)
       .then(data => {
-        console.log('success!!:', data)
         this.props.toggleModal();
         this.props.getAllReviews(this.props.product_id);
         this.props.timeToReRender();

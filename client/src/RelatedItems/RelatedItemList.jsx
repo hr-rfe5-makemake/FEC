@@ -6,6 +6,8 @@ import _ from "underscore";
 class RelatedItemList extends React.Component {
   constructor(props) {
     super(props);
+    // currentIdx variable keeps track of which index of related list the carousel is on
+    // fetched variable keeps track of whether api calls finished fetching data
     this.state = {
       currentIdx: 0,
       fetched: false,
@@ -15,6 +17,7 @@ class RelatedItemList extends React.Component {
     this.updateRelated = this.updateRelated.bind(this);
   }
 
+  // fetch details of all the related products upon mount
   componentDidMount() {
     for (var i = 0; i < this.props.relatedList.length; i++) {
       axios
@@ -81,6 +84,7 @@ class RelatedItemList extends React.Component {
     }
   }
 
+  // fetch detail of all related items of new current item upon update
   updateRelated(newId) {
     this.setState({
       fetched: false,
@@ -106,7 +110,7 @@ class RelatedItemList extends React.Component {
             .get("/api/fec2/hr-rfe/products/" + id + "/styles")
             .then((result) => {
               var styles = result.data.results;
-              console.log("styles", styles);
+              // console.log("styles", styles);
               var idx = 0;
               for (var i = 0; i < styles.length; i++) {
                 if (styles[i]["default?"] === true) {
@@ -154,6 +158,7 @@ class RelatedItemList extends React.Component {
     }
   }
 
+  // decrement currentIdx by 1 when previous button is clicked
   previous(event) {
     if (this.state.currentIdx > 0) {
       this.setState({
@@ -162,6 +167,7 @@ class RelatedItemList extends React.Component {
     }
   }
 
+  // increment currendIdx by 1 when next button is clicked
   next(event) {
     if (this.state.currentIdx < this.props.relatedList.length - 3) {
       this.setState({
@@ -173,39 +179,6 @@ class RelatedItemList extends React.Component {
   render() {
     if (this.props.relatedList.length === 0) {
       return <div>No Related Products</div>;
-    } else if (this.props.relatedList.length === 1) {
-      return (
-        <div className="carouselWrapper">
-          <div className="carouselListContent">
-            <RelatedProductCard
-              currentItem={this.props.currentItem}
-              item={this.state[this.props.relatedList[this.state.currentIdx]]}
-              changeCurrentProduct={this.props.changeCurrentProduct}
-              updateRelated={this.props.updateRelated}
-              toggleOverlay={this.props.toggleOverlay}
-            />
-          </div>
-        </div>
-      );
-    } else if (this.props.relatedList.length === 2) {
-      <div className="carouselWrapper">
-        <div className="carouselListContent">
-          <RelatedProductCard
-            currentItem={this.props.currentItem}
-            item={this.state[this.props.relatedList[this.state.currentIdx]]}
-            changeCurrentProduct={this.props.changeCurrentProduct}
-            updateRelated={this.props.updateRelated}
-            toggleOverlay={this.props.toggleOverlay}
-          />
-          <RelatedProductCard
-            currentItem={this.props.currentItem}
-            item={this.state[this.props.relatedList[this.state.currentIdx + 1]]}
-            changeCurrentProduct={this.props.changeCurrentProduct}
-            updateRelated={this.props.updateRelated}
-            toggleOverlay={this.props.toggleOverlay}
-          />
-        </div>
-      </div>;
     } else {
       if (this.state.fetched) {
         return (
@@ -258,7 +231,7 @@ class RelatedItemList extends React.Component {
           </div>
         );
       } else {
-        return <div></div>;
+        return <div>LOADING...</div>;
       }
     }
   }
