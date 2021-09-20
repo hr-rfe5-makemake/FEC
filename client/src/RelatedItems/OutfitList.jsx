@@ -138,17 +138,17 @@ class OutfitList extends React.Component {
       return (
         <div className="carouselWrapper">
           {this.state.currentIdx >= 0 ? (
-            <button className="previous" onClick={this.previous}>
+            <div className="previous" onClick={this.previous}>
               &lt;
-            </button>
+            </div>
           ) : (
-            <button className="previous hide" onClick={this.previous}>
+            <div className="previous hide" onClick={this.previous}>
               &lt;
-            </button>
+            </div>
           )}
             {this.state.currentIdx === -1 ? (
             <div className="carouselListContent">
-              <div className="addOutfitCard" onClick={this.addOutfit}>ADD CURRENT ITEM</div>
+              <div className="addOutfitCard" onClick={this.addOutfit}>Add to Outfit</div>
               <OutfitProductCard
                 item={this.state[this.props.outfitList[this.state.currentIdx + 1]]}
                 changeCurrentProduct={this.props.changeCurrentProduct}
@@ -186,13 +186,13 @@ class OutfitList extends React.Component {
           )}
           {/* HAVE TO CHECK LENGTH OF OUTFIT LIST*/}
           {this.state.currentIdx < this.props.outfitList.length - 3 ? (
-            <button className="next" onClick={this.next}>
+            <div className="next" onClick={this.next}>
               &gt;
-            </button>
+            </div>
           ) : (
-            <button className="next hide" onClick={this.next}>
+            <div className="next hide" onClick={this.next}>
               &gt;
-            </button>
+            </div>
           )}
         </div>
       );
