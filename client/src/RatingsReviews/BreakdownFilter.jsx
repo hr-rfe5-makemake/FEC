@@ -38,6 +38,8 @@ class BreakdownFilter extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.timeToReRender !== prevProps.timeToReRender) {
       this.getMetaData(this.props.product_id);
+    } else if(this.props.product_id !== prevProps.product_id) {
+      this.getMetaData(this.props.product_id);
     }
   }
 
@@ -62,6 +64,7 @@ class BreakdownFilter extends React.Component {
           metaData={this.state.metaData}
           handleRemoveFiltersClick={this.props.handleRemoveFiltersClick}
           handleFilterClick={this.props.handleFilterClick}
+          product_id={this.props.product_id}
         />
 
         <br></br>
