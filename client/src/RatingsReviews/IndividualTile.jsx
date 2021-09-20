@@ -1,6 +1,7 @@
 import React from 'react';
 import IRecommend from './ReviewListHelpers/IRecommend.jsx';
 import MyUsername from './ReviewListHelpers/MyUsername.jsx';
+import ReviewBody from './ReviewListHelpers/ReviewBody.jsx';
 import SellerResponse from './ReviewListHelpers/SellerResponse.jsx';
 import ReviewSummary from './ReviewListHelpers/ReviewSummary.jsx';
 import Stars from './Stars.jsx';
@@ -78,11 +79,11 @@ class IndividualTile extends React.Component {
     return (
       <div className="individual-tile">
         {this.state.imageModal ?  <div className="modal" onClick={this.handleThumbnailClick}><img src={this.state.modalURL}></img></div> : null}
-        <MyUsername username={this.props.review.reviewer_name} verified={this.state.verified}/>
+        <MyUsername username={this.props.review.reviewer_name} verified={this.state.verified} searchTerm={this.props.searchTerm}/>
         <Stars rating={this.props.review.rating}/>
         <span className="tile-date">Reviewed on {this.reformatDate(this.props.review.date)}</span>
-        <ReviewSummary summary={this.props.review.summary}/>
-        <div className="tile-body">{this.props.review.body}</div>
+        <ReviewSummary summary={this.props.review.summary} searchTerm={this.props.searchTerm}/>
+        <ReviewBody body={this.props.review.body} searchTerm={this.props.searchTerm}/>
         {this.generateThumbnails()}
         <IRecommend recommend={this.props.review.recommend}/>
         <SellerResponse response={this.props.review.response}/>
