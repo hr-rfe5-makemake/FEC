@@ -110,7 +110,7 @@ class RelatedItemList extends React.Component {
             .get("/api/fec2/hr-rfe/products/" + id + "/styles")
             .then((result) => {
               var styles = result.data.results;
-              console.log("styles", styles);
+              // console.log("styles", styles);
               var idx = 0;
               for (var i = 0; i < styles.length; i++) {
                 if (styles[i]["default?"] === true) {
@@ -179,39 +179,6 @@ class RelatedItemList extends React.Component {
   render() {
     if (this.props.relatedList.length === 0) {
       return <div>No Related Products</div>;
-    } else if (this.props.relatedList.length === 1) {
-      return (
-        <div className="carouselWrapper">
-          <div className="carouselListContent">
-            <RelatedProductCard
-              currentItem={this.props.currentItem}
-              item={this.state[this.props.relatedList[this.state.currentIdx]]}
-              changeCurrentProduct={this.props.changeCurrentProduct}
-              updateRelated={this.props.updateRelated}
-              toggleOverlay={this.props.toggleOverlay}
-            />
-          </div>
-        </div>
-      );
-    } else if (this.props.relatedList.length === 2) {
-      <div className="carouselWrapper">
-        <div className="carouselListContent">
-          <RelatedProductCard
-            currentItem={this.props.currentItem}
-            item={this.state[this.props.relatedList[this.state.currentIdx]]}
-            changeCurrentProduct={this.props.changeCurrentProduct}
-            updateRelated={this.props.updateRelated}
-            toggleOverlay={this.props.toggleOverlay}
-          />
-          <RelatedProductCard
-            currentItem={this.props.currentItem}
-            item={this.state[this.props.relatedList[this.state.currentIdx + 1]]}
-            changeCurrentProduct={this.props.changeCurrentProduct}
-            updateRelated={this.props.updateRelated}
-            toggleOverlay={this.props.toggleOverlay}
-          />
-        </div>
-      </div>;
     } else {
       if (this.state.fetched) {
         return (
@@ -264,7 +231,7 @@ class RelatedItemList extends React.Component {
           </div>
         );
       } else {
-        return <div></div>;
+        return <div>LOADING...</div>;
       }
     }
   }

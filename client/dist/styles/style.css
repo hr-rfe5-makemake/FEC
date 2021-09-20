@@ -3,6 +3,8 @@
   margin: 0 auto;
   font-family: Lato, sans-serif;
 }
+
+/* Related Products */
 .carouselList {
   /* width: 100%;
   display: flex;
@@ -45,6 +47,10 @@
   align-items: center;
   border-radius: 5px;
   height: 450px
+}
+
+.borderless {
+  border: none;
 }
 
 .productImage {
@@ -165,6 +171,9 @@ table, th, td {
 .componentHeader {
   margin-left: 5%;
 }
+
+
+
 #header{
   height: 100px;
   display: grid;
@@ -199,6 +208,8 @@ table, th, td {
 #search-btn:hover{
   opacity: 0.5;
 }
+
+
 
 /* Overview */
 #main-overview{

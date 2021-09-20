@@ -42,7 +42,7 @@ class OutfitList extends React.Component {
           .get("/api/fec2/hr-rfe/products/" + id + "/styles")
           .then((result) => {
             var styles = result.data.results;
-            console.log("styles", styles);
+            // console.log("styles", styles);
             var idx = 0;
             for (var i = 0; i < styles.length; i++) {
               if (styles[i]["default?"] === true) {
@@ -146,22 +146,7 @@ class OutfitList extends React.Component {
               &lt;
             </button>
           )}
-          {this.props.outfitList.length === 0 ? (
-            <div className="carouselListContent">
-              <div className="addOutfitCard" onClick={this.addOutfit} >ADD CURRENT ITEM</div>
-            </div>
-          ) : this.props.outfitList.length === 1 ? (
-            <div className="carouselListContent">
-              <div className="addOutfitCard" onClick={this.addOutfit}>ADD CURRENT ITEM</div>
-              <OutfitProductCard
-                item={this.state[this.props.outfitList[this.state.currentIdx + 1]]}
-                changeCurrentProduct={this.props.changeCurrentProduct}
-                updateRelated={this.props.updateRelated}
-                removeOutfit={this.removeOutfit}
-              />
-              <div className='productCard' style={{border:'none'}}></div>
-            </div>
-          ) : this.state.currentIdx === -1 ? (
+            {this.state.currentIdx === -1 ? (
             <div className="carouselListContent">
               <div className="addOutfitCard" onClick={this.addOutfit}>ADD CURRENT ITEM</div>
               <OutfitProductCard
