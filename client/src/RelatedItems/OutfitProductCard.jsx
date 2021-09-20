@@ -53,7 +53,7 @@ class OutfitProductCard extends React.Component {
       </div>
         </div>
     ) : (
-      <div>LOADING</div>
+      <div className='productCard borderless'></div>
     )
     );
   }

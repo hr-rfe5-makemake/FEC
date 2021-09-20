@@ -78,7 +78,7 @@ class RelatedProductCard extends React.Component {
       </div>
         </div>
     ) : (
-      <div></div>
+      <div className='productCard borderless'></div>
     )
     );
   }
