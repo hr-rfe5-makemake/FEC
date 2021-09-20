@@ -45,7 +45,8 @@ class Overview extends React.Component {
       .then(result => {
         this.setState({
           currentItem: result.data,
-          price: result.data.default_price
+          price: result.data.default_price,
+          sku: null
         });
         axios.get(`${url}/products/${id}/styles`)
         .then(result => {
@@ -157,7 +158,8 @@ class Overview extends React.Component {
     this.setState({
       currentStyle: style,
       currentImage: style.photos[0].url,
-      currentStyleImages: style.photos
+      currentStyleImages: style.photos,
+      sku: null
     });
   }
 
