@@ -42,7 +42,7 @@ class OutfitList extends React.Component {
           .get("/api/fec2/hr-rfe/products/" + id + "/styles")
           .then((result) => {
             var styles = result.data.results;
-            console.log("styles", styles);
+            // console.log("styles", styles);
             var idx = 0;
             for (var i = 0; i < styles.length; i++) {
               if (styles[i]["default?"] === true) {
