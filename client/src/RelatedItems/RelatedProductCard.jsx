@@ -62,7 +62,7 @@ class RelatedProductCard extends React.Component {
         <div className='productCategory'>{this.props.item.category}</div>
         <div className='productName'>{this.props.item.name}</div>
         {
-          this.props.item.sale_price === null ?
+          this.props.item.sale_price === null || this.props.sale_price === undefined ?
         <div className='productPrice'>${this.props.item.original_price}</div>
         :
         <div className='productPrice'>
