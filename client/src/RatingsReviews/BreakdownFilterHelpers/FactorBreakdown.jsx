@@ -1,7 +1,6 @@
 import React from 'react';
 
 function FactorBreakdown({metaData}) {
-  console.log(metaData)
   if (!Array.isArray(metaData)) {
     var characteristics = metaData.data.characteristics;
     var bars = [];
@@ -17,7 +16,6 @@ function FactorBreakdown({metaData}) {
 
     for (var characteristic in characteristics) {
       var rating = parseInt(characteristics[characteristic].value);
-      console.log(characteristics[characteristic].value)
       if (rating === 5) {
         rating -= 0.1;
       }

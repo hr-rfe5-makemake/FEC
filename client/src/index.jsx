@@ -60,7 +60,7 @@ class App extends React.Component {
       <div>
         <Overview currentItem_ID={this.state.currentItem_ID}/>
         <RelatedItems changeCurrentProduct={this.changeCurrentProduct} currentItemId={this.state.currentItem_ID} currentItem={this.state.details}/>
-        <QuestionsAnswers />
+        <QuestionsAnswers product={this.state.details}/>
         <RatingsReviews product_id={this.state.currentItem_ID}/>
       </div>
     )

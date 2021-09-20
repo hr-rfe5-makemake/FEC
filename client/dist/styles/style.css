@@ -492,9 +492,12 @@ dialog{
 /*------------------------------*/
 
 #review-tile-container {
-  max-height: 500px;
+  max-height: 600px;
   overflow-y: scroll;
   scroll-behavior: auto;
+  border-color: rgb(224, 224, 224);
+  border-style: solid;
+  border-width: 1px;
 }
 
 .individual-tile {

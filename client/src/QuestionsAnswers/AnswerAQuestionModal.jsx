@@ -78,7 +78,7 @@ class AnswerAQuestionModal extends React.Component{
         <button onClick={this.props.closeModal.bind(this)}> X </button>
         <div className="answerQuestion" style={content}>
             <h1>Submit your Answer</h1>
-            <h2>{this.props.product} => {this.props.question}</h2>
+            <h2>{this.props.product.name} => {this.props.question}</h2>
             <form onSubmit={this.newAnswerSubmit.bind(this)}>
               <label>
                 *Your Answer:
