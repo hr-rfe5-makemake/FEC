@@ -146,22 +146,7 @@ class OutfitList extends React.Component {
               &lt;
             </button>
           )}
-          {this.props.outfitList.length === 0 ? (
-            <div className="carouselListContent">
-              <div className="addOutfitCard" onClick={this.addOutfit} >ADD CURRENT ITEM</div>
-            </div>
-          ) : this.props.outfitList.length === 1 ? (
-            <div className="carouselListContent">
-              <div className="addOutfitCard" onClick={this.addOutfit}>ADD CURRENT ITEM</div>
-              <OutfitProductCard
-                item={this.state[this.props.outfitList[this.state.currentIdx + 1]]}
-                changeCurrentProduct={this.props.changeCurrentProduct}
-                updateRelated={this.props.updateRelated}
-                removeOutfit={this.removeOutfit}
-              />
-              <div className='productCard borderless'></div>
-            </div>
-          ) : this.state.currentIdx === -1 ? (
+            {this.state.currentIdx === -1 ? (
             <div className="carouselListContent">
               <div className="addOutfitCard" onClick={this.addOutfit}>ADD CURRENT ITEM</div>
               <OutfitProductCard
