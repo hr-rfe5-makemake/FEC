@@ -14,7 +14,8 @@ class QuestionsAnswers extends React.Component {
       renderQuestions: [],
       questionsRendered: 2,
       oldQuestionsRendered: 2,
-      renderedAllQuestion: false
+      renderedAllQuestion: false,
+      collapseQuesitons: false
     }
   }
 
@@ -56,8 +57,10 @@ class QuestionsAnswers extends React.Component {
       this.setState({
         questionsRendered: this.state.questionsRendered+=2,
         oldQuestionsRendered:this.state.oldQuestionsRendered += 2,
-        renderedAllQuestion: true
+        renderedAllQuestion: true,
+        collapseQuesitons: true
       })
+
     } else {
       this.setState({
         questionsRendered: this.state.questionsRendered+=2,
@@ -82,6 +85,15 @@ class QuestionsAnswers extends React.Component {
     }
   }
 
+  collapseQuesitons(){
+    this.setState({
+      questionsRendered: 2,
+      oldQuestionsRendered: 2,
+      collapseQuesitons: false,
+      renderedAllQuestion: false
+    })
+  }
+
   render(){
     if(this.props.product){
       const moreQuestionsStyle={
@@ -90,6 +102,9 @@ class QuestionsAnswers extends React.Component {
       const scroll = {
         overflow:"scroll",
         maxHeight: '70vh'
+      }
+      const collapseStyle = {
+        display: this.state.collapseQuesitons ? 'block' : 'none'
       }
 
       return(
@@ -104,6 +119,7 @@ class QuestionsAnswers extends React.Component {
             ))}
           </ul>
           <button style={moreQuestionsStyle} onClick={this.loadMoreQuestions.bind(this)} className='moreQuestions'>More Answered Questions</button>
+          <button style={collapseStyle} onClick={this.collapseQuesitons.bind(this)}>Collapse Question's</button>
           <AddAQuestion />
         </div>
       )

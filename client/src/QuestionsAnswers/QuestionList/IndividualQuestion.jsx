@@ -78,16 +78,16 @@ class Question extends React.Component {
   }
 
   lodaMoreAnswers(e){
-    if(e.target.innerText === 'Load More Answers'){
+    if(e.target.innerText === 'See more answers'){
       this.setState({
         renderedAnswers: this.state.allAnswers.length
       })
-      event.target.innerText = 'Less Answers'
-    } else if(e.target.innerText === 'Less Answers'){
+      event.target.innerText = 'Collapse answers'
+    } else if(e.target.innerText === 'Collapse answers'){
       this.setState({
         renderedAnswers: 2
       })
-      e.target.innerText = 'Load More Answers'
+      e.target.innerText = 'See more answers'
     }
   }
 
@@ -97,19 +97,24 @@ class Question extends React.Component {
       display: this.state.allAnswers.length > 2 ? 'block' : 'none'
     }
 
+    let scroll = {
+      overflow:'hidden',
+      overflowY:'scroll',
+      maxHeight: '50vh'
+    }
 
       return (
         <li className="question_entry">
           <span className="question">Q: {<QuestionBody question={this.props.question}/> }</span>
           <span className="question_Rating/Add"> Helpful? <u onClick={this.helpfulUpdater.bind(this)} style={{cursor: 'pointer'}}>Yes</u>({this.props.question.question_helpfulness}) | <u style={{cursor: 'pointer'}} onClick={this.answerClickHandler.bind(this)}>Add Answer</u> | <u onClick={this.reportQuesiton.bind(this)} style={{cursor: 'pointer'}} >Report</u></span>
-          <ul>
+          <ul style={scroll}>
             {
               this.state.allAnswers.slice(0,this.state.renderedAnswers).map((answer, index) => (
                 <Answer key={answer.answer_id} answer={answer} updateQuestions={this.props.updateQuestions} updateAnswers={this.answersFetcher.bind(this)} index={index} />
               ))
             }
           </ul>
-          <p style={loadMoreAnswersStyle} onClick={this.lodaMoreAnswers.bind(this)}>Load More Answers</p>
+          <p style={loadMoreAnswersStyle} onClick={this.lodaMoreAnswers.bind(this)}>See more answers</p>
         </li>
       )
 
