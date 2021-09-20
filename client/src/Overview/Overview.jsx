@@ -30,8 +30,7 @@ class Overview extends React.Component {
       isOpen: false,
       isZoomed: false,
       style: {
-        backgroundImage: '',
-        backgroundPosition: '0% 0%'
+        backgroundPosition: '0 0'
       }
     }
   }
@@ -56,7 +55,6 @@ class Overview extends React.Component {
             currentStyleImages: result.data.results[0].photos,
             currentImage: result.data.results[0].photos[this.state.currentImageIndex].url,
             style: {
-              backgroundImage: `url(${result.data.results[0].photos[0].url})`,
               backgroundPosition: this.state.style.backgroundPosition
             }
           });
@@ -145,15 +143,14 @@ class Overview extends React.Component {
 
   handleMouseMove(event) {
     const { left, top, width, height } = event.target.getBoundingClientRect();
-    const x = (event.pageX - left) / width * 100;
-    const y = (event.pageY - top) / height * 100;
+    const x = (left - event.pageX) * 4;
+    const y = (top - event.pageY) * 4;
     this.setState({
       style: {
-        backgroundImage: this.state.style.backgroundImage,
-        backgroundPosition: `${x} ${y}`
+        top: y,
+        left: x
       }
     })
-    console.log(this.state.style.backgroundPosition);
   }
 
   onClickStyle(style) {
@@ -235,19 +232,15 @@ class Overview extends React.Component {
                 <img className="dialog-left" src=".././img/left-arrow.png"
                 onClick={this.onLeftClick.bind(this)}
                 hidden={this.state.currentImageIndex === 0 || this.state.isZoomed}/>
-                {!this.state.isZoomed && (
-                    <img id="expanded-img" className='plus' src={this.state.currentImage}
+                    <img id="expanded-img" className={this.state.isZoomed ? 'minus' : 'plus'} onMouseMove={this.handleMouseMove.bind(this)} src={this.state.currentImage}
                       hidden={!this.state.isOpen}
                       onClick={this.onZoomClick.bind(this)}/>
-                  )
-                }
                 {this.state.isZoomed && (
-                    <div style={this.state.style} onMouseMove={this.handleMouseMove.bind(this)}>
-                      <img id="expanded-img-zoom" className='minus' src={this.state.currentImage}
+                    <div id="zoom-container">
+                      <img id="expanded-img-zoom" src={this.state.currentImage}
                         hidden={!this.state.isOpen}
-                        onClick={this.onZoomClick.bind(this)}/>
-                        {/* onMouseMove={this.handleMouseMove.bind(this)}
-                        style={this.state.style}/> */}
+                        onClick={this.onZoomClick.bind(this)}
+                        style={this.state.style}/>
                     </div>
                   )
                 }
