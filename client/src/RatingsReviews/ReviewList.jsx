@@ -112,6 +112,8 @@ class ReviewList extends React.Component {
   componentDidUpdate(prevProps) {
     if(this.props.filterOptions !== prevProps.filterOptions) {
       this.rerender();
+    } else if(this.props.product_id !== prevProps.product_id) {
+      this.rerender();
     }
   }
 
