@@ -436,6 +436,10 @@ dialog{
   grid-auto-rows: 50px;
   row-gap: 3px;
 }
+#add-to-cart-btn{
+  width: 100%;
+  margin: 0;
+}
 
 /*---------------------------*/
 /*  RR Containers            */
