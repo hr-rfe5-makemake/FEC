@@ -143,8 +143,8 @@ class Overview extends React.Component {
 
   handleMouseMove(event) {
     const { left, top, width, height } = event.target.getBoundingClientRect();
-    const x = (left - event.pageX) * 2.5;
-    const y = (top - event.pageY) * 2.5;
+    const x = (left - event.pageX) * 4;
+    const y = (top - event.pageY) * 4;
     this.setState({
       style: {
         top: y,
