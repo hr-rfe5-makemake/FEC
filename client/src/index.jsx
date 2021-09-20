@@ -30,7 +30,6 @@ class App extends React.Component {
     axios.get('/api/fec2/hr-rfe/products/' + this.state.currentItem_ID)
     .then(data => {
       this.setState({
-        //FILL ME IN
         details: data.data
       })
     })
@@ -47,7 +46,6 @@ class App extends React.Component {
     axios.get('/api/fec2/hr-rfe/products/' + newId)
     .then(data => {
       this.setState({
-        //FILL ME IN
         currentItem_ID: newId,
         details: data.data
       })
@@ -62,8 +60,8 @@ class App extends React.Component {
       <div>
         <Overview currentItem_ID={this.state.currentItem_ID}/>
         <RelatedItems changeCurrentProduct={this.changeCurrentProduct} currentItemId={this.state.currentItem_ID} currentItem={this.state.details}/>
-        <QuestionsAnswers />
-        <RatingsReviews />
+        <QuestionsAnswers product={this.state.details}/>
+        <RatingsReviews product_id={this.state.currentItem_ID}/>
       </div>
     )
   }

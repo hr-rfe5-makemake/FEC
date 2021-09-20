@@ -7,6 +7,7 @@ class RelatedProductRating extends React.Component {
     this.getStars = this.getStars.bind(this);
   }
 
+  // method to convert rating number to an array of html elements of rating images
   getStars(rating) {
     var totalStars = 5;
     var output = [];
