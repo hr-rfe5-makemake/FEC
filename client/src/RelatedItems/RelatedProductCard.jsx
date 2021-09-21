@@ -36,8 +36,6 @@ class RelatedProductCard extends React.Component {
 
   // method to change current item when user clicks on the item card
   handleClick(event) {
-    console.log('click');
-    console.log(this.props.item.id);
     this.props.changeCurrentProduct(this.props.item.id);
     this.props.updateRelated(this.props.item.id);
 
