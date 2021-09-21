@@ -139,18 +139,17 @@ class OutfitList extends React.Component {
         <div className="carouselWrapper">
           {this.state.currentIdx >= 0 ? (
             <div className="previous" onClick={this.previous}>
-              &lt;
+              <img src='./img/left-arrow.png'></img>
             </div>
           ) : (
             <div className="previous hide" onClick={this.previous}>
-              &lt;
             </div>
           )}
             {this.state.currentIdx === -1 ? (
             <div className="carouselListContent">
               <div className="addOutfitCard" onClick={this.addOutfit}>
                 <div className='addOutfitIcon'>
-                <img className='productPhoto' src ='addToOutfit.png' />
+                <img className='productPhoto' src ='./img/addToOutfit.png' />
                 </div>
                 <p>
                 Add to Outfit
@@ -194,11 +193,10 @@ class OutfitList extends React.Component {
           {/* HAVE TO CHECK LENGTH OF OUTFIT LIST*/}
           {this.state.currentIdx < this.props.outfitList.length - 3 ? (
             <div className="next" onClick={this.next}>
-              &gt;
+              <img src='./img/right-arrow.png'></img>
             </div>
           ) : (
             <div className="next hide" onClick={this.next}>
-              &gt;
             </div>
           )}
         </div>
