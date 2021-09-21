@@ -19,7 +19,7 @@ function Breakdown({metaData, handleRemoveFiltersClick, handleFilterClick, filte
           <div className="bar-grey">
             <div className="bar-green" style={{height: "20px", width: `${average}%`}}></div>
           </div>
-          {allRatings[i] || 0}
+          <span className={"filter-count"}>{allRatings[i] || 0}</span>
         </div>
       )
     }

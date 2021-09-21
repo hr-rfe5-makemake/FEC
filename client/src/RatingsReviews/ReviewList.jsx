@@ -155,8 +155,8 @@ class ReviewList extends React.Component {
 
   render() {
     {var addReviewElements = (
-      <div id="addReviewElements">
-        {this.state.notSubmitted ? <button onClick={this.toggleModal}>ADD A REVIEW +</button> : null}
+      <span id="addReviewElements">
+        {this.state.notSubmitted ? <button className={"rr-button-add"} onClick={this.toggleModal}>Write a customer review</button> : null}
         <WriteReviewModal
           show={this.state.showModal}
           productName={this.state.productName}
@@ -166,7 +166,7 @@ class ReviewList extends React.Component {
           timeToReRender={this.props.timeToReRender}
           addComplete={this.addComplete}
         />
-      </div>
+      </span>
     )}
 
     if (!this.state.reviewsExist) {
@@ -187,8 +187,10 @@ class ReviewList extends React.Component {
               />
             })}
           </div>
-          <MoreReviewsButton displayMore={this.displayMore} allDisplayed={this.state.allDisplayed}/>
-          {addReviewElements}
+          <div id={"rr-button-container"}>
+            <MoreReviewsButton displayMore={this.displayMore} allDisplayed={this.state.allDisplayed}/>
+            {addReviewElements}
+          </div>
         </div>
       );
     }

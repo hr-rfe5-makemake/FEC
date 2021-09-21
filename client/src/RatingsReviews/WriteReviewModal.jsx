@@ -143,11 +143,6 @@ class WriteReviewModal extends React.Component {
                 {bodyCounter}
               </label>
               {this.addAnImage()}
-
-              {/* <div id="image-upload" onChange={this.handleImageChange}>
-                Enter an image URL:<input type="text" name= id="fileToUpload" multiple/>
-              </div> */}
-              {/* {this.displayThumbnails()} */}
               <label> What is your nickname?<span style={{color: "red"}}>*</span>{'  '}
                 <input type="text" name="nickname" value={this.state.nickname} onChange={this.handleChange} placeholder={"Example: jackson11"} style={{width: "250px"}} maxLength="60" required/> <div><i>For privacy reasons, do not use your full name or email address</i></div>
               </label>
