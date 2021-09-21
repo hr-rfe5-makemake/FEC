@@ -24,7 +24,10 @@ class AnswerAQuestionModal extends React.Component{
         email: this.state.email,
         photos: this.state.photos
       })
-      .then(repsonse => console.log(repsonse))
+      .then(repsonse => {
+        console.log(repsonse)
+        window.location.reload()
+      })
       .catch(err => console.log(err.response))
     } else {
       alert(`Please don't leave any fields empty`)
@@ -75,14 +78,17 @@ class AnswerAQuestionModal extends React.Component{
 
     return(
       <div id='answerQuestionBackGround' style={answerBackGround} >
-        <button onClick={this.props.closeModal.bind(this)}> X </button>
+
         <div className="answerQuestion" style={content}>
-            <h1>Submit your Answer</h1>
+            <div className='submit-answer-header'>
+              <h1>Submit your Answer</h1>
+              <button onClick={this.props.closeModal.bind(this)}> X </button>
+            </div>
             <h2>{this.props.product.name} => {this.props.question}</h2>
             <form onSubmit={this.newAnswerSubmit.bind(this)}>
               <label>
                 *Your Answer:
-                <input type='text' onChange={e => this.setState({answer: e.target.value})} maxLength='1000' required ></input>
+                <textarea type='text' onChange={e => this.setState({answer: e.target.value})} maxLength='1000' required ></textarea>
               </label><br />
               <label>
                 *What is your nickname:

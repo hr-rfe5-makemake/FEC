@@ -731,3 +731,46 @@ button {
 #star-selector-container {
   grid-column: 2;
 }
+
+
+
+/*
+  Questions and Answers
+*/
+
+.addQuestion-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addQuestion-header button {
+  background-color: transparent;
+  border: none;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.questionModalBackground{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.75);
+  display: none;
+}
+
+.addQuestionModalContent{
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+}
