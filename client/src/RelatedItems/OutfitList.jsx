@@ -148,7 +148,14 @@ class OutfitList extends React.Component {
           )}
             {this.state.currentIdx === -1 ? (
             <div className="carouselListContent">
-              <div className="addOutfitCard" onClick={this.addOutfit}>Add to Outfit</div>
+              <div className="addOutfitCard" onClick={this.addOutfit}>
+                <div className='addOutfitIcon'>
+                <img className='productPhoto' src ='addToOutfit.png' />
+                </div>
+                <p>
+                Add to Outfit
+                </p>
+                </div>
               <OutfitProductCard
                 item={this.state[this.props.outfitList[this.state.currentIdx + 1]]}
                 changeCurrentProduct={this.props.changeCurrentProduct}

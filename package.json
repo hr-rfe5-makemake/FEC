@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "> Project description",
   "main": "index.js",
+  "jest": {
+    "verbose": true,
+    "setupFilesAfterEnv": ["<rootDir>src/setupTests.js"]
+  },
   "scripts": {
     "test": "jest",
     "build": "webpack --config webpack.config.js -w",
