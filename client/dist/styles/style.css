@@ -3,7 +3,8 @@
   margin: 0 auto;
   font-family: Lato, sans-serif;
   background: rgb(220,255,248);
-  background: linear-gradient(0deg, rgba(220,255,248,1) 0%, rgba(240,234,214,1) 50%);
+  background: white;
+  color: #0F1111;
 }
 
 /* Related Products */
@@ -509,6 +510,10 @@ dialog{
   margin: 10px;
 }
 
+#review-list > *:not(img) {
+  margin: 10px;
+}
+
 .break {
   flex-basis: 100%;
   height: 0;
@@ -519,13 +524,17 @@ dialog{
 /*------------------------------*/
 
 #review-tile-container {
-  max-height: 500px;
+  max-height: 600px;
   overflow-y: scroll;
   scroll-behavior: auto;
+  border-color: rgb(224, 224, 224);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
 }
 
 .individual-tile {
-  border-bottom:gray;
+  border-bottom: rgb(224, 224, 224);
   border-bottom-style: solid;
   border-bottom-width: 2px;
   padding: 5px;
@@ -574,6 +583,7 @@ button {
   flex-wrap: wrap;
   align-items: flex-start;
   margin-left: 10px;
+  font-weight: 900;
 }
 
 #rating-summary .star-container > img {
@@ -586,9 +596,9 @@ button {
   font-weight: bolder;
 }
 
-.star-container {
+/* .star-container {
   display: flex;
-}
+} */
 
 .star-container > * {
   align-items: flex-start;
@@ -641,7 +651,7 @@ button {
 }
 
 .bar-green {
-  background-color: rgb(46, 85, 8);
+  background-color: teal;
   animation-duration: 2s;
   animation-name: slidein;
 }
@@ -649,7 +659,7 @@ button {
 
 
 .bar-green-char {
-  background-color: rgb(46, 85, 8);
+  background-color: teal;
   animation-duration: 3s;
   animation-name: slidein;
   position: absolute;
@@ -662,13 +672,15 @@ button {
 }
 
 .bar-green:hover {
-  background-color: rgb(46, 85, 8);
+  background-color: teal;
 }
 
 .bar-grey {
   flex-grow: 1;
-  background-color: rgb(211, 207, 207);
+  background-color: #F0F2F2;
+  box-shadow: inset 0 0 0 1px #e3e6e6;
   width: 200px;
+
 }
 
 .bar-white {
@@ -730,4 +742,56 @@ button {
 
 #star-selector-container {
   grid-column: 2;
+}
+
+.verified {
+  color:tomato;
+}
+
+.tile-date {
+  color: #565959;
+}
+
+.individual-tile {
+  color: #565959;
+}
+
+.tile-summary {
+  color:  #0F1111;
+}
+
+.tile-body {
+  color:  #0F1111;
+}
+
+.filter-count {
+  width: 10px;
+}
+
+#rr-button-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.rr-button {
+  padding: 6px 6px;
+  background-color:rgb(248, 226, 26);
+  border-color: #D5D9D9;
+  border-width: 1px;
+  border-radius: 10px;
+  font-family: Lato, sans-serif;
+  display: inline;
+  width: 40%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+#page-footer {
+  background-color: teal;
+  height: 50px;
+  margin-top: 20px;
+  color: white;
+  text-align: right;
+  padding: 10px;
 }

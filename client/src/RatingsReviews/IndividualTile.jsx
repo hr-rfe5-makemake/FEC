@@ -81,8 +81,8 @@ class IndividualTile extends React.Component {
         {this.state.imageModal ?  <div className="modal" onClick={this.handleThumbnailClick}><img src={this.state.modalURL}></img></div> : null}
         <MyUsername username={this.props.review.reviewer_name} verified={this.state.verified} searchTerm={this.props.searchTerm}/>
         <Stars rating={this.props.review.rating}/>
-        <span className="tile-date">Reviewed on {this.reformatDate(this.props.review.date)}</span>
         <ReviewSummary summary={this.props.review.summary} searchTerm={this.props.searchTerm}/>
+        <span className="tile-date">Reviewed on {this.reformatDate(this.props.review.date)}</span>
         <ReviewBody body={this.props.review.body} searchTerm={this.props.searchTerm}/>
         {this.generateThumbnails()}
         <IRecommend recommend={this.props.review.recommend}/>
