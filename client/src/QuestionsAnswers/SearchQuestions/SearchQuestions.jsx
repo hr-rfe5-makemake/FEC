@@ -34,12 +34,15 @@ class SearchQuestion extends React.Component {
   }
 
   render(){
-    const  inputStyle={
+    const inputStyle={
       display: "block"
     }
 
     return(
-      <input style={inputStyle} type='text' onChange={this.userSearched.bind(this)} placeholder='Have a question? Search for answers…'></input>
+      <div className='searchbar-div'>
+        <input style={inputStyle} type='text' onChange={this.userSearched.bind(this)} placeholder='Have a question? Search for answers…' className='searchQuestion_Input'></input>
+        <i className="fas fa-search fa-lg"></i>
+      </div>
     )
   }
 

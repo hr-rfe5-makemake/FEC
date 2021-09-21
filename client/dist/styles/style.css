@@ -777,6 +777,10 @@ button {
   Questions and Answers
 */
 
+.questions_answers{
+  max-width: 90%;
+}
+
 /* Modals */
 .modalBackground{
   position: fixed;
@@ -831,31 +835,6 @@ button {
   cursor: pointer;
 }
 
-/* .questionModalBackground{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: none;
-}
-
-.addQuestionModalContent{
-  position: absolute;
-  top: 40px;
-  left: 40px;
-  right: 40px;
-  bottom: 40px;
-  border: 1px solid #ccc;
-  background: #fff;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  border-radius: 4px;
-  outline: none;
-  padding: 20px;
-} */
-
 /* Add a answer question */
 .add-answer-header{
   display: flex;
@@ -868,34 +847,58 @@ button {
   font-size: larger;
   cursor: pointer;
 }
+.searchbar-div{
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 60%;
+  margin: auto;
+}
 
-/* .answerQuestionBackGround{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.searchQuestion_Input{
+  min-height: 50px;
+  min-width: 100%;
+  font-size: larger;
+  font-weight: 600;
+  color: #000;
 
-.answerQuestionContent{
+}
+.fa-search{
   position: absolute;
-  top: 40px;
-  left: 40px;
-  right: 40px;
-  bottom: 40px;
-  border: 1px solid #ccc;
-  background: #fff;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  border-radius: 4px;
-  outline: none;
-  padding: 20px;
-} */
-=======
+  right: 0;
+}
+
+.question{
+  font-size: large;
+  font-weight: bold;
+}
+
+.questionHeader{
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+}
+
+.question_entry{
+  list-style-type: none;
+}
+
+.question_entry ul li{
+  list-style-type: none;
+  border-bottom: 2px gray solid;
+}
+
+.answersToQuestions{
+  line-height: 1.6;
+}
+
+.questionsList{
+  overflow-y: scroll;
+  max-height: 70vh;
+  scrollbar-color: red yellow;
+}
+
+/* END */
 .verified {
   color:tomato;
 }
