@@ -24,7 +24,10 @@ class AnswerAQuestionModal extends React.Component{
         email: this.state.email,
         photos: this.state.photos
       })
-      .then(repsonse => console.log(repsonse))
+      .then(repsonse => {
+        console.log(repsonse)
+        window.location.reload()
+      })
       .catch(err => console.log(err.response))
     } else {
       alert(`Please don't leave any fields empty`)
@@ -48,41 +51,18 @@ class AnswerAQuestionModal extends React.Component{
   }
 
   render() {
-    const content={
-      position: 'absolute',
-      top: '40px',
-      left: '40px',
-      right: '40px',
-      bottom: '40px',
-      border: '1px solid #ccc',
-      background: '#fff',
-      overflow: 'auto',
-      WebkitOverflowScrolling: 'touch',
-      borderRadius: '4px',
-      outline: 'none',
-      padding: '20px'
-    }
-
-    const answerBackGround = {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(255, 255, 255, 0.75)'
-
-    }
-
     return(
-      <div id='answerQuestionBackGround' style={answerBackGround} >
-        <button onClick={this.props.closeModal.bind(this)}> X </button>
-        <div className="answerQuestion" style={content}>
-            <h1>Submit your Answer</h1>
+      <div className='modalBackground answerQuestionBackGround'>
+        <div className="modalContent answerQuestionContent">
+            <div className='add-answer-header'>
+              <h1>Submit your Answer</h1>
+              <button onClick={this.props.closeModal.bind(this)}> X </button>
+            </div>
             <h2>{this.props.product.name} => {this.props.question}</h2>
             <form onSubmit={this.newAnswerSubmit.bind(this)}>
               <label>
                 *Your Answer:
-                <input type='text' onChange={e => this.setState({answer: e.target.value})} maxLength='1000' required ></input>
+                <textarea type='text' onChange={e => this.setState({answer: e.target.value})} maxLength='1000' required ></textarea>
               </label><br />
               <label>
                 *What is your nickname:

@@ -100,7 +100,7 @@ class QuestionsAnswers extends React.Component {
         display: !this.state.renderedAllQuestion ? 'block' : 'none'
       }
       const scroll = {
-        overflow:"scroll",
+        overflowY:"scroll",
         maxHeight: '70vh'
       }
       const collapseStyle = {

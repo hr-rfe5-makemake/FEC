@@ -30,6 +30,7 @@ class AddAQuestionModal extends React.Component {
       })
       .then(response => {
         console.log(response)
+        window.location.reload()
       })
       .catch(err => {
         console.log(err.response)
@@ -37,40 +38,17 @@ class AddAQuestionModal extends React.Component {
     } else {
       alert(`Please don't leave any fields empty`)
     }
+
   }
 
   render(){
-    const modalStyle={
-      position: 'absolute',
-      top: '40px',
-      left: '40px',
-      right: '40px',
-      bottom: '40px',
-      border: '1px solid #ccc',
-      background: '#fff',
-      overflow: 'auto',
-      WebkitOverflowScrolling: 'touch',
-      borderRadius: '4px',
-      outline: 'none',
-      padding: '20px'
-    }
-
-    const modalBackGround = {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(255, 255, 255, 0.75)',
-      display: 'none'
-
-    }
-
     return(
-      <div className='questionModalBackground' style={modalBackGround}>
-        <button onClick={this.closeModal}> X </button>
-        <div className="addQuestionModal" style={modalStyle}>
-            <h4>Ask Your Question</h4>
+      <div className='modalBackground questionModalBackground'>
+        <div className="modalContent addQuestionModalContent">
+            <div className='addQuestion-header'>
+              <h4>Ask Your Question</h4>
+              <button onClick={this.closeModal}> X </button>
+            </div>
             <p>About the {this.props.product}</p>
             <form onSubmit={this.newQuestionSubmit.bind(this)}>
               <label>
