@@ -645,6 +645,7 @@ button {
   display: flex;
   flex-direction: column;
   row-gap: 5px;
+  z-index: -1;
 }
 
 .char-bar > * :not(.bar-grey) :not(.bar-green){
@@ -656,6 +657,7 @@ button {
   height: 10px;
   width: 100%;
   position: relative;
+  z-index: 0;
 }
 
 #factor-bars > * {
@@ -792,9 +794,11 @@ button {
   align-items: center;
   justify-content: center;
   display: none;
+  z-index: 1;
 }
 
 .modalContent{
+  z-index: 2;
   position: absolute;
   top: 40px;
   left: 40px;
@@ -858,6 +862,10 @@ button {
   outline: none;
   padding: 20px;
 } */
+
+.addQuestionModalContent{
+  position: relative;
+}
 
 /* Add a answer question */
 .add-answer-header{
