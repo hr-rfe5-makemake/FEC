@@ -185,11 +185,10 @@ class RelatedItemList extends React.Component {
           <div className="carouselWrapper">
             {this.state.currentIdx !== 0 ? (
               <div className="previous" onClick={this.previous}>
-                &lt;
+                <img src='./img/left-arrow.png'></img>
               </div>
             ) : (
               <div className="previous hide" onClick={this.previous}>
-                &lt;
               </div>
             )}
             <div className="carouselListContent">
@@ -221,11 +220,10 @@ class RelatedItemList extends React.Component {
             </div>
             {this.state.currentIdx !== this.props.relatedList.length - 3 ? (
               <div className="next" onClick={this.next}>
-                &gt;
+                <img src='./img/right-arrow.png'></img>
               </div>
             ) : (
               <div className="next hide" onClick={this.next}>
-                &gt;
               </div>
             )}
           </div>

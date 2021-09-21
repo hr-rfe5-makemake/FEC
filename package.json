@@ -5,9 +5,7 @@
   "main": "index.js",
   "jest": {
     "verbose": true,
-    "setupFilesAfterEnv": [
-      "<rootDir>src/setupTests.js"
-    ]
+    "setupFilesAfterEnv": ["<rootDir>/setupTests.js"]
   },
   "scripts": {
     "test": "jest test.js",
