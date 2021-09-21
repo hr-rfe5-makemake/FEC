@@ -568,7 +568,7 @@ dialog{
 .individual-tile {
   border-bottom: rgb(224, 224, 224);
   border-bottom-style: solid;
-  border-bottom-width: 2px;
+  border-bottom-width: 1px;
   padding: 5px;
   margin: 5px;
 }
