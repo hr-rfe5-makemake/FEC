@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 function StarSelector({starRating, handleChange}) {
   var stars = [];
@@ -13,12 +13,12 @@ function StarSelector({starRating, handleChange}) {
 
   for (var i = parseInt(starRating); i > 0; i--) {
     stars.push(
-      <img src="images/star.png" key={stars.length} onClick={handleChange} alt={stars.length + 1} name="starRating"/>
+      <img src="./img/star-fill.png" key={stars.length} onClick={handleChange} alt={stars.length + 1} name="starRating"/>
     )
   }
   for (var i = (5 - parseInt(starRating)); i > 0; i--) {
     stars.push(
-      <img src="images/star (1).png" key={stars.length} alt={stars.length + 1} onClick={handleChange} name="starRating"/>
+      <img src="./img/star.png" key={stars.length} alt={stars.length + 1} onClick={handleChange} name="starRating"/>
     )
   }
 
