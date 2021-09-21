@@ -105,9 +105,11 @@ class Question extends React.Component {
 
       return (
         <li className="question_entry">
-          <span className="question">Q: {<QuestionBody question={this.props.question}/> }</span>
-          <span className="question_Rating/Add"> Helpful? <u onClick={this.helpfulUpdater.bind(this)} style={{cursor: 'pointer'}}>Yes</u>({this.props.question.question_helpfulness}) | <u style={{cursor: 'pointer'}} onClick={this.answerClickHandler.bind(this)}>Add Answer</u> | <u onClick={this.reportQuesiton.bind(this)} style={{cursor: 'pointer'}} >Report</u></span>
-          <ul>
+          <div className='questionHeader'>
+            <span className="question">Q: {<QuestionBody question={this.props.question}/> }</span>
+            <span className="question_Rating/Add"> Helpful? <u onClick={this.helpfulUpdater.bind(this)} style={{cursor: 'pointer'}}>Yes</u>({this.props.question.question_helpfulness}) | <u style={{cursor: 'pointer'}} onClick={this.answerClickHandler.bind(this)}>Add Answer</u> | <u onClick={this.reportQuesiton.bind(this)} style={{cursor: 'pointer'}} >Report</u></span>
+          </div>
+          <ul className='answersToQuestions'>
             {
               this.state.allAnswers.slice(0,this.state.renderedAnswers).map((answer, index) => (
                 <Answer key={answer.answer_id} answer={answer} updateQuestions={this.props.updateQuestions} updateAnswers={this.answersFetcher.bind(this)} index={index} />
