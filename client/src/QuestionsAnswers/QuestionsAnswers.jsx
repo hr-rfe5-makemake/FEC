@@ -48,7 +48,6 @@ class QuestionsAnswers extends React.Component {
   componentDidUpdate(prevProps){
     if(this.props.product.id !== prevProps.product.id){
       this.questionsFetcher()
-      console.log(this.props.product.id)
     }
   }
 
@@ -99,21 +98,18 @@ class QuestionsAnswers extends React.Component {
       const moreQuestionsStyle={
         display: !this.state.renderedAllQuestion ? 'block' : 'none'
       }
-      const scroll = {
-        overflowY:"scroll",
-        maxHeight: '70vh'
-      }
+
       const collapseStyle = {
         display: this.state.collapseQuesitons ? 'block' : 'none'
       }
 
       return(
         <div className='questions_answers'>
-          Questions & Answers
+          <h1>Questions & Answers</h1>
           <SearchQuestion questions={this.state.allQuestions} oldLength={this.state.oldQuestionsRendered} changeRenderArray={this.changeRenderArray.bind(this)}/>
           <AddQuestionModal product={this.props.product.name} product_id={this.props.product.id}/>
           <div className='modal-placeHolder'></div>
-          <ul style={scroll}>
+          <ul className='questionsList'>
             {this.state.renderQuestions.slice(0,this.state.questionsRendered).map((question,index) => (
               <IndividualQuestion question= {question} key={question.question_id} updateQuestions={this.questionsFetcher.bind(this)} index={index} product={this.props.product}/>
             ))}
