@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import Header from './Header.jsx';
 import Overview from './Overview/Overview.jsx';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
@@ -58,10 +59,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <Header />
         <Overview currentItem_ID={this.state.currentItem_ID}/>
         <RelatedItems changeCurrentProduct={this.changeCurrentProduct} currentItemId={this.state.currentItem_ID} currentItem={this.state.details}/>
         <QuestionsAnswers product={this.state.details}/>
         <RatingsReviews product_id={this.state.currentItem_ID}/>
+        <div id={"page-footer"}>© MakeMake 2021</div>
       </div>
     )
   }
