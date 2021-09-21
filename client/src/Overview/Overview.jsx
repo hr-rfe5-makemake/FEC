@@ -137,7 +137,7 @@ class Overview extends React.Component {
 
   handleMouseMove(event) {
     let zoom = 2.5;
-    const { left, top } = event.target.getBoundingClientRect();
+    const { left, top, width, height } = event.target.getBoundingClientRect();
     let x;
     let y;
     if (height > width) {
