@@ -137,7 +137,7 @@ class Overview extends React.Component {
 
   handleMouseMove(event) {
     let zoom = 2.5;
-    const { left, top, width, height } = event.target.getBoundingClientRect();
+    const { left, top } = event.target.getBoundingClientRect();
     let x;
     let y;
     if (height > width) {
@@ -241,7 +241,6 @@ class Overview extends React.Component {
                     <div id="zoom-container">
                       <img id="expanded-img-zoom" src={this.state.currentImage}
                         hidden={!this.state.isOpen}
-                        onClick={this.onZoomClick.bind(this)}
                         style={this.state.style}/>
                     </div>
                   )
