@@ -43,8 +43,8 @@ class AddAQuestionModal extends React.Component {
 
   render(){
     return(
-      <div className='questionModalBackground'>
-        <div className="addQuestionModalContent">
+      <div className='modalBackground questionModalBackground'>
+        <div className="modalContent addQuestionModalContent">
             <div className='addQuestion-header'>
               <h4>Ask Your Question</h4>
               <button onClick={this.closeModal}> X </button>

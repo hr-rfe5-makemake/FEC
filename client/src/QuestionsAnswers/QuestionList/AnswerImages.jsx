@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom'
 
 const AnswerImages = (props) => {
   const handleImageClick = (e) => {
-    console.log(e.target.src)
     let modalLocation = document.getElementById('image-modal')
     ReactDOM.render(<ImageModal url={e.target.src} closeModal={closeModal}/>, modalLocation)
   }
