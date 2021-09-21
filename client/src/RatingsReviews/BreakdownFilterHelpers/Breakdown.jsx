@@ -17,7 +17,7 @@ function Breakdown({metaData, handleRemoveFiltersClick, handleFilterClick, filte
         <div className="bar-container" onClick={handleFilterClick} identifier={i} key={i}>
           <u>{i} stars</u>
           <div className="bar-grey">
-            <div className="bar-green" style={{height: "10px", width: `${average}%`}}></div>
+            <div className="bar-green" style={{height: "20px", width: `${average}%`}}></div>
           </div>
           {allRatings[i] || 0}
         </div>
@@ -41,7 +41,7 @@ function Breakdown({metaData, handleRemoveFiltersClick, handleFilterClick, filte
         <div className="bar-container" onClick={handleFilterClick} identifier={i} key={i}>
           <u>{i} stars</u>
           <div className="bar-grey">
-            <div className="bar-green" style={{height: "10px", width: `0%`}}></div>
+            <div className="bar-green" style={{height: "20px", width: `0%`}}></div>
           </div> 0
         </div>
       )

@@ -15,7 +15,7 @@ function MyUsername({username, verified, searchTerm}) {
     return (
       <div>
        <FontAwesomeIcon icon={faUserCheck}/> {newUsername || username}
-       <i> Verified Purchaser</i>
+       <i className="verified"> Verified Purchase</i>
       </div>)
   } else {
     return <div><FontAwesomeIcon icon={faUser}/> {newUsername || username}</div>
