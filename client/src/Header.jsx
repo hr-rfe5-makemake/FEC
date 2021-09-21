@@ -5,7 +5,7 @@ import Search from './Search.jsx'
 const Header = (props) => (
   <div id="header">
     {/* <div id="logo">MakeMake</div> */}
-    <img id="logo" src=".././img/MakeMakeLogo(white).png" />
+    <img id="logo" src="./img/MakeMakeLogo(White).png" />
     <Search />
   </div>
 )
