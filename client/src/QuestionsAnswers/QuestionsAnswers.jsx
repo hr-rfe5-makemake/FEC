@@ -48,7 +48,6 @@ class QuestionsAnswers extends React.Component {
   componentDidUpdate(prevProps){
     if(this.props.product.id !== prevProps.product.id){
       this.questionsFetcher()
-      console.log(this.props.product.id)
     }
   }
 
