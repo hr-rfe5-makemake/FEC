@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 function StarSelector({starRating, handleChange}) {
   var stars = [];
