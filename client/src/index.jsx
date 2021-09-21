@@ -62,7 +62,7 @@ class App extends React.Component {
         <RelatedItems changeCurrentProduct={this.changeCurrentProduct} currentItemId={this.state.currentItem_ID} currentItem={this.state.details}/>
         <QuestionsAnswers product={this.state.details}/>
         <RatingsReviews product_id={this.state.currentItem_ID}/>
-        <div id={"page-footer"}>© MakeMake 2021</div>
+        <div id={"page-footer"}>© 2021 MakeMake</div>
       </div>
     )
   }
