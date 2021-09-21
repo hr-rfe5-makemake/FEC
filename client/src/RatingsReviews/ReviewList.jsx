@@ -156,7 +156,6 @@ class ReviewList extends React.Component {
   render() {
     {var addReviewElements = (
       <span id="addReviewElements">
-        {this.state.notSubmitted ? <button className={"rr-button-add"} onClick={this.toggleModal}>Write a customer review</button> : null}
         <WriteReviewModal
           show={this.state.showModal}
           productName={this.state.productName}
@@ -173,7 +172,7 @@ class ReviewList extends React.Component {
       return addReviewElements;
     } else {
       return (
-        <div>
+        <div id={"review-list"}>
           <span>Keyword Search: </span>
           <input type="text" placeholder="Type 3+ characters to start filtering reviews" size="40" value={this.state.searchTerm} onChange={this.handleKeywordSearch}/>
           <SortOptions changeSort={this.changeSort} count={this.state.allReviews.length}/>
@@ -189,6 +188,7 @@ class ReviewList extends React.Component {
           </div>
           <div id={"rr-button-container"}>
             <MoreReviewsButton displayMore={this.displayMore} allDisplayed={this.state.allDisplayed}/>
+            {this.state.notSubmitted ? <button className={"rr-button"} onClick={this.toggleModal}>Write a customer review</button> : null}
             {addReviewElements}
           </div>
         </div>
