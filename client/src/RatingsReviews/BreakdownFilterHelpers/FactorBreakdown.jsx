@@ -21,7 +21,7 @@ function FactorBreakdown({metaData}) {
       }
       if (!isNaN(rating)) {
         bars.push(
-          <div className="char-bar" key={characteristic}>
+          <div className="char-bar" key={characteristic} style={{zIndex: '0'}}>
             <div><b>{characteristic}</b></div>
             <div className="bar-grey">
               <div className="bar-mid" style={{height: "10px", width: '32%'}}></div>
