@@ -48,7 +48,7 @@ class RatingsReviews extends React.Component {
   render() {
     return (
       <div id='rr-container'>
-        <h4>RATINGS & REVIEWS</h4>
+        <h1>Ratings and Reviews</h1>
         <div id='rr-left'>
           <BreakdownFilter
             product_id={this.props.product_id}
