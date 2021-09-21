@@ -724,7 +724,7 @@ button {
 
 .filterOption .bar-grey:hover{
   flex-grow: 1;
-  background-color: rgb(211, 207, 207);
+  background-color: #F0F2F2;
   width: 200px;
 }
 

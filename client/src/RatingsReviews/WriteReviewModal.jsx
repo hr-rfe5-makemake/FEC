@@ -118,8 +118,8 @@ class WriteReviewModal extends React.Component {
       <div className="modal" onClick={this.props.toggleModal}>
         <div className="modal-content" onClick={e => e.stopPropagation()}>
           <div className="modal-header">
-            <h4 className="modal-title">Write Your Review</h4>
-            <h5 className="modal-subtitle">About the <i>{this.props.productName}</i></h5>
+            <h2 className="modal-title">Write Your Review</h2>
+            <h3 className="modal-subtitle">About the <i>{this.props.productName}</i></h3>
           </div>
           <div className="modal-body">
             <form id="modal-form" onSubmit={this.handleSubmit}>
@@ -152,7 +152,7 @@ class WriteReviewModal extends React.Component {
             </form>
           </div>
           <div className="modal-footer">
-            <input type="submit" value="Submit Review" name="submit" id="modal-submit" onClick={this.handleSubmit}/>
+            <input className={"rr-button"} type="submit" value="Submit Review" name="submit" id="modal-submit" onClick={this.handleSubmit}/>
           </div>
         </div>
       </div>
