@@ -8,7 +8,6 @@
 */
 
 #app, body{
-  width: 95%;
   margin: 0 auto;
   font-family: Lato, sans-serif;
   background: rgb(220,255,248);
@@ -252,8 +251,8 @@ th, td {
   margin-top: 6px;
   margin-left: 15px;
   font-size: 48px;
-  font-style: italic;
-  text-decoration: underline;
+  position: absolute;
+  left: 5%
 }
 
 #search{
@@ -265,12 +264,14 @@ th, td {
   background: transparent;
   border: none;
   border-bottom: 2px solid #000000;
-  opacity: .75;
+  color: white;
+}
+::placeholder{
+  color: white;
 }
 #search-btn:hover{
   opacity: 0.5;
 }
-
 
 
 /* Overview */
@@ -1184,4 +1185,12 @@ button {
   border-radius: 5px;
   border-width: 1px;
   padding: 5px;
+}
+
+#overview,
+.relatedItemsComponent,
+.questions_answers,
+#rr-container{
+  width: 90%;
+  margin: 0 auto;
 }
