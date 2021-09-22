@@ -824,6 +824,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
 .imageModal_Content{
   max-width: 70%;

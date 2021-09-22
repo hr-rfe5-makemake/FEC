@@ -56,10 +56,14 @@ class App extends React.Component {
     })
   }
 
+  handleSearch(event) {
+    console.log('click');
+  }
+
   render() {
     return (
       <div>
-        <Header />
+        <Header onClick={this.handleSearch.bind(this)}/>
         <Overview currentItem_ID={this.state.currentItem_ID}/>
         <RelatedItems changeCurrentProduct={this.changeCurrentProduct} currentItemId={this.state.currentItem_ID} currentItem={this.state.details}/>
         <QuestionsAnswers product={this.state.details}/>

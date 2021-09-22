@@ -256,7 +256,7 @@ class Overview extends React.Component {
             <h3 id="category">{this.state.currentItem.category}</h3>
             <h1 id="product-name">{this.state.currentItem.name}</h1>
             {this.state.currentStyle.sale_price ? (<h2 id="sale-price" className="price">${this.state.currentStyle.sale_price}</h2>) : (<h2 id="original-price" className="price">${this.state.currentStyle.original_price}</h2>)}
-            <SocialMediaShare id={this.state.currentItem.id}/>
+            <SocialMediaShare currentItem={this.state.currentItem} styles={this.state.currentStyleImages}/>
             <Styles
               styles={this.state.styles}
               currentStyle={this.state.currentStyle}
