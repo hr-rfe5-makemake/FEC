@@ -916,6 +916,12 @@ button {
   font-size: larger;
 }
 
+.question p{
+  display: inline;
+  word-break: break-all;
+  white-space: normal;
+}
+
 .questionHeader{
   display: flex;
   justify-content: space-between;
@@ -932,6 +938,8 @@ button {
 .answer-images span:hover{
   border-bottom: 2px solid teal;
 }
+
+
 
 .answerer_details{
   color: grey;
@@ -957,6 +965,10 @@ button {
   flex-direction: row;
 }
 
+.answer-images span{
+  margin: 3px;
+}
+
 .answer em{
   font-size: larger;
   color: #000;
@@ -965,7 +977,7 @@ button {
 
 .questionsList{
   overflow-y: scroll;
-  max-height: 60vh;
+  max-height: 65vh;
   width: 100%;
   scrollbar-color: red yellow;
 }
@@ -973,6 +985,7 @@ button {
 .question_Rating{
   margin-right: 2px;
   color: grey;
+  min-width: 24%;
 }
 
 .question_Rating u:hover{
@@ -1013,7 +1026,7 @@ button {
   color: #fff;
   font-weight: 700;
   font-size: 15px;
-  background-color: #222;
+  background-color: rgb(216,148,79);;
   width: max-content;
   padding: 10px 40px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.20);
@@ -1021,8 +1034,8 @@ button {
 }
 
 .main_buttons button:hover{
-  background-color: rgb(73, 73, 73);
-  color: rgb(209, 209, 209);
+  background-color: rgb(255, 230, 87);
+  color: rgb(0, 0, 0);
 }
 
 /* END */

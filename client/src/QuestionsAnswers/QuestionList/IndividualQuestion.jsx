@@ -58,6 +58,7 @@ class Question extends React.Component {
     if(!this.state.userAlreadyReported){
       axios.put(`/api/fec2/hr-rfe/qa/questions/${this.props.question.question_id}/report`)
       .then(response => {
+        this.setState({userAlreadyReported: true})
         e.target.innerText = 'Reported'
       })
       .catch(err => {
