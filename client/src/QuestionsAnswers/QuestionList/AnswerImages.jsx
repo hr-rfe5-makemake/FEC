@@ -14,7 +14,7 @@ const AnswerImages = (props) => {
 
   return(
     <span>
-      <img src={props.photo.url}  style={{maxWidth: '200px', maxHeight: '200px'}}  key={props.photo.id} onClick={handleImageClick.bind(this)}></img>
+      <img src={props.photo.url}  style={{maxWidth: '150px', maxHeight: '150px'}}  key={props.photo.id} onClick={handleImageClick.bind(this)}></img>
       <div id='image-modal'></div>
     </span>
   )
