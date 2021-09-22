@@ -805,10 +805,10 @@ button {
 .modalContent{
   z-index: 2;
   position: absolute;
-  top: 40px;
-  left: 40px;
-  right: 40px;
-  bottom: 40px;
+  top: 100px;
+  left: 140px;
+  right: 140px;
+  bottom: 100px;
   border: 1px solid #ccc;
   background: #fff;
   overflow: auto;
@@ -829,11 +829,24 @@ button {
   align-items: center;
   justify-content: center;
 }
+.imageModal_Content{
+  max-width: 70%;
+}
+
+.imageModal_Content img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
 
 /* Adding a quesion modal */
 .addQuestion-header {
   display: flex;
   justify-content: space-between;
+}
+
+.addQuestion-header h1{
+  justify-self: center;
 }
 
 .addQuestion-header button {
@@ -882,6 +895,11 @@ button {
   color:teal;
 }
 
+.question em{
+  color: black;
+  font-size: larger;
+}
+
 .questionHeader{
   display: flex;
   justify-content: space-between;
@@ -893,12 +911,15 @@ button {
 
 .question_entry ul li{
   list-style-type: none;
-  border-bottom: 2px gray solid;
 }
 
 .answerer_details{
   color: grey;
   font-size: small;
+}
+
+.answerer_details u:hover{
+  color: teal;
 }
 
 .answersToQuestions{
@@ -908,6 +929,17 @@ button {
 .answer{
   font-size: 18px;
   font-weight: 400;
+  color: chocolate;
+  margin: 10px 10px;
+}
+.answer-images{
+  display: flex;
+  flex-direction: row;
+}
+
+.answer em{
+  font-size: large;
+  color: #000;
 }
 
 .questionsList{
@@ -920,6 +952,10 @@ button {
 .question_Rating{
   margin-right: 2px;
   color: grey;
+}
+
+.question_Rating u:hover{
+  color: teal;
 }
 
 /* scrollbar */
