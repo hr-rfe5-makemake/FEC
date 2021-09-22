@@ -114,9 +114,11 @@ class QuestionsAnswers extends React.Component {
               <IndividualQuestion question= {question} key={question.question_id} updateQuestions={this.questionsFetcher.bind(this)} index={index} product={this.props.product}/>
             ))}
           </ul>
-          <button style={moreQuestionsStyle} onClick={this.loadMoreQuestions.bind(this)} className='moreQuestions'>More Answered Questions</button>
-          <button style={collapseStyle} onClick={this.collapseQuesitons.bind(this)}>Collapse Question's</button>
-          <AddAQuestion />
+          <div className='main_buttons'>
+            <button style={moreQuestionsStyle} onClick={this.loadMoreQuestions.bind(this)} className='moreQuestions'>MORE ANSWERED QUESTION +</button>
+            <button style={collapseStyle} onClick={this.collapseQuesitons.bind(this)}>Collapse Question's</button>
+            <AddAQuestion />
+          </div>
         </div>
       )
     }

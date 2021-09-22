@@ -54,11 +54,11 @@ class AnswerAQuestionModal extends React.Component{
     return(
       <div className='modalBackground answerQuestionBackGround'>
         <div className="modalContent answerQuestionContent">
+            <button onClick={this.props.closeModal.bind(this)} className='closeModal-BTN'><i className="fas fa-times"></i></button>
             <div className='add-answer-header'>
               <h1>Submit your Answer</h1>
-              <button onClick={this.props.closeModal.bind(this)}> X </button>
+              <h2><i className="fas fa-tshirt"></i>{this.props.product.name} <i className="fas fa-arrow-right"></i> <i className="fas fa-question-circle"></i>{this.props.question}</h2>
             </div>
-            <h2>{this.props.product.name} => {this.props.question}</h2>
             <form onSubmit={this.newAnswerSubmit.bind(this)}>
               <label>
                 *Your Answer:
