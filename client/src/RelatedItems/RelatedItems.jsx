@@ -91,7 +91,12 @@ class RelatedItems extends React.Component {
       )
 
     } else {
-      return <div>Loading</div>
+      return (
+      <div>
+        <h1 className='componentHeader'>Related Products</h1>
+        <h1 className='componentHeader'>Your Outfit</h1>
+        </div>
+      )
     }
   }
 
