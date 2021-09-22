@@ -953,6 +953,28 @@ button {
   box-shadow: 1px 1px 3px 0.5px rgb(0 0 0 / 10%);
 }
 
+#rr-image-modal {
+  display: flex;
+
+}
+
+#rr-modal-image {
+  width: 25%;
+}
+
+.rr-radio-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: aliceblue;
+  border-width: 1px;
+  border-style: solid
+}
+
+.rr-radios {
+  display: flex;
+  flex-direction: column;
+}
+
 #page-footer {
   background: rgb(0,70,70);
   background: linear-gradient(0deg, rgba(0,70,70,1) 0%, rgba(0,128,128,1) 100%);
