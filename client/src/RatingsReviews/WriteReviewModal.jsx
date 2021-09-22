@@ -125,21 +125,21 @@ class WriteReviewModal extends React.Component {
             <form id="modal-form" onSubmit={this.handleSubmit}>
               <StarSelector starRating={this.state.starRating} handleChange={this.handleChange}/>
               <div id="recommendRadio" onChange={this.handleChange}>
-                Do you recommend this product?<span style={{color: "red"}}>*</span>
-                <input type="radio" value="true" name="recommend" required/>Yes
-                <input type="radio" value="false" name="recommend" required/>No
+                <div id="recommendQ">Do you recommend this product?<span style={{color: "red"}}>*</span></div>
+                <div><input type="radio" value="true" name="recommend" required/>Yes</div>
+               <div><input type="radio" value="false" name="recommend" required/>No</div>
               </div>
               <Characteristics
                 handleCharChange={this.handleCharChange}
                 characteristics={this.state.characteristics}
                 product_id={this.props.product_id}
               />
-              <label> Review summary (optional){'  '}
+              <div id="rr-bottom-form">
+              <label className="rr-label"> Review summary (optional){'  '}
                 <input type="text" name="summary" value={this.state.summary} onChange={this.handleChange} placeholder={"Example: Best purchase ever!"} style={{width: "250px"}} maxLength="60"/>
               </label>
-              <br></br>
-              <label> Review body<span style={{color: "red"}}>*</span>{'  '}
-                <input type="text" name="body" value={this.state.body} onChange={this.handleChange} placeholder={"Why did you like the product or not?"} style={{width: "250px"}} maxLength="1000" minLength="50" required/>
+              <label className="rr-label"> Review body<span style={{color: "red"}}>*</span>{'  '}
+                <textarea name="body" value={this.state.body} onChange={this.handleChange} placeholder={"Why did you like the product or not?"} style={{width: "250px"}} maxLength="1000" minLength="50" required></textarea>
                 {bodyCounter}
               </label>
               {this.addAnImage()}
@@ -149,6 +149,7 @@ class WriteReviewModal extends React.Component {
               <label>Your email<span style={{color: "red"}}>*</span>{'  '}
                 <input type="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder={"Example: jackson11@email.com"} style={{width: "250px"}} maxLength="60" required/> <div><i>For authentication reasons, you will not be emailed</i></div>
               </label>
+              </div>
             </form>
           </div>
           <div className="modal-footer">

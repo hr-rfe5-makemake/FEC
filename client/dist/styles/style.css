@@ -740,9 +740,9 @@ button {
   justify-content: center;
 }
 
-.modal-content > * :not(#starRating){
-  line-height: 200%;
-}
+/* #modal-form > * {
+  padding: 10px;
+} */
 
 .modal-content {
   width: 700px;
@@ -752,7 +752,7 @@ button {
 }
 
 .modal-header, .modal-footer {
-  padding: 10px;
+  padding: 20px;
 }
 
 .modal-title, .modal-subtitle {
@@ -760,14 +760,16 @@ button {
 }
 
 .modal-body {
-  padding: 10px;
+  padding: 10px 20px 10px 20px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 }
 
 #starRating {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 #starOverallRating {
   grid-column: 1;
@@ -968,20 +970,37 @@ button {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   border: #F0F2F2;
+  padding-bottom: 7px;
+  padding-top: 7px;
   border-bottom-style: solid;
   border-bottom-width: 1px;
 }
 
 #recommendRadio {
+  display: grid;
+  grid-template-columns: 1fr .4fr 2.6fr;
   border: #F0F2F2;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   padding-bottom: 10px;
 }
 
+#recommendQ {
+  padding-right: 10px;
+}
+
 .rr-radios {
   display: flex;
   flex-direction: column;
+}
+
+.rr-label {
+  display: block;
+  /* padding-top: 10px;
+  padding-bottom: 10px; */
+}
+#rr-bottom-form > *{
+  padding: 10px;
 }
 
 #page-footer {
