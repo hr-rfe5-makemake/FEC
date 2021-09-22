@@ -1,8 +1,12 @@
 import React from 'react';
 import sinon from 'sinon';
 import { expect } from 'chai';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
+import RelatedItems from './RelatedItems';
 
-test('gets the right product from api call', () => {
-
-})
+describe('component', ()=>{
+  it('renders three <Product Card />', () => {
+    const wrapper = shallow(<RelatedItems />);
+    console.log(wrapper.state());
+  });
+});
