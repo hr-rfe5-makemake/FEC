@@ -42,7 +42,7 @@ class Characteristics extends React.Component {
       for (var i = 0; i < options[key].length; i++) {
         radios.push(<span><input type="radio" value={options[key][i][0]} name={chars[key].id} required/>{options[key][i][1]}</span>)
       }
-      charInputs.push(<div key={key} id={`${key}-label`}><b>{key}<span style={{color: "red"}}>*</span>  </b>{radios}</div>);
+      charInputs.push(<div  className={'rr-radio-container'} key={key} id={`${key}-label`}><b>{key}<span style={{color: "red"}}>*</span>  </b><span className="rr-radios">{radios}</span></div>);
     }
 
     return <div id="char-input-container" onChange={this.props.handleCharChange}>{charInputs}</div>;

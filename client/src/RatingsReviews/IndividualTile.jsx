@@ -78,7 +78,7 @@ class IndividualTile extends React.Component {
   render() {
     return (
       <div className="individual-tile">
-        {this.state.imageModal ?  <div className="modal" onClick={this.handleThumbnailClick}><img src={this.state.modalURL}></img></div> : null}
+        {this.state.imageModal ?  <div className="modal" id="rr-image-modal" onClick={this.handleThumbnailClick}><img id="rr-modal-image" src={this.state.modalURL}></img></div> : null}
         <MyUsername username={this.props.review.reviewer_name} verified={this.state.verified} searchTerm={this.props.searchTerm}/>
         <Stars rating={this.props.review.rating}/>
         <ReviewSummary summary={this.props.review.summary} searchTerm={this.props.searchTerm}/>
