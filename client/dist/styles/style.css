@@ -563,18 +563,15 @@ dialog{
   max-height: 550px;
   overflow-y: scroll;
   scroll-behavior: auto;
+}
+
+.individual-tile {
   border-color: rgb(224, 224, 224);
   border-style: solid;
   border-width: 1px;
   border-radius: 5px;
-}
-
-.individual-tile {
-  border-bottom: rgb(224, 224, 224);
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
   padding: 5px;
-  margin: 5px;
+  margin: 5px 5px 8px 5px;
 }
 
 .individual-tile > *:not(img) {
@@ -1076,8 +1073,6 @@ button {
 
 .rr-label {
   display: block;
-  /* padding-top: 10px;
-  padding-bottom: 10px; */
 }
 
 .rr-summary-body {
