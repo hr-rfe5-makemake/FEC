@@ -56,8 +56,10 @@ class App extends React.Component {
     })
   }
 
-  handleSearch(event) {
-    console.log('click');
+  handleSearch(term) {
+    this.setState({
+      currentItem_ID: term
+    })
   }
 
   render() {
