@@ -41,9 +41,15 @@ class AddAQuestionModal extends React.Component {
 
   }
 
+  handleBackgroundClick(event){
+    if(event.target.className.includes('modalBackground')){
+      this.closeModal()
+    }
+  }
+
   render(){
     return(
-      <div className='modalBackground questionModalBackground'>
+      <div className='modalBackground questionModalBackground' onClick={this.handleBackgroundClick.bind(this)}>
         <div className="modalContent addQuestionModalContent">
             <button onClick={this.closeModal} className='closeModal-BTN'><i className="fas fa-times"></i></button>
             <div className='addQuestion-header'>
