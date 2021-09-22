@@ -1,3 +1,12 @@
+/*COLORS
+216, 148, 79
+235, 185, 101
+101, 173, 177
+67, 149, 155
+45, 103, 107
+26, 64, 65
+*/
+
 #app, body{
   width: 95%;
   margin: 0 auto;
@@ -1056,18 +1065,35 @@ button {
   margin-top: 15px;
 }
 
-.rr-button {
+/* CHARLES' AWESOME YELLOW BUTTON STYLES */
+/* .rr-button {
   padding: 10px 10px;
   background-color:rgb(248, 226, 26);
   border-color: transparent;
-  /* border-width: 1px; */
   border-radius: 20px;
   font-family: Lato, sans-serif;
   display: inline;
   width: 40%;
-  /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */
   box-shadow: 1px 1px 3px 0.5px rgb(0 0 0 / 10%);
   cursor: pointer;
+} */
+
+/* SHAV'S BLACK BUTTONS */
+.rr-button {
+  border: none;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: #222;
+  width: max-content;
+  padding: 10px 40px;
+  box-shadow: 0 5px 15px rgb(0 0 0 / 20%);
+  border-radius: 5px;
 }
 
 #rr-select {
