@@ -96,18 +96,11 @@ class Question extends React.Component {
       cursor: 'pointer',
       display: this.state.allAnswers.length > 2 ? 'block' : 'none'
     }
-
-    // let scroll = {
-    //   overflow:'hidden',
-    //   overflowY:'scroll',
-    //   maxHeight: '50vh'
-    // }
-
       return (
         <li className="question_entry">
           <div className='questionHeader'>
-            <span className="question">Q: {<QuestionBody question={this.props.question}/> }</span>
-            <span className="question_Rating/Add"> Helpful? <u onClick={this.helpfulUpdater.bind(this)} style={{cursor: 'pointer'}}>Yes</u>({this.props.question.question_helpfulness}) | <u style={{cursor: 'pointer'}} onClick={this.answerClickHandler.bind(this)}>Add Answer</u> | <u onClick={this.reportQuesiton.bind(this)} style={{cursor: 'pointer'}} >Report</u></span>
+            <span className="question"><em>Q:</em> {<QuestionBody question={this.props.question}/> }</span>
+            <span className="question_Rating"> Helpful? <u onClick={this.helpfulUpdater.bind(this)} style={{cursor: 'pointer'}}>Yes</u>({this.props.question.question_helpfulness}) | <u style={{cursor: 'pointer'}} onClick={this.answerClickHandler.bind(this)}>Add Answer</u> | <u onClick={this.reportQuesiton.bind(this)} style={{cursor: 'pointer'}} >Report</u></span>
           </div>
           <ul className='answersToQuestions'>
             {

@@ -47,9 +47,9 @@ class Answer extends React.Component{
 
       return (
         <li>
-          <span className='answer'>A:{this.props.answer.body}</span>
+          <span className='answer'><em>A:</em>{this.props.answer.body}</span>
           <div className='answerName'>
-            <span>by <span style={nameStyle}>{this.props.answer.answerer_name}</span>, {dateFormat(this.props.answer.date, 'mmmm d, yyyy')} |
+            <span className='answerer_details'>by <span style={nameStyle}>{this.props.answer.answerer_name}</span>, {dateFormat(this.props.answer.date, 'mmmm d, yyyy')} |
             Helpful? <u onClick={this.helpfulUpdater.bind(this)} style={{cursor: 'pointer'}}>Yes</u>({this.props.answer.helpfulness}) | <u onClick={this.report.bind(this)} style={{cursor: 'pointer'}}>Report</u> </span>
           </div>
           <div className='answer-images'>
