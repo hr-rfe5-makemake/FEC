@@ -64,30 +64,34 @@ class WriteReviewModal extends React.Component {
   addAnImage() {
     if (!this.state.photos.length) {
       return (
-      <div>
-        Add up to 5 images:&nbsp;&nbsp;
-        <input type="text" value={this.state.currImageValue} id="image-input" placeholder="Paste URL here"/>
-        <button id="addImageBtn" onClick={this.handleImageChange}>Add</button>
+      <div className={"rr-summary-body"}>
+        <div>Add up to 5 images:</div>
+        <div>
+          <input type="text" value={this.state.currImageValue} id="image-input" placeholder="Paste URL here"/>
+          <button id="addImageBtn" onClick={this.handleImageChange}>Add</button>
+        </div>
       </div>)
     } else if (this.state.photos.length < 5) {
       var images = [];
       for (var i = 0; i < this.state.photos.length; i++) {
-        images.push(<img src={this.state.photos[i]} style={{height: "100px", width: "auto"}}></img>);
+        images.push(<img src={this.state.photos[i]} style={{height: "auto", width: "15%"}}></img>);
       }
       return (
-        <div>
-          Add up to 5 images:&nbsp;&nbsp;
-          <input type="text" value={this.state.currImageValue} id="image-input" placeholder="Paste URL here"/>
-          <button id="addImageBtn" onClick={this.handleImageChange}>Add</button>
-          <div id="imageContainer" style={{display: "flex", gap: "10px"}}>{images}</div>
+        <div className={"rr-summary-body"}>
+          <div>Add up to 5 images:</div>
+          <div>
+            <input type="text" value={this.state.currImageValue} id="image-input" placeholder="Paste URL here"/>
+            <button id="addImageBtn" onClick={this.handleImageChange}>Add</button>
+            <div id="imageContainer" style={{display: "flex", gap: "10px"}}>{images}</div>
+          </div>
         </div>)
     } else {
       var images = [];
       for (var i = 0; i < this.state.photos.length; i++) {
-        images.push(<img src={this.state.photos[i]} style={{height: "100px", width: "auto"}}></img>);
+        images.push(<img src={this.state.photos[i]} style={{height: "auto", width: "15%"}}></img>);
       }
       return (
-        <div>
+        <div className={"rr-summary-body"}>
           <div>5 images added</div>
           <div id="imageContainer" style={{display: "flex", gap: "10px"}}>{images}</div>
         </div>)
@@ -135,20 +139,29 @@ class WriteReviewModal extends React.Component {
                 product_id={this.props.product_id}
               />
               <div id="rr-bottom-form">
-              <label className="rr-label"> Review summary (optional){'  '}
+              <div className="rr-summary-body">
+                <label className="rr-label"> Review summary (optional)</label>
                 <input type="text" name="summary" value={this.state.summary} onChange={this.handleChange} placeholder={"Example: Best purchase ever!"} style={{width: "250px"}} maxLength="60"/>
-              </label>
-              <label className="rr-label"> Review body<span style={{color: "red"}}>*</span>{'  '}
-                <textarea name="body" value={this.state.body} onChange={this.handleChange} placeholder={"Why did you like the product or not?"} style={{width: "250px"}} maxLength="1000" minLength="50" required></textarea>
-                {bodyCounter}
-              </label>
+              </div>
+              <div className="rr-summary-body">
+                <label className="rr-label"> Review body<span style={{color: "red"}}>*</span></label>
+                <div>
+                  <textarea name="body" value={this.state.body} onChange={this.handleChange} placeholder={"Why did you like the product or not?"} style={{width: "90%", fontFamily: "Lato, sans-serif"}} maxLength="1000" minLength="50" required></textarea>
+                  {bodyCounter}
+                </div>
+              </div>
               {this.addAnImage()}
-              <label> What is your nickname?<span style={{color: "red"}}>*</span>{'  '}
-                <input type="text" name="nickname" value={this.state.nickname} onChange={this.handleChange} placeholder={"Example: jackson11"} style={{width: "250px"}} maxLength="60" required/> <div><i>For privacy reasons, do not use your full name or email address</i></div>
-              </label>
-              <label>Your email<span style={{color: "red"}}>*</span>{'  '}
-                <input type="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder={"Example: jackson11@email.com"} style={{width: "250px"}} maxLength="60" required/> <div><i>For authentication reasons, you will not be emailed</i></div>
-              </label>
+              <div className="rr-summary-body">
+                <label> What is your nickname?<span style={{color: "red"}}>*</span></label>
+                <div>
+                <input type="text" name="nickname" value={this.state.nickname} onChange={this.handleChange} placeholder={"Example: jackson11"} style={{width: "250px"}} maxLength="60" required/>
+                <i style={{display: 'block'}}>For privacy reasons, do not use your full name or email address</i>
+                </div>
+              </div>
+              <div className="rr-summary-body">
+                <label>Your email<span style={{color: "red"}}>*</span></label>
+                <div><input type="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder={"Example: jackson11@email.com"} style={{width: "250px"}} maxLength="60" required/><i style={{display: 'block'}}>For authentication reasons, you will not be emailed</i></div>
+              </div>
               </div>
             </form>
           </div>
