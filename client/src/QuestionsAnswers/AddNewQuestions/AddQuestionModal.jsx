@@ -45,11 +45,12 @@ class AddAQuestionModal extends React.Component {
     return(
       <div className='modalBackground questionModalBackground'>
         <div className="modalContent addQuestionModalContent">
+            <button onClick={this.closeModal} className='closeModal-BTN'><i className="fas fa-times"></i></button>
             <div className='addQuestion-header'>
+              <div></div>
               <h1>Ask Your Question</h1>
-              <button onClick={this.closeModal}> X </button>
+              <h2>About the {this.props.product}</h2>
             </div>
-            <p>About the {this.props.product}</p>
             <form onSubmit={this.newQuestionSubmit.bind(this)}>
               <label>
                 *Your Question:

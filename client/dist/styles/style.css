@@ -845,34 +845,45 @@ button {
 
 
 /* Adding a quesion modal */
+
 .addQuestion-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.questionModalBackground p{
+  justify-content: center;
+  font-size: larger;
 }
 
 .addQuestion-header h1{
   justify-self: center;
 }
 
-.addQuestion-header button {
+.closeModal-BTN {
   background-color: transparent;
   border: none;
   font-size: larger;
   cursor: pointer;
+  font-size: larger;
 }
 
 /* Add a answer question */
 .add-answer-header{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
-.add-answer-header button{
-  background-color: transparent;
-  border: none;
-  font-size: larger;
-  cursor: pointer;
+.add-answer-header h1{
+  text-align: center;
 }
+
 .searchbar-div{
   margin-left: 3%;
   display: flex;
@@ -896,7 +907,7 @@ button {
 
 .question{
   font-size: large;
-  font-weight: bold;
+  font-weight: 500;
   color:teal;
 }
 
@@ -918,6 +929,10 @@ button {
   list-style-type: none;
 }
 
+.answer-images span:hover{
+  border-bottom: 2px solid teal;
+}
+
 .answerer_details{
   color: grey;
   font-size: small;
@@ -935,7 +950,7 @@ button {
   font-size: 18px;
   font-weight: 400;
   color: chocolate;
-  margin: 10px 10px;
+  margin: 10px 0 10px 0;
 }
 .answer-images{
   display: flex;
@@ -943,8 +958,9 @@ button {
 }
 
 .answer em{
-  font-size: large;
+  font-size: larger;
   color: #000;
+  font-weight: 500;
 }
 
 .questionsList{
@@ -982,6 +998,32 @@ button {
 	background-color: teal;
 }
 
+.main_buttons{
+  display: flex;
+  flex-direction: row;
+}
+
+.main_buttons button{
+  border: none;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: #222;
+  width: max-content;
+  padding: 10px 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.20);
+  border-radius: 5px;
+}
+
+.main_buttons button:hover{
+  background-color: rgb(73, 73, 73);
+  color: rgb(209, 209, 209);
+}
 
 /* END */
 .verified {

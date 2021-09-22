@@ -18,7 +18,7 @@ class AddAQuestion extends React.Component {
 
   render(){
     return(
-      <button onClick={this.handleButtonClick.bind(this)}>Add A QUESTION +</button>
+      <button onClick={this.handleButtonClick.bind(this)}>ADD A QUESTION +</button>
     )
 
   }
