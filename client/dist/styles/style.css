@@ -747,6 +747,8 @@ button {
 .modal-content {
   width: 700px;
   background-color: #fff;
+  max-height: 80%;
+  overflow-y: scroll;
 }
 
 .modal-header, .modal-footer {
@@ -964,10 +966,17 @@ button {
 
 .rr-radio-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  border-bottom: aliceblue;
-  border-width: 1px;
-  border-style: solid
+  grid-template-columns: 1fr 2fr 1fr;
+  border: #F0F2F2;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+#recommendRadio {
+  border: #F0F2F2;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  padding-bottom: 10px;
 }
 
 .rr-radios {
