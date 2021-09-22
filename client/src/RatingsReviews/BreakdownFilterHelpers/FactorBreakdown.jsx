@@ -15,11 +15,12 @@ function FactorBreakdown({metaData}) {
     };
 
     for (var characteristic in characteristics) {
-      var rating = parseInt(characteristics[characteristic].value);
+      var rating = parseFloat(characteristics[characteristic].value);
       if (rating === 5) {
         rating -= 0.1;
       }
       if (!isNaN(rating)) {
+        console.log(rating)
         bars.push(
           <div className="char-bar" key={characteristic} style={{zIndex: '0'}}>
             <div><b>{characteristic}</b></div>

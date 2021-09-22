@@ -934,16 +934,23 @@ button {
 }
 
 .rr-button {
-  padding: 6px 6px;
+  padding: 10px 10px;
   background-color:rgb(248, 226, 26);
-  border-color: #D5D9D9;
-  border-width: 1px;
-  border-radius: 10px;
+  border-color: transparent;
+  /* border-width: 1px; */
+  border-radius: 20px;
   font-family: Lato, sans-serif;
   display: inline;
   width: 40%;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */
+  box-shadow: 1px 1px 3px 0.5px rgb(0 0 0 / 10%);
   cursor: pointer;
+}
+
+#rr-select {
+  border-radius: 5px;
+  background-color: #F0F2F2;
+  box-shadow: 1px 1px 3px 0.5px rgb(0 0 0 / 10%);
 }
 
 #page-footer {
@@ -955,4 +962,10 @@ button {
   text-align: right;
   padding: 15px;
   padding-right: 25px;
+}
+
+#keyword-search {
+  border-radius: 5px;
+  border-width: 1px;
+  padding: 5px;
 }

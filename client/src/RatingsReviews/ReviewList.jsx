@@ -174,7 +174,7 @@ class ReviewList extends React.Component {
       return (
         <div id={"review-list"}>
           <span>Keyword Search: </span>
-          <input type="text" placeholder="Type 3+ characters to start filtering reviews" size="40" value={this.state.searchTerm} onChange={this.handleKeywordSearch}/>
+          <input id="keyword-search" type="text" placeholder="Type 3+ characters to start filtering reviews" size="40" value={this.state.searchTerm} onChange={this.handleKeywordSearch}/>
           <SortOptions changeSort={this.changeSort} count={this.state.allReviews.length}/>
           <div id="review-tile-container">
             {this.state.displayedReviews.map(review => {
