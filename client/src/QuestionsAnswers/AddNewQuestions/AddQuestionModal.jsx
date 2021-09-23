@@ -55,24 +55,31 @@ class AddAQuestionModal extends React.Component {
             <div className='addQuestion-header'>
               <div></div>
               <h1>Ask Your Question</h1>
-              <h2>About the {this.props.product}</h2>
+              <h2><i className="fas fa-tshirt"></i>About the {this.props.product}</h2>
             </div>
             <form onSubmit={this.newQuestionSubmit.bind(this)}>
-              <label>
-                *Your Question:
-                <textarea type='text' onChange={e => this.setState({question: e.target.value})} maxLength='1000' required></textarea>
-              </label><br />
-              <label>
-                *What is your nickname:
-                <input type='text' onChange={e => this.setState({username: e.target.value})} maxLength='60' placeholder='Example: jackson11!' required></input>
-                “For privacy reasons, do not use your full name or email address”
-              </label><br />
-              <label>
-                *Your email:
-                <input type='email' onChange={e => this.setState({email: e.target.value})} maxLength='60' placeholder='Why did you like the product or not?' required></input>
-                For authentication reasons, you will not be emailed
-              </label><br />
-              <button type='submit'>submit</button>
+              <div className='modal_question'>
+                <label><span className='redstar'>*</span>Your Question:</label>
+                <textarea className='modal_textarea'type='text' onChange={e => this.setState({question: e.target.value})} maxLength='1000' required></textarea>
+              </div>
+              <div className='modal_nickname'>
+                <label><span className='redstar'>*</span>Your nickname:</label>
+                <div>
+                  <input className='modal_input' type='text' onChange={e => this.setState({username: e.target.value})} maxLength='60'
+                  placeholder='Example: jackson11!' required></input>
+                  <div className='modal_sub'>“For privacy reasons, do not use your full name or email address”</div>
+                </div>
+              </div>
+              <div className='modal_email'>
+                <label><span className='redstar'>*</span>Your email:</label>
+                <div>
+                  <input className='modal_input' type='email' onChange={e => this.setState({email: e.target.value})} maxLength='60' placeholder='Why did you like the product or not?' required></input>
+                  <div className='modal_sub'>For authentication reasons, you will not be emailed</div>
+                </div>
+              </div>
+              <div className='modal_btn'>
+                <button type='submit'>submit</button>
+              </div>
             </form>
         </div>
       </div>
