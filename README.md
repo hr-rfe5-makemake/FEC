@@ -8,7 +8,6 @@
 2. [Team Members](#Team_Members)
 3. [Usage](#Usage)
 4. [Requirements](#requirements)
-5. [Development](#development)
 6. [Installing Dependencies](#Installing_Dependencies)
 
 ## Description
@@ -24,18 +23,15 @@ Ratings and Reviews: Charles Ewing (https://github.com/charlesewing3)<br/>
 
 ## Usage
 
-> Further details on how the project is meant to be used may be helpful. 
-> For a library or framework, this section would outline how to use the library within another project. 
-> For a service that is meant to be used within a larger project architecture, instructions on how to integrate may be necessary.
+> This Project is meant for use to get familiar with making the front end of a website with several different components and working as a team.
 
 ## Requirements
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
+- An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm)
 - Node 6.13.0 or newer
-- etc
-
-## Development
+- react 17
+- babel
+- webpack
 
 ## Installing Dependencies
 From within the root directory:
