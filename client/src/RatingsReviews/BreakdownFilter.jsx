@@ -18,7 +18,6 @@ class BreakdownFilter extends React.Component {
   getMetaData(product_id) {
     axios.get(`${urlFragment}reviews/meta?product_id=${product_id}`)
     .then(metaData => {
-      console.log(metaData)
       this.setState({
         metaData: metaData
       });

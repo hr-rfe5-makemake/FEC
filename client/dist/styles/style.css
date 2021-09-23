@@ -257,7 +257,6 @@ th, td {
   background: linear-gradient(180deg, rgba(0,70,70,1) 0%, rgba(0,128,128,1) 100%);
 }
 #logo{
-  animation: rotation 8s infinite linear;
   width: 90px;
   height: 90px;
   font-family: Lato, sans-serif;
@@ -268,14 +267,6 @@ th, td {
   left: 5%
 }
 
-@keyframes rotation {
-  from {
-    transform: rotate(90deg);
-  }
-  to {
-    transform: rotate(180deg);
-  }
-}
 
 #search{
   position: absolute;
@@ -1249,11 +1240,21 @@ p{
   background: linear-gradient(180deg, rgba(17,100,102,1) 0%, rgba(44,53,49,1) 100%); */
   background: #2C3531;
 }
-button{
+button :not(#addImageBtn){
   background-color: #FFCB9A;
   color: #2C3531;
 }
-button:hover{
+
+#addImageBtn {
+    border-radius: 5px;
+    background-color: #F0F2F2;
+    box-shadow: 1px 1px 3px 0.5px rgb(0 0 0 / 10%);
+}
+
+#addImageBtn:hover{
+  cursor: pointer;
+}
+button:hover :not(#addImageBtn){
   background-color: #D9B08C;
   color: #D1E8E2;
 }
