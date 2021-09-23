@@ -17,10 +17,10 @@
 
 ## Team Members
 
-Overview: Ye Feng Chen (https://github.com/yespacefeng)
-Related Items & Outfit List: Christopher Hsu (https://github.com/christopherchsu)
-Questions and Reviews: Shavkat Shavkiev (https://github.com/ShavkatShavkiev)
-Ratings and Reviews: Charles Ewing (https://github.com/charlesewing3)
+Overview: Ye Feng Chen (https://github.com/yespacefeng)<br/>
+Related Items & Outfit List: Christopher Hsu (https://github.com/christopherchsu)<br/>
+Questions and Reviews: Shavkat Shavkiev (https://github.com/ShavkatShavkiev)<br/>
+Ratings and Reviews: Charles Ewing (https://github.com/charlesewing3)<br/>
 
 ## Usage
 
