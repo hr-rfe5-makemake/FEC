@@ -1,6 +1,6 @@
 # Front End Capstone
 
-> A brief description outlining what the project is
+> This project is a foray into real development work - building key components of a complex whole and integrating those with the rest of the system. You will be exposed to new technical and project management challenges alongside shifting team dynamics and fewer clear-cut answers.
 
 ## Table of Contents
 
@@ -13,10 +13,14 @@
 
 ## Description
 
-> A more detailed outline of the project. What does it do? Is there a high level list of features? 
-> If describing a project that has visual features, consider adding pictures or animations of the features and functionality in this section. 
+> This project is a foray into real development work - building key components of a complex whole and integrating those with the rest of the system. You will be exposed to new technical and project management challenges alongside shifting team dynamics and fewer clear-cut answers. Our objective is to deliver a fully functional web application that meets the specifications and requirements outlined by project stakeholders. Work together on a single code base by dividing up the work among team members but working collaboratively to produce a single front end application. Integrate your front end with the existing API for the product, and demonstrate your working application at the end of the project timeline.
 
 ## Team Members
+
+> Overview: Ye Feng Chen (https://github.com/yespacefeng)
+> Related Items & Outfit List: Christopher Hsu (https://github.com/christopherchsu)
+> Questions and Reviews: Shavkat Shavkiev (https://github.com/ShavkatShavkiev)
+> Ratings and Reviews: Charles Ewing (https://github.com/charlesewing3)
 
 ## Usage
 
