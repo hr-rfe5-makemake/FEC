@@ -15,34 +15,79 @@ class WriteReviewModal extends React.Component {
       nickname: '',
       email: '',
       photos: [],
-      characteristics: {}
+      characteristics: {},
+      errorsExist: false,
+      errors: [<div id="rr-error-header" className="rr-error">{'Errors:'}</div>]
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleErrors = this.handleErrors.bind(this);
     this.handleCharChange = this.handleCharChange.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
   }
 
-  handleSubmit() {
-    var data = {
-      "product_id": this.props.product_id,
-      "rating": parseInt(this.state.starRating),
-      "summary": this.state.summary,
-      "body": this.state.body,
-      "recommend": Boolean(this.state.recommend),
-      "name": this.state.nickname,
-      "email": this.state.email,
-      "photos": this.state.photos,
-      "characteristics": this.state.characteristics
+  handleErrors() {
+    if (this.state.errors.length === 1) {
+      return null;
+    } else {
+      var errorMessages = [];
+      for (var i = 0; i < this.state.errors.length; i++) {
+        errorMessages.push(this.state.errors[i]);
+      }
+      return <div key={"rr-error-container"} id="rr-error-container">{errorMessages}</div>;
+    }
   }
-    axios.post(`${urlFragment}reviews`, data)
-      .then(data => {
-        this.props.toggleModal();
-        this.props.getAllReviews(this.props.product_id);
-        this.props.timeToReRender();
-        this.props.addComplete();
-      })
-      .catch(err => console.error(err))
+
+  handleSubmit() {
+    this.setState({
+      errors: [<div id="rr-error-header" className="rr-error">{'Errors:'}</div>],
+      errorsExist: false
+    }, () => {
+      var data = {
+        "product_id": this.props.product_id,
+        "rating": parseInt(this.state.starRating),
+        "summary": this.state.summary,
+        "body": this.state.body,
+        "recommend": Boolean(this.state.recommend),
+        "name": this.state.nickname,
+        "email": this.state.email,
+        "photos": this.state.photos,
+        "characteristics": this.state.characteristics
+      }
+
+      // if any mandatory fields are blank
+      if (data.rating === 0 || Object.keys(data.characteristics).length === 0 || data.body === '' || data.name === '' || data.email === '') {
+        this.state.errors.push(<li key="1" className="rr-error" >{'Please complete all mandatory fields'}</li>);
+      }
+
+      // if the review body is < 50 characters
+      if (data.body.length < 50) {
+        this.state.errors.push(<li key="2" className="rr-error" >{'Body does not meet minimum length requirement'}</li>);
+      }
+
+      // if the email address is not in the correct format
+      if (data.email.indexOf('@') === -1) {
+        this.state.errors.push(<li key="3" className="rr-error" >{'Email is not in the proper format'}</li>);
+      }
+
+      // if there are any error messages, update state which renders those messages
+      if (this.state.errors.length > 1) {
+        this.setState({
+          errorsExist: true
+        });
+
+      // otherwise, make the POST request
+      } else {
+        axios.post(`${urlFragment}reviews`, data)
+          .then(data => {
+            this.props.toggleModal();
+            this.props.getAllReviews(this.props.product_id);
+            this.props.timeToReRender();
+            this.props.addComplete();
+          })
+          .catch(err => console.error(err))
+        }
+    })
   }
 
   handleChange(e) {
@@ -166,6 +211,7 @@ class WriteReviewModal extends React.Component {
             </form>
           </div>
           <div className="modal-footer">
+            {this.state.errorsExist ? this.handleErrors() : null}
             <input className={"rr-button"} type="submit" value="Submit Review" name="submit" id="modal-submit" onClick={this.handleSubmit}/>
           </div>
         </div>
