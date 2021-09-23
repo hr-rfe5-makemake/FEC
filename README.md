@@ -5,7 +5,7 @@
 # Table of Contents
 
 1. [Description](#description)
-2. [Team Members](#team_members)
+2. [Team Members](#teamMembers)
 3. [Usage](#usage)
 4. [Requirements](#requirements)
 5. [Generating a GitHub Token](#generating_a_github_token)
