@@ -23,7 +23,7 @@ Ratings and Reviews: Charles Ewing (https://github.com/charlesewing3)<br/>
 
 ## Usage
 
-> This Project is meant for use to get familiar with making the front end of a website with several different components and working as a team.
+> This project is used to get us to be more familiar with developing a front end application using base react, designing the front-end using css, and working as a team with multiple components that needs to communicate and work together for the application work. This application can be used as a basic template for a item's page on a shopping website. 
 
 ## Requirements
 
