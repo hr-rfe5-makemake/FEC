@@ -66,10 +66,10 @@ class App extends React.Component {
     return (
       <div>
         <Header onClick={this.handleSearch.bind(this)}/>
-        <Overview currentItem_ID={this.state.currentItem_ID}/>
-        <RelatedItems changeCurrentProduct={this.changeCurrentProduct} currentItemId={this.state.currentItem_ID} currentItem={this.state.details}/>
-        <QuestionsAnswers product={this.state.details}/>
-        <RatingsReviews product_id={this.state.currentItem_ID}/>
+        <Overview currentItem_ID={this.state.currentItem_ID} />
+        <RelatedItems changeCurrentProduct={this.changeCurrentProduct} currentItemId={this.state.currentItem_ID} currentItem={this.state.details} />
+        <QuestionsAnswers product={this.state.details} />
+        <RatingsReviews product_id={this.state.currentItem_ID} />
         <div id={"page-footer"}>© 2021 MakeMake</div>
       </div>
     )

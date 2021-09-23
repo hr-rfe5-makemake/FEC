@@ -6,7 +6,14 @@ const Header = (props) => (
   <div id="header">
     {/* <div id="logo">MakeMake</div> */}
     <img id="logo" src="./img/MakeMakeLogo(White).png" />
-    <Search onClick={props.onClick}/>
+    <span id='header-items'>
+      <a href='#overview'>Overview</a>
+      <a href='#relatedItems'>Related Items</a>
+      <a href='#questions_answers'>Questions</a>
+      <a href='#rr-container'>Reviews</a>
+      <a>Shavkat The Dev</a>
+      <Search onClick={props.onClick}/>
+    </span>
   </div>
 )
 

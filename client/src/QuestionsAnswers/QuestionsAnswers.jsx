@@ -104,7 +104,7 @@ class QuestionsAnswers extends React.Component {
       }
 
       return(
-        <div className='questions_answers'>
+        <div className='questions_answers' id='questions_answers'>
           <h1>Questions & Answers</h1>
           <SearchQuestion questions={this.state.allQuestions} oldLength={this.state.oldQuestionsRendered} changeRenderArray={this.changeRenderArray.bind(this)}/>
           <AddQuestionModal product={this.props.product.name} product_id={this.props.product.id}/>
