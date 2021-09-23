@@ -66,30 +66,40 @@ class AnswerAQuestionModal extends React.Component{
               <h2><i className="fas fa-tshirt"></i>{this.props.product.name} <i className="fas fa-arrow-right"></i> <i className="fas fa-question-circle"></i>{this.props.question}</h2>
             </div>
             <form onSubmit={this.newAnswerSubmit.bind(this)}>
-              <label>
-                *Your Answer:
-                <textarea type='text' onChange={e => this.setState({answer: e.target.value})} maxLength='1000' required ></textarea>
-              </label><br />
-              <label>
-                *What is your nickname:
-                <input type='text' onChange={e => this.setState({username: e.target.value})} maxLength='60' required placeholder='Example: jackson11!'></input>
-                For privacy reasons, do not use your full name or email address
-              </label><br />
-              <label>
-                *Your email:
-                <input type='email' onChange={e => this.setState({email: e.target.value})} maxLength='60' required placeholder='Example: jack@email.com'></input>
-                For authentication reasons, you will not be emailed
-              </label><br />
-              <label className='upload-pic-label'>
-                  Upload Pictures:
-                  <input onChange={e => this.setState({currentImageLink: e.target.value})} className='imageLink' type='text' placeholder='Link to a image'></input><button type='button' className='addImageButton' onClick={this.addImage.bind(this)}>Add Image</button>
-              </label><br />
-              <div className='user-uploaded-images'>
-                {this.state.photos.map(image => (
-                  <img src={image} height='50px' width='50px'></img>
-                ))}
+              <div className='modal_question'>
+                <label><span className='redstar'>*</span>Your Answer:</label>
+                  <textarea className='modal_textarea' type='text' onChange={e => this.setState({answer: e.target.value})} maxLength='1000' required >
+                </textarea>
               </div>
-              <button type='submit'>Submit Question</button>
+              <div className='modal_nickname'>
+                <label><span className='redstar'>*</span>What is your nickname:</label>
+                  <div>
+                    <input className='modal_input' type='text' onChange={e => this.setState({username: e.target.value})} maxLength='60' required placeholder='Example: jackson11!'></input>
+                    <div className='modal_sub'>For privacy reasons, do not use your full name or email address</div>
+                  </div>
+              </div>
+              <div className='modal_email'>
+                <label><span className='redstar'>*</span>Your email:</label>
+                  <div>
+                    <input className='modal_input' type='email' onChange={e => this.setState({email: e.target.value})} maxLength='60' required placeholder='Example: jack@email.com'></input>
+                    <div className='modal_sub'>For authentication reasons, you will not be emailed</div>
+                  </div>
+              </div>
+              <div className='modal_email'>
+                <label className='upload-pic-label'>Upload Pictures:</label>
+                  <div>
+                    <input onChange={e => this.setState({currentImageLink: e.target.value})} className='modal_input' type='text' placeholder='Link to a image'></input>
+                    <button type='button' className='addImageButton' onClick={this.addImage.bind(this)}>Add Image</button>
+                  </div>
+                  <div className='user-uploaded-images'>
+                    {this.state.photos.map(image => (
+                      <img src={image} height='100px' width='100px'></img>
+                    ))}
+                  </div>
+              </div>
+              <div className='modal_btn'>
+                <button type='submit'>Submit Question</button>
+              </div>
             </form>
 
         </div>
