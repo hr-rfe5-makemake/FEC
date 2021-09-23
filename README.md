@@ -40,8 +40,7 @@ Ratings and Reviews: Charles Ewing (https://github.com/charlesewing3)<br/>
 1. Go to: https://github.com/settings/tokens
 2. Click Generate new token
 3. Give the Token a Description (Hackreactor API, or whatever is most descriptive to you)
-4. Under Select Scopes: Select the following: (You may select more for more featuers this API will offer down the road)
-<img width="698" alt="Token Generate" src="https://user-images.githubusercontent.com/68719979/134596603-a5bbb513-9d5b-42b9-a855-a6e67aa65a44.png">
+4. Under Select Scopes: Select the following: (You may select more for more featuers this API will offer down the road) <img width="698" alt="Token Generate" src="https://user-images.githubusercontent.com/68719979/134596603-a5bbb513-9d5b-42b9-a855-a6e67aa65a44.png">
 5. Generate Token
 
 # Installing Dependencies
