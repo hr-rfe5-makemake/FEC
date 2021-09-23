@@ -1,6 +1,6 @@
 # Front End Capstone
 
-> This project is a foray into real development work - building key components of a complex whole and integrating those with the rest of the system. You will be exposed to new technical and project management challenges alongside shifting team dynamics and fewer clear-cut answers.
+> A large front-end e-commerce website.
 
 ## Table of Contents
 
