@@ -8,11 +8,8 @@
 */
 
 #app, body{
-  width: 95%;
   margin: 0 auto;
   font-family: Lato, sans-serif;
-  background: rgb(220,255,248);
-  background: white;
   color: #0F1111;
 }
 
@@ -70,10 +67,14 @@
   position: relative;
   border-radius: 5px;
   height: 95%;
+  cursor: pointer;
+}
+
+.productCard:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.20);
 }
 
 .addOutfitCard {
-
   flex-basis: 30%;
   border: solid;
   position: relative;
@@ -84,6 +85,11 @@
   border-radius: 5px;
   height: 95%;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.addOutfitCard:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.20);
 }
 
 .addOutfitIcon {
@@ -253,8 +259,8 @@ th, td {
   margin-top: 6px;
   margin-left: 15px;
   font-size: 48px;
-  font-style: italic;
-  text-decoration: underline;
+  position: absolute;
+  left: 5%
 }
 
 @keyframes rotation {
@@ -275,12 +281,13 @@ th, td {
   background: transparent;
   border: none;
   border-bottom: 2px solid #000000;
-  opacity: .75;
+}
+::placeholder{
+  color: #D1E8E2;
 }
 #search-btn:hover{
   opacity: 0.5;
 }
-
 
 
 /* Overview */
@@ -509,6 +516,12 @@ dialog{
 #add-to-cart-btn{
   width: 100%;
   margin: 0;
+  border: none;
+  outline: none;
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: 0 5px 15px rgb(0 0 0 / 20%);
+  border-radius: 5px;
 }
 #product-overview{
   display: grid;
@@ -517,6 +530,10 @@ dialog{
 }
 #description{
   border-right: 2px solid black;
+  font-size: 18px;
+}
+#slogan{
+  font-weight: 700;
 }
 #product-features{
   list-style: none;
@@ -829,8 +846,8 @@ button {
   z-index: 2;
   position: absolute;
   top: 100px;
-  left: 140px;
-  right: 140px;
+  left: 33%;
+  right: 33%;
   bottom: 100px;
   border: 1px solid #ccc;
   background: #fff;
@@ -939,6 +956,7 @@ button {
   display: inline;
   word-break: break-all;
   white-space: normal;
+  font-size: larger;
 }
 
 .questionHeader{
@@ -948,6 +966,7 @@ button {
 
 .question_entry{
   list-style-type: none;
+  margin-bottom: 5px;
 }
 
 .question_entry ul li{
@@ -1001,9 +1020,8 @@ button {
 }
 
 .question_Rating{
-  margin-right: 2px;
   color: grey;
-  min-width: 24%;
+  min-width: 19.5%;
 }
 
 .question_Rating u:hover{
@@ -1193,4 +1211,80 @@ button {
   border-radius: 5px;
   border-width: 1px;
   padding: 5px;
+}
+
+
+/* CSS for the page */
+body, #app{
+  /* background: rgba(209, 232, 226, .5); */
+  background: #F8FCFB;
+  /* background: black; */
+  color: #116466;
+  /* background: rgb(17,100,102);
+  background: radial-gradient(circle, rgba(17,100,102,1) 00%, rgba(44,53,49,1) 100%); */
+}
+p{
+  color: #116466;
+}
+#overview,
+.relatedItemsComponent,
+.questions_answers,
+#rr-container{
+  width: 90%;
+  margin: 0 auto;
+
+}
+#header{
+  /* background: rgb(17,100,102);
+  background: linear-gradient(0deg, rgba(17,100,102,1) 0%, rgba(44,53,49,1) 100%); */
+  background: #2C3531;
+}
+#page-footer{
+  /* background: rgb(17,100,102);
+  background: linear-gradient(180deg, rgba(17,100,102,1) 0%, rgba(44,53,49,1) 100%); */
+  background: #2C3531;
+}
+button{
+  background-color: #FFCB9A;
+  color: #2C3531;
+}
+button:hover{
+  background-color: #D9B08C;
+  color: #D1E8E2;
+}
+.main_buttons button{
+  background-color: #FFCB9A;
+  color: #2C3531
+}
+.main_buttons button:hover{
+  background-color: #D9B08C;
+  color: #D1E8E2
+}
+.question_Rating, .answerer_details, .individual-tile{
+  color: #116466;
+}
+.tile-body{
+  color: #2C3531;
+}
+.verified{
+  color: #2C3531;
+  letter-spacing: 2px;
+  font-weight: 900;
+}
+.rr-button{
+  background-color: #FFCB9A;
+  color: #2C3531;
+}
+.rr-button:hover{
+  background-color: #D9B08C;
+  color: #D1E8E2;
+}
+select, .searchbar-div, #keyword-search,
+select::placeholder, .searchbar-div input::placeholder, #keyword-search::placeholder{
+  color: #2C3531;
+}
+
+
+.action:hover {
+  background-color: transparent;
 }

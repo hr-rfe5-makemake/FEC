@@ -1,6 +1,6 @@
-import TOKEN from ('../config.js');
+// import TOKEN from ('../config.js');
 
-// const TOKEN = AWS_SESSION_TOKEN;
+const TOKEN = AWS_SESSION_TOKEN;
 
 var apiGet = function(method, endpoint, callback) {
   var options = {
