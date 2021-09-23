@@ -28,7 +28,6 @@ Ratings and Reviews: Charles Ewing (https://github.com/charlesewing3)<br/>
 
 # Requirements
 
-- An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm)
 - Node 6.13.0 or newer
 - react 17
 - babel (https://babeljs.io/docs/en/babel-preset-react)
