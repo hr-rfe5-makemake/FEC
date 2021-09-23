@@ -788,8 +788,11 @@ button {
   overflow-y: scroll;
 }
 
-.modal-header, .modal-footer {
+.modal-header {
   padding: 20px;
+}
+.modal-footer {
+  padding: 10px 20px 20px 20px;
 }
 
 .modal-title, .modal-subtitle {
@@ -1385,4 +1388,17 @@ select::placeholder, .searchbar-div input::placeholder, #keyword-search::placeho
 
 .action:hover {
   background-color: transparent;
+}
+
+.rr-error {
+  color:red;
+  font-weight: bold;
+}
+
+#rr-error-container {
+  padding-bottom: 15px;
+}
+
+#rr-error-header {
+  padding-bottom: 10px;
 }
