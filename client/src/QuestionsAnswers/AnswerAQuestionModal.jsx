@@ -73,18 +73,24 @@ class AnswerAQuestionModal extends React.Component{
               </div>
               <div className='modal_nickname'>
                 <label><span className='redstar'>*</span>What is your nickname:</label>
-                  <input className='modal_input' type='text' onChange={e => this.setState({username: e.target.value})} maxLength='60' required placeholder='Example: jackson11!'></input>
-                <div className='modal_sub'>For privacy reasons, do not use your full name or email address</div>
+                  <div>
+                    <input className='modal_input' type='text' onChange={e => this.setState({username: e.target.value})} maxLength='60' required placeholder='Example: jackson11!'></input>
+                    <div className='modal_sub'>For privacy reasons, do not use your full name or email address</div>
+                  </div>
               </div>
               <div className='modal_email'>
                 <label><span className='redstar'>*</span>Your email:</label>
-                  <input className='modal_input' type='email' onChange={e => this.setState({email: e.target.value})} maxLength='60' required placeholder='Example: jack@email.com'></input>
-                <div className='modal_sub'>For authentication reasons, you will not be emailed</div>
+                  <div>
+                    <input className='modal_input' type='email' onChange={e => this.setState({email: e.target.value})} maxLength='60' required placeholder='Example: jack@email.com'></input>
+                    <div className='modal_sub'>For authentication reasons, you will not be emailed</div>
+                  </div>
               </div>
-              <div>
+              <div className='modal_email'>
                 <label className='upload-pic-label'>Upload Pictures:</label>
-                    <input onChange={e => this.setState({currentImageLink: e.target.value})} className='imageLink' type='text' placeholder='Link to a image'></input>
-                <button type='button' className='addImageButton' onClick={this.addImage.bind(this)}>Add Image</button>
+                  <div>
+                    <input onChange={e => this.setState({currentImageLink: e.target.value})} className='modal_input' type='text' placeholder='Link to a image'></input>
+                    <button type='button' className='addImageButton' onClick={this.addImage.bind(this)}>Add Image</button>
+                  </div>
                   <div className='user-uploaded-images'>
                     {this.state.photos.map(image => (
                       <img src={image} height='100px' width='100px'></img>

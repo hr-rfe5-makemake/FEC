@@ -895,6 +895,24 @@ button {
   margin-top: 8vh;
 }
 
+
+.addImageButton{
+  border: none;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  color: black;
+  font-weight: 500;
+  font-size: 12px;
+  background-color: #FFCB9A;
+  width: max-content;
+  padding: 10px 40px;
+  box-shadow: 0 5px 15px rgb(0 0 0 / 20%);
+  border-radius: 5px;
+}
+
 .modal_btn button{
   border: none;
   display: block;

@@ -55,7 +55,7 @@ class AddAQuestionModal extends React.Component {
             <div className='addQuestion-header'>
               <div></div>
               <h1>Ask Your Question</h1>
-              <h2>About the {this.props.product}</h2>
+              <h2><i className="fas fa-tshirt"></i>About the {this.props.product}</h2>
             </div>
             <form onSubmit={this.newQuestionSubmit.bind(this)}>
               <div className='modal_question'>
