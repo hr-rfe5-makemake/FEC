@@ -246,6 +246,7 @@ th, td {
   background: linear-gradient(180deg, rgba(0,70,70,1) 0%, rgba(0,128,128,1) 100%);
 }
 #logo{
+  animation: rotation 8s infinite linear;
   width: 90px;
   height: 90px;
   font-family: Lato, sans-serif;
@@ -254,6 +255,15 @@ th, td {
   font-size: 48px;
   font-style: italic;
   text-decoration: underline;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
 }
 
 #search{
@@ -988,7 +998,6 @@ button {
   overflow-y: scroll;
   max-height: 65vh;
   width: 100%;
-  scrollbar-color: red yellow;
 }
 
 .question_Rating{
