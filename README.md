@@ -5,11 +5,11 @@
 # Table of Contents
 
 1. [Description](#description)
-2. [Team Members](#team_members)
-3. [Usage](#rsage)
+2. [Team Members](#teammembers)
+3. [Usage](#usage)
 4. [Requirements](#requirements)
 5. [Generating a GitHub Token](#generating_a_github_token)
-6. [Installing Dependencies](#installing_dependencies)
+6. [Installing Dependencies](#installingdependencies)
 
 # Description
 
