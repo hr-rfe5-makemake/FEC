@@ -518,6 +518,7 @@ dialog{
   font-size: 15px;
   box-shadow: 0 5px 15px rgb(0 0 0 / 20%);
   border-radius: 5px;
+
 }
 #product-overview{
   display: grid;
@@ -1240,9 +1241,13 @@ p{
   background: linear-gradient(180deg, rgba(17,100,102,1) 0%, rgba(44,53,49,1) 100%); */
   background: #2C3531;
 }
-button :not(#addImageBtn){
+button{
   background-color: #FFCB9A;
   color: #2C3531;
+}
+button:hover{
+  background-color: #D9B08C;
+  color: #D1E8E2;
 }
 
 #addImageBtn {
@@ -1253,18 +1258,15 @@ button :not(#addImageBtn){
 
 #addImageBtn:hover{
   cursor: pointer;
-}
-button:hover :not(#addImageBtn){
-  background-color: #D9B08C;
-  color: #D1E8E2;
+  color: #2C3531;
 }
 .main_buttons button{
   background-color: #FFCB9A;
-  color: #2C3531
+  color: #2C3531;
 }
 .main_buttons button:hover{
   background-color: #D9B08C;
-  color: #D1E8E2
+  color: #D1E8E2;
 }
 .question_Rating, .answerer_details, .individual-tile{
   color: #116466;
@@ -1289,7 +1291,6 @@ select, .searchbar-div, #keyword-search,
 select::placeholder, .searchbar-div input::placeholder, #keyword-search::placeholder{
   color: #2C3531;
 }
-
 
 .action:hover {
   background-color: transparent;
