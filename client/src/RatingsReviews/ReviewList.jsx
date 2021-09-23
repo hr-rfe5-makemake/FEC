@@ -169,7 +169,12 @@ class ReviewList extends React.Component {
     )}
 
     if (!this.state.reviewsExist) {
-      return addReviewElements;
+      return (
+        <div>
+          {this.state.notSubmitted ? <button className={"rr-button"} onClick={this.toggleModal}>Write a customer review</button> : null}
+          {addReviewElements}
+        </div>
+      )
     } else {
       return (
         <div id={"review-list"}>

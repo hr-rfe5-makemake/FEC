@@ -267,6 +267,7 @@ th, td {
   left: 5%
 }
 
+
 #search{
   position: absolute;
   right: 10px;
@@ -1012,7 +1013,6 @@ button {
   overflow-y: scroll;
   max-height: 65vh;
   width: 100%;
-  scrollbar-color: red yellow;
 }
 
 .question_Rating{
@@ -1240,11 +1240,21 @@ p{
   background: linear-gradient(180deg, rgba(17,100,102,1) 0%, rgba(44,53,49,1) 100%); */
   background: #2C3531;
 }
-button{
+button :not(#addImageBtn){
   background-color: #FFCB9A;
   color: #2C3531;
 }
-button:hover{
+
+#addImageBtn {
+    border-radius: 5px;
+    background-color: #F0F2F2;
+    box-shadow: 1px 1px 3px 0.5px rgb(0 0 0 / 10%);
+}
+
+#addImageBtn:hover{
+  cursor: pointer;
+}
+button:hover :not(#addImageBtn){
   background-color: #D9B08C;
   color: #D1E8E2;
 }
