@@ -104,6 +104,11 @@
 
 .borderless {
   border: none;
+  cursor: auto;
+}
+
+.borderless:hover {
+  box-shadow: none;
 }
 
 .productImage {
