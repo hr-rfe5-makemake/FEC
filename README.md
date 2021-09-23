@@ -5,11 +5,11 @@
 ## Table of Contents
 
 1. [Description](#Description)
-2. [Team Members](#Team Members)
+2. [Team Members](#Team_Members)
 3. [Usage](#Usage)
 4. [Requirements](#requirements)
 5. [Development](#development)
-6. [Installing Dependencies](#Installing Dependencies)
+6. [Installing Dependencies](#Installing_Dependencies)
 
 ## Description
 
