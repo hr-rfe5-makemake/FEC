@@ -344,7 +344,7 @@ dialog{
   padding: 0;
   background-color: rgba(0, 0, 0, .5);
   box-shadow: 0 8px 6px -6px black;
-  position: absolute;
+  position: fixed;
   top: 0;
   max-width: 100%;
   min-width: 100%;
