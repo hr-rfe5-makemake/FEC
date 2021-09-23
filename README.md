@@ -8,7 +8,7 @@
 2. [Team Members](#Team_Members)
 3. [Usage](#Usage)
 4. [Requirements](#requirements)
-6. [Installing Dependencies](#Installing_Dependencies)
+5. [Installing Dependencies](#Installing_Dependencies)
 
 ## Description
 
@@ -35,4 +35,22 @@ Ratings and Reviews: Charles Ewing (https://github.com/charlesewing3)<br/>
 
 ## Installing Dependencies
 From within the root directory:
-
+- @fortawesome/fontawesome-svg-core: ^1.2.36
+- @fortawesome/free-solid-svg-icons: ^5.15.4
+- @fortawesome/react-fontawesome: ^0.1.15
+- @wojtekmaj/enzyme-adapter-react-17: ^0.6.3
+- axios: ^0.21.1
+- chai: ^4.3.4
+- dataformat: ^1.0.0
+- dateformat: ^4.5.1
+- enzyme: ^3.11.0
+- express: ^4.17.1
+- express-http-proxy: ^1.6.2
+- jest: ^27.2.1
+- morgan: ^1.10.0
+- nodemon: ^2.0.12
+- path: ^0.12.7
+- react: ^17.0.2
+- react-dom: ^17.0.2
+- sinon: ^11.1.2
+- underscore: ^1.13.1"
