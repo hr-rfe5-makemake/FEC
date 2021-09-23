@@ -3,11 +3,11 @@ const express = require('express');
 const port = process.env.PORT || 3000;
 // const router = require('./routes.js');
 const morgan = require('morgan');
-// const TOKEN = require('../config.js');
+const TOKEN = require('../config.js');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 var proxy = require('express-http-proxy');
 
-const TOKEN = AWS_SESSION_TOKEN;
+// const TOKEN = AWS_SESSION_TOKEN;
 
 const app = express()
 app.use(express.json());
