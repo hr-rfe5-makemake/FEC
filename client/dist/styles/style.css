@@ -227,6 +227,21 @@ th, td {
   color: #aaa;
 }
 
+#header-items{
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#header-items a{
+  color: #FFCB9A;
+  font-size: larger;
+  margin: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
 .hide {
   visibility:hidden;
 }
@@ -249,7 +264,7 @@ th, td {
 #header{
   height: 100px;
   display: grid;
-  grid-template-columns: 15% 85%;
+  grid-template-columns: 1fr 2fr 1fr;
   position: relative;
   margin-top: 0;
   margin-bottom: 25px;
@@ -824,7 +839,7 @@ button {
 */
 
 .questions_answers{
-  max-width: 80%;
+  margin-bottom: 10vh;
 }
 
 /* Modals */
@@ -1012,11 +1027,11 @@ button {
 }
 
 .searchbar-div{
-  margin-left: 3%;
+  margin-left: 2%;
   display: flex;
   align-items: center;
   position: relative;
-  width: 100%;
+  width: 95.4%;
 }
 
 .searchQuestion_Input{
@@ -1323,7 +1338,7 @@ p{
 #rr-container{
   width: 90%;
   margin: 0 auto;
-
+  margin-bottom: 10vh;
 }
 #header{
   /* background: rgb(17,100,102);

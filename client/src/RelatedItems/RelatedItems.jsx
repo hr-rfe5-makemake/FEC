@@ -79,7 +79,7 @@ class RelatedItems extends React.Component {
   render() {
     if (this.state.fetched) {
       return (
-        <div className='relatedItemsComponent'>
+        <div className='relatedItemsComponent' id='relatedItems'>
         <div className="overlay" style={{display: this.state.overlay ? 'block' : 'none'}}></div>
         <div className='carouselList'>
           <h1 className='componentHeader'>Related Products</h1>
