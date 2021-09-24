@@ -28,6 +28,7 @@ class Overview extends React.Component {
       currentImageIndex: 0,
       isOpen: false,
       isZoomed: false,
+      sizeSelected: true,
       style: {}
     }
   }
@@ -177,6 +178,16 @@ class Overview extends React.Component {
   }
 
   onAddToCart() {
+    if (!this.state.sku) {
+      this.setState({
+        sizeSelected: false
+      })
+      return;
+    } else {
+      this.setState({
+        sizeSelected: true
+      })
+    }
     for (let i = 0; i < this.state.quantity; i++) {
       axios.post(`${url}/cart`, {sku_id: this.state.sku})
         .then(() => {
@@ -261,6 +272,7 @@ class Overview extends React.Component {
               styles={this.state.styles}
               currentStyle={this.state.currentStyle}
               onClick={this.onClickStyle.bind(this)}/>
+            {!this.state.sizeSelected && <h5 id="please-select-size">Please Select a Size</h5>}
             <AddToCart
               hide={this.state.hide}
               sku={this.state.sku}
