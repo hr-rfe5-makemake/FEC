@@ -9,9 +9,8 @@ const Header = (props) => (
     <span id='header-items'>
       <a href='#overview'>Overview</a>
       <a href='#relatedItems'>Related Items</a>
-      <a href='#questions_answers'>Questions</a>
+      <a href='#questions_answers'>Questions & Answers</a>
       <a href='#rr-container'>Reviews</a>
-      <a>Shavkat The Dev</a>
       <Search onClick={props.onClick}/>
     </span>
   </div>
