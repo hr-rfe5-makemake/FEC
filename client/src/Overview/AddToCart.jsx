@@ -56,9 +56,7 @@ const AddToCart = (props) => {
           <GetQuantity skus={props.currentStyle.skus} currentSku={props.sku}/>
         </select>
         <button id="add-to-cart-btn"
-          onClick={() => {
-            props.sku ? () => {props.onClick()} : null;
-          }}
+          onClick={() => { props.onClick(); }}
           hidden={!stock}>
           Add To Cart
         </button>

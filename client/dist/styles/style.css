@@ -539,6 +539,11 @@ dialog{
   left: -5px;
   opacity: .50;
 }
+#please-select-size{
+  margin: 0;
+  font-size: 14px;
+  color: red;
+}
 #add-to-cart{
   height: 103px;
   display: grid;
