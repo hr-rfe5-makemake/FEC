@@ -248,18 +248,17 @@ th, td {
   align-items: center;
   justify-content: center;
 }
-#footer-items a{
+#footer-items div{
   color: #FFCB9A;
   font-size: larger;
   margin: 10px;
   margin-left: 20px;
   margin-right: 20px;
-  cursor: pointer;
   margin-left: 10px;
   margin-right: 10px;
 }
 
-#footer-items a i{
+#footer-items div i{
   margin-left: 5px;
   margin-right: 5px;
   color: white;
