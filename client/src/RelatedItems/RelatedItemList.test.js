@@ -7,6 +7,5 @@ import RelatedItems from './RelatedItems';
 describe('component', ()=>{
   it('renders three <Product Card />', () => {
     const wrapper = shallow(<RelatedItems />);
-    console.log(wrapper.state());
   });
 });
