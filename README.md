@@ -51,7 +51,7 @@ Ratings and Reviews: Charles Ewing (https://github.com/charlesewing3)<br/>
 
 # Setting Up Repository on Local Machine
 - [ ] `vim config.js` to create a config file
-- [ ] `module.exports = {TOKEN: GITHUBTOKEN, IMGBB: IMGBBTOKEN}` to initialize authorization tokens
+- [ ] `module.exports = {TOKEN: GITHUBTOKEN, IMGBB: IMGBBTOKEN}` to initialize authorization tokens in config.js
 - [ ] `npm install`
 - [ ] `npm run build` to run the pre-configured webpack
 - [ ] `npm start` to run the json-server
