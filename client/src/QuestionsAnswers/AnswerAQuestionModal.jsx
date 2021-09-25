@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
+import config from '/config.js'
 
 class AnswerAQuestionModal extends React.Component{
   constructor(props){
@@ -11,7 +12,8 @@ class AnswerAQuestionModal extends React.Component{
       username: '',
       email: '',
       photos: [],
-      currentImageLink: ''
+      currentImageLink: '',
+      showButton: true,
     }
   }
 
@@ -34,20 +36,24 @@ class AnswerAQuestionModal extends React.Component{
     }
   }
 
-  addImage(){
-    if(this.state.photos.length === 4){
-      this.setState({
-        photos: [...this.state.photos, this.state.currentImageLink]
-      })
-      document.querySelector('.addImageButton').style.display = 'none'
-      document.querySelector('.imageLink').style.display = 'none'
-      document.querySelector('.upload-pic-label').innerText = 'You uploaded 5 images'
-    } else {
-      this.setState({
-        photos: [...this.state.photos, this.state.currentImageLink]
-      })
-      document.querySelector('.imageLink').value = ''
-    }
+  addImage(event){
+    let body = new FormData()
+    body.set('key', config.IMGBB)
+    body.set('image', event.target.files[0])
+    axios.post('https://api.imgbb.com/1/upload', body)
+    .then(response => {
+      console.log(response.data.data.image.url)
+      if(this.state.photos.length === 4){
+        this.setState({
+          photos: [...this.state.photos, response.data.data.image.url],
+          showButton: false
+        })
+      } else {
+        this.setState({
+          photos: [...this.state.photos, response.data.data.image.url]
+        })
+      }
+    })
   }
 
   handleBackgroundClick(event){
@@ -56,7 +62,13 @@ class AnswerAQuestionModal extends React.Component{
     }
   }
 
+
   render() {
+    const addImageStyle = {
+      display: this.state.showButton ? 'block': 'none'
+    }
+
+
     return(
       <div className='modalBackground answerQuestionBackGround' onClick={this.handleBackgroundClick.bind(this)}>
         <div className="modalContent answerQuestionContent">
@@ -85,11 +97,10 @@ class AnswerAQuestionModal extends React.Component{
                     <div className='modal_sub'>For authentication reasons, you will not be emailed</div>
                   </div>
               </div>
-              <div className='modal_email'>
-                <label className='upload-pic-label'>Upload Pictures:</label>
+              <div className='modal_photos'>
+                <label className='upload-pic-label'>{this.state.showButton? 'Upload Pictures' : 'You uploaded 5 images'}</label>
                   <div>
-                    <input onChange={e => this.setState({currentImageLink: e.target.value})} className='modal_input' type='text' placeholder='Link to a image'></input>
-                    <button type='button' className='addImageButton' onClick={this.addImage.bind(this)}>Add Image</button>
+                    <input onChange={this.addImage.bind(this)} className='modal_input' type='file' placeholder='Link to a image' style={addImageStyle}></input>
                   </div>
                   <div className='user-uploaded-images'>
                     {this.state.photos.map(image => (

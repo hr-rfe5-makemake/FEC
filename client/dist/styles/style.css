@@ -264,6 +264,10 @@ th, td {
   color: white;
 }
 
+#footer-items div i:hover{
+  color: teal;
+}
+
 .hide {
   visibility:hidden;
 }
@@ -916,7 +920,7 @@ button {
 .modal_textarea{
   width: 80%;
   height: 10vh;
-  font-size: medium;
+  font-size: large;
 }
 
 .modal_nickname{
@@ -949,6 +953,22 @@ button {
   font-size: larger;
 }
 
+.modal_photos{
+  display: grid;
+  grid-template-columns: 1.5fr 2.5fr;
+}
+
+.modal_photos label{
+  font-size: larger;
+}
+
+.modal_photos div{
+  grid-column: 2;
+}
+
+#user-uploaded-images{
+  grid-column: 1/span2;
+}
 
 .modal_btn {
   display: flex;
@@ -1149,7 +1169,6 @@ button {
 .questionsList{
   overflow-y: scroll;
   max-height: 65vh;
-  width: 100%;
 }
 
 .question_Rating{
