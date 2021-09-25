@@ -1,7 +1,8 @@
 import React from 'react';
 import sinon from 'sinon';
+import { render } from '@testing-library/react';
 import { expect } from 'chai';
-import enzyme from 'enzyme';
+import { shallow } from 'enzyme';
 
 import Overview from './Overview.jsx';
 
@@ -10,11 +11,9 @@ describe('Overview', () => {
     expect(React.Component.isPrototypeOf(Overview)).to.be.true;
   });
 
-  it('Shoule work with async functions', () => {
-    const wrap = enzyme.shallow(<Overview />);
-    setTimeout(() => {
-      wrap.update();
-      expect(wrap).toEqual('Camo Onesie');
-    }, 600)
+  it('Jest Testing (Get it?)', () => {
+    const { getByText } = render(<Overview />);
+    const linkElement = getByText("Read all");
+    expect(linkElement).toBeInTheDocument();
   })
 })
