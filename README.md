@@ -10,7 +10,8 @@
 4. [Requirements](#requirements)
 5. [Generating a GitHub Token](#generating-a-github-token)
 6. [Generating an IMGBB Token](#generating-an-IMGBB-token)
-7. [Installing Dependencies](#installing-dependencies)
+7. [Setting Up Repository on Local Machine](#setting-up-repository-on-local-machine)
+8. [Installing Dependencies](#installing-dependencies)
 
 # Description
 
@@ -47,6 +48,9 @@ Ratings and Reviews: Charles Ewing (https://github.com/charlesewing3)<br/>
 # Generating an IMGBB Token
 1. Sign up for IMGBB account
 2. Request for a token
+
+# Setting Up Repository on Local Machine
+1.
 
 # Installing Dependencies
 From within the root directory:
