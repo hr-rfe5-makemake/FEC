@@ -354,5 +354,5 @@ MigrationBackup/
 
 
 # Our config file:
-build/dist/bundle.js
+client/dist/bundle.js
 config.js
