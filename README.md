@@ -50,7 +50,11 @@ Ratings and Reviews: Charles Ewing (https://github.com/charlesewing3)<br/>
 2. Request for a token
 
 # Setting Up Repository on Local Machine
-1.
+- [ ] `vim config.js` to create a config file
+- [ ] 
+- [ ] `npm install`
+- [ ] `npm run build` to run the pre-configured webpack
+- [ ] `npm start` to run the json-server
 
 # Installing Dependencies
 From within the root directory:
