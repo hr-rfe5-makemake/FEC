@@ -12,6 +12,7 @@ describe('Overview', () => {
   });
 
   it('Jest Testing (Get it?)', () => {
+    const wrapper = shallow(<App />);
     const { getByText } = render(<Overview />);
     const linkElement = getByText("Read all");
     expect(linkElement).toBeInTheDocument();
