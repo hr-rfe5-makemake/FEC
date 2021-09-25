@@ -14,12 +14,10 @@ class RelatedItemList extends React.Component {
     };
     this.previous = this.previous.bind(this);
     this.next = this.next.bind(this);
-    // this.updateRelated = this.updateRelated.bind(this);
   }
 
   // fetch details of all the related products upon mount
   componentDidMount() {
-    console.log('hello');
     for (var i = 0; i < this.props.relatedList.length; i++) {
       axios
         .get("/api/fec2/hr-rfe/products/" + this.props.relatedList[i])
@@ -84,80 +82,6 @@ class RelatedItemList extends React.Component {
         });
     }
   }
-
-  // fetch detail of all related items of new current item upon update
-  // updateRelated(newId) {
-  //   this.setState({
-  //     fetched: false,
-  //     currentIdx: 0,
-  //   });
-
-  //   // for each of the related items, we want their details
-  //   for (var i = 0; i < this.props.relatedList.length; i++) {
-  //     axios
-  //       .get("/api/fec2/hr-rfe/products/" + this.props.relatedList[i])
-  //       .then((result) => {
-  //         this.setState({
-  //           [result.data.id]: result.data,
-  //         });
-  //         return result.data.id;
-  //       })
-  //       .catch((err) => {
-  //         console.log("failed to get details of related products");
-  //       })
-  //       .then((id) => {
-  //         // get image of each related item
-  //         axios
-  //           .get("/api/fec2/hr-rfe/products/" + id + "/styles")
-  //           .then((result) => {
-  //             var styles = result.data.results;
-  //             // console.log("styles", styles);
-  //             var idx = 0;
-  //             for (var i = 0; i < styles.length; i++) {
-  //               if (styles[i]["default?"] === true) {
-  //                 idx = i;
-  //               }
-  //             }
-  //             var newState = this.state[result.data.product_id];
-  //             newState.img = styles[idx].photos[0].thumbnail_url;
-  //             newState.sale_price = styles[idx].sale_price;
-  //             newState.original_price = styles[idx].original_price;
-  //             this.setState({
-  //               [result.data.product_id]: newState,
-  //             });
-  //           })
-  //           .catch((err) => {
-  //             console.log("failed to get image");
-  //           });
-  //         // get the ratings of each related item
-  //         axios
-  //           .get("/api/fec2/hr-rfe/reviews/meta?product_id=" + id)
-  //           .then((result) => {
-  //             if (Object.keys(result.data.ratings).length > 0) {
-  //               var totalCount = 0;
-  //               var totalRatings = 0;
-  //               for (var key in result.data.ratings) {
-  //                 totalRatings += parseInt(result.data.ratings[key]) * key;
-  //                 totalCount += parseInt(result.data.ratings[key]);
-  //               }
-  //               var avgRating = totalRatings / totalCount;
-  //               var newState = this.state[result.data.product_id];
-  //               newState.rating = avgRating;
-  //               this.setState({
-  //                 [result.data.product_id]: newState,
-  //               });
-  //             }
-  //             this.setState({
-  //               fetched: true,
-  //             });
-  //             return result.data.product_id;
-  //           })
-  //           .catch((err) => {
-  //             console.log("failed to fetch ratings");
-  //           });
-  //       });
-  //   }
-  // }
 
   // decrement currentIdx by 1 when previous button is clicked
   previous(event) {
