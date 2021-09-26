@@ -1,5 +1,6 @@
 import React from 'react';
 
+// create the drop down list that sorts reviews by relevance, newest, or helpful
 function SortOptions({changeSort, count}) {
   return (
     <div id="sort-options">{count} reviews, sorted by{' '}

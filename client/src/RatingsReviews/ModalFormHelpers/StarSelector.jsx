@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Create and return the clickable star input for overall rating on the "Add a Review" modal form
 function StarSelector({starRating, handleChange}) {
   var stars = [];
   var starText = {

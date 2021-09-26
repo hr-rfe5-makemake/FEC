@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Create and return the characteristic rating bars on the left side of the page
+// The number of characteristics varies depending on the product.
 function FactorBreakdown({metaData}) {
   if (!Array.isArray(metaData)) {
     var characteristics = metaData.data.characteristics;
