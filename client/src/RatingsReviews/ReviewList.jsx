@@ -31,6 +31,7 @@ class ReviewList extends React.Component {
     this.handleKeywordSearch = this.handleKeywordSearch.bind(this);
   }
 
+  // Get all reviews from the API and store them in an array in state. Also store the first two reviews in the displayedReviews array.
   getAllReviews(product_id, callback, page = 1, count = 20) {
     axios.get(`${urlFragment}reviews/?product_id=${product_id}&sort=${this.state.sortOption}&page=${page}&count=${count}`)
       .then(allReviews => {
@@ -60,6 +61,7 @@ class ReviewList extends React.Component {
       .catch(err => console.error(err))
   }
 
+  // Get the product's name (it will appear at top of the "Add a Review" modal form)
   getProductName(product_id) {
     axios.get(`${urlFragment}products/${product_id}`)
       .then(productInfo => {
@@ -70,6 +72,7 @@ class ReviewList extends React.Component {
       .catch(err => console.error(err))
   }
 
+  // Change sort order of reviews when the sort dropdown list is used
   changeSort(e) {
     this.setState({
       sortOption: e.target.value
@@ -78,6 +81,7 @@ class ReviewList extends React.Component {
     });
   }
 
+  // Display two more reviews when the "more reviews" button is clicked
   displayMore() {
     var numDisplayed = this.state.displayedReviews.length;
     var totalNum = this.state.allReviews.length;
@@ -94,21 +98,19 @@ class ReviewList extends React.Component {
     }
   }
 
+  // Make modal appear when "Add a Review" button is clicked, or disappear when "Submit" button is clicked
   toggleModal() {
     this.setState(prevState => ({
       showModal: !prevState.showModal
     }));
   }
 
+  // Get a new batch of reviews
   rerender() {
     this.getAllReviews(this.props.product_id);
   }
 
-  componentDidMount() {
-    this.getAllReviews(this.props.product_id);
-    this.getProductName(this.props.product_id);
-  }
-
+  // Rerender the page when the filters or current product change
   componentDidUpdate(prevProps) {
     if(this.props.filterOptions !== prevProps.filterOptions) {
       this.rerender();
@@ -117,12 +119,20 @@ class ReviewList extends React.Component {
     }
   }
 
+  // Make API calls for reviews and product name when page loads
+  componentDidMount() {
+    this.getAllReviews(this.props.product_id);
+    this.getProductName(this.props.product_id);
+  }
+
+  // Once the "Add a Review" form has been submitted, toggle a state variable so that "Add a Review" button disappears
   addComplete() {
     this.setState({
       notSubmitted: false
     });
   }
 
+  // Store search term in state and display reviews that contain that term in the Username, Summary, or Body
   handleKeywordSearch(e) {
     var prevLength = this.state.searchTerm.length;
     var newLength = e.target.value.length;
@@ -168,6 +178,7 @@ class ReviewList extends React.Component {
       </div>
     )}
 
+    // If the product has no reviews yet, only render the "Add Review" button
     if (!this.state.reviewsExist) {
       return (
         <div>
@@ -175,12 +186,16 @@ class ReviewList extends React.Component {
           {addReviewElements}
         </div>
       )
+    // If the product does have reviews, render the following:
     } else {
       return (
         <div id={"review-list"}>
+
           <span>Keyword Search: </span>
           <input id="keyword-search" type="text" placeholder="Type 3+ characters to start filtering reviews" size="40" value={this.state.searchTerm} onChange={this.handleKeywordSearch}/>
+
           <SortOptions changeSort={this.changeSort} count={this.state.allReviews.length}/>
+
           <div id="review-tile-container">
             {this.state.displayedReviews.map(review => {
               return <IndividualTile
@@ -191,11 +206,14 @@ class ReviewList extends React.Component {
               />
             })}
           </div>
+
           <div id={"rr-button-container"}>
             <MoreReviewsButton displayMore={this.displayMore} allDisplayed={this.state.allDisplayed}/>
             {this.state.notSubmitted ? <button className={"rr-button"} onClick={this.toggleModal}>Write a customer review</button> : null}
           </div>
-            {addReviewElements}
+
+          {addReviewElements}
+
         </div>
       );
     }

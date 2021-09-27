@@ -26,9 +26,12 @@ class WriteReviewModal extends React.Component {
     this.handleImageChange = this.handleImageChange.bind(this);
   }
 
+  // Render error messages, if there are any
   handleErrors() {
+    // If there are no errors, return null
     if (this.state.errors.length === 1) {
       return null;
+    // Otherwise, return a div of error messages
     } else {
       var errorMessages = [];
       for (var i = 0; i < this.state.errors.length; i++) {
@@ -38,7 +41,9 @@ class WriteReviewModal extends React.Component {
     }
   }
 
+  // Check for errors and then make a POST request when the "Add a Review" form is submitted
   handleSubmit() {
+    // reset errors array (it may contain errors from previous incorrect submissions)
     this.setState({
       errors: [<div id="rr-error-header" className="rr-error">{'Errors:'}</div>],
       errorsExist: false
@@ -90,12 +95,15 @@ class WriteReviewModal extends React.Component {
     })
   }
 
+  // When form inputs change, update the corresponding state variables
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value || e.target.alt
     });
   }
 
+  // When a characteristic is rated, store that characteristic's ID and rating in the characteristics object in state.
+  // The POST request requires characteristic data to be stored in this format.
   handleCharChange(e) {
     var charId = e.target.name;
     var charValue = parseInt(e.target.value);
@@ -106,7 +114,9 @@ class WriteReviewModal extends React.Component {
     });
   }
 
+  // Render the "Add Image" input
   addAnImage() {
+    // If there are no images yet, return a message, input field, and add button
     if (!this.state.photos.length) {
       return (
       <div className={"rr-summary-body"}>
@@ -116,6 +126,7 @@ class WriteReviewModal extends React.Component {
           <button id="addImageBtn" onClick={this.handleImageChange}>Add</button>
         </div>
       </div>)
+    // If there are less than 5 images, return a message, input field, add button, and current thumbnails
     } else if (this.state.photos.length < 5) {
       var images = [];
       for (var i = 0; i < this.state.photos.length; i++) {
@@ -130,6 +141,7 @@ class WriteReviewModal extends React.Component {
             <div id="imageContainer" style={{display: "flex", gap: "10px"}}>{images}</div>
           </div>
         </div>)
+    // If 5 images have already been added, return a new message and the 5 thumbnails
     } else {
       var images = [];
       for (var i = 0; i < this.state.photos.length; i++) {
@@ -143,6 +155,7 @@ class WriteReviewModal extends React.Component {
     }
   }
 
+  // When a new image URL is added to the form, push it into the photo array in state
   handleImageChange(e) {
     var input = document.getElementById("image-input")
     var photos = this.state.photos;
@@ -153,6 +166,7 @@ class WriteReviewModal extends React.Component {
   }
 
   render() {
+    // Count the number of characters in the body field and render the appropriate message
     var bodyCounter;
     if (this.state.body.length >= 50) {
       bodyCounter = <div id="bodyCount"><i>Minimum reached</i></div>
@@ -160,9 +174,11 @@ class WriteReviewModal extends React.Component {
       bodyCounter = <div id="bodyCount"><i>Minimum required characters left: {50 - this.state.body.length}</i></div>;
     }
 
+    // Don't show the modal if ReviewList says not to
     if (!this.props.show) {
       return null;
     }
+    // Otherwise, return the modal
     return (
       <div className="modal" onClick={this.props.toggleModal}>
         <div className="modal-content" onClick={e => e.stopPropagation()}>

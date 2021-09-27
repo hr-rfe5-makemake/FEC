@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Return review body element for individual review tile
+// If body contains keyword search term, slice body text into 3 spans: before keyword, keyword (highlighted yellow), after keyword
 function ReviewBody({body, searchTerm}) {
   for (var i = 0; i < body.length; i++) {
     var index = body.toLowerCase().indexOf(searchTerm.toLowerCase());
