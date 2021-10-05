@@ -11,6 +11,7 @@ class Characteristics extends React.Component {
     }
   }
 
+  // Get review metaData and store that in state
   getMetaData(product_id) {
     axios.get(`${urlFragment}reviews/meta?product_id=${product_id}`)
     .then(metaData => {
@@ -23,6 +24,7 @@ class Characteristics extends React.Component {
     .catch(err => console.error(err))
   }
 
+  // This creates the radio-dial inputs for each applicable characteristic on the "Add a Review" modal form
   createInputs() {
     var options = {
       Size: [[1, "A size too small"], [2, "½ a size too small"], [3, "Perfect"], [4, "½ a size too big"], [5, "A size too wide"]],
@@ -40,18 +42,20 @@ class Characteristics extends React.Component {
       var radios = [];
 
       for (var i = 0; i < options[key].length; i++) {
-        radios.push(<span><input type="radio" value={options[key][i][0]} name={chars[key].id} required/>{options[key][i][1]}</span>)
+        radios.push(<span key={key + i}><input type="radio" value={options[key][i][0]} name={chars[key].id} required/>{options[key][i][1]}</span>)
       }
-      charInputs.push(<div key={key} id={`${key}-label`}><b>{key}<span style={{color: "red"}}>*</span>  </b>{radios}</div>);
+      charInputs.push(<div  className={'rr-radio-container'} key={key} id={`${key}-label`}><b>{key}<span style={{color: "red"}}>*</span>  </b><span className="rr-radios">{radios}</span></div>);
     }
 
     return <div id="char-input-container" onChange={this.props.handleCharChange}>{charInputs}</div>;
   }
 
+  // Get metaData when the app loads
   componentDidMount() {
     this.getMetaData(this.props.product_id);
   }
 
+  // Return the radio dial characteristic inputs
   render() {
     if (!this.state.doneMounting) {
       return null;

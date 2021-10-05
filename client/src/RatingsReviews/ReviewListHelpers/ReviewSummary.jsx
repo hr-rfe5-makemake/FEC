@@ -1,5 +1,8 @@
 import React from 'react';
 
+// Return review summary element for individual review tile
+// If summary contains keyword search term, slice summary text into 3 spans: before keyword, keyword (highlighted yellow), after keyword
+// If summary is > 60 characters, include ... and break onto a second line
 function ReviewSummary({summary, searchTerm}) {
 
   for (var i = 0; i < summary.length; i++) {
@@ -11,12 +14,12 @@ function ReviewSummary({summary, searchTerm}) {
 
   if (summary.length > 60) {
     return (
-      <div className="tile-summary">
+      <span className="tile-summary">
         <b>{summary.slice(0, 60)}...</b>
         <div>...{summary.slice(60)}</div>
-      </div>)
+      </span>)
   } else {
-    return <div className="tile-summary"><b>{newSummary || summary}</b></div>
+    return <span className="tile-summary"><b>{newSummary || summary}</b></span>
   }
 }
 

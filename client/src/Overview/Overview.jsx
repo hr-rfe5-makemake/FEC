@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 
-import Header from './Header.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import ExpandedImageGallery from './ExpandedImageGallery.jsx';
 import StarRating from './StarRating.jsx';
@@ -29,9 +28,8 @@ class Overview extends React.Component {
       currentImageIndex: 0,
       isOpen: false,
       isZoomed: false,
-      style: {
-        backgroundPosition: '0 0'
-      }
+      sizeSelected: true,
+      style: {}
     }
   }
 
@@ -45,7 +43,8 @@ class Overview extends React.Component {
       .then(result => {
         this.setState({
           currentItem: result.data,
-          price: result.data.default_price
+          price: result.data.default_price,
+          sku: null
         });
         axios.get(`${url}/products/${id}/styles`)
         .then(result => {
@@ -106,8 +105,6 @@ class Overview extends React.Component {
         currentImageIndex: currentIndex - 1
       });
     }
-    // let element = document.getElementById('selected');
-    // element.scrollIntoView({behavior: "smooth"});
   }
 
   onRightClick() {
@@ -124,8 +121,6 @@ class Overview extends React.Component {
         currentImageIndex: currentIndex + 1
       });
     }
-    // let element = document.getElementById('selected');
-    // element.scrollIntoView({behavior: "smooth"});
   }
 
   onMainImageClick() {
@@ -142,9 +137,17 @@ class Overview extends React.Component {
   }
 
   handleMouseMove(event) {
+    let zoom = 2.5;
     const { left, top, width, height } = event.target.getBoundingClientRect();
-    const x = (left - event.pageX) * 4;
-    const y = (top - event.pageY) * 4;
+    let x;
+    let y;
+    if (height > width) {
+      x = (left - event.pageX) * 4;
+      y = (top - event.pageY) * 4;
+    } else {
+      x = (left - event.pageX + 175) * 4;
+      y = (top - event.pageY + 75) * 4;
+    }
     this.setState({
       style: {
         top: y,
@@ -157,7 +160,8 @@ class Overview extends React.Component {
     this.setState({
       currentStyle: style,
       currentImage: style.photos[0].url,
-      currentStyleImages: style.photos
+      currentStyleImages: style.photos,
+      sku: null
     });
   }
 
@@ -174,6 +178,16 @@ class Overview extends React.Component {
   }
 
   onAddToCart() {
+    if (!this.state.sku) {
+      this.setState({
+        sizeSelected: false
+      })
+      return;
+    } else {
+      this.setState({
+        sizeSelected: true
+      })
+    }
     for (let i = 0; i < this.state.quantity; i++) {
       axios.post(`${url}/cart`, {sku_id: this.state.sku})
         .then(() => {
@@ -199,8 +213,7 @@ class Overview extends React.Component {
       this.apiFetcher();
     }
     return (
-      <div>
-        <Header />
+      <div id="overview">
         <div id="main-overview">
           <div id="main-image-container">
             {!this.state.isOpen && (
@@ -239,7 +252,6 @@ class Overview extends React.Component {
                     <div id="zoom-container">
                       <img id="expanded-img-zoom" src={this.state.currentImage}
                         hidden={!this.state.isOpen}
-                        onClick={this.onZoomClick.bind(this)}
                         style={this.state.style}/>
                     </div>
                   )
@@ -255,12 +267,14 @@ class Overview extends React.Component {
             <h3 id="category">{this.state.currentItem.category}</h3>
             <h1 id="product-name">{this.state.currentItem.name}</h1>
             {this.state.currentStyle.sale_price ? (<h2 id="sale-price" className="price">${this.state.currentStyle.sale_price}</h2>) : (<h2 id="original-price" className="price">${this.state.currentStyle.original_price}</h2>)}
-            <SocialMediaShare id={this.state.currentItem.id}/>
+            <SocialMediaShare currentItem={this.state.currentItem} styles={this.state.currentStyleImages}/>
             <Styles
               styles={this.state.styles}
               currentStyle={this.state.currentStyle}
               onClick={this.onClickStyle.bind(this)}/>
+            {!this.state.sizeSelected && <h5 id="please-select-size">Please Select a Size</h5>}
             <AddToCart
+              hide={this.state.hide}
               sku={this.state.sku}
               quantity={this.state.quantity}
               currentStyle={this.state.currentStyle}
@@ -271,7 +285,8 @@ class Overview extends React.Component {
         </div>
         <ProductOverview
           slogan={this.state.currentItem.slogan}
-          description={this.state.currentItem.description}/>
+          description={this.state.currentItem.description}
+          features={this.state.currentItem.features}/>
       </div>
     );
   }

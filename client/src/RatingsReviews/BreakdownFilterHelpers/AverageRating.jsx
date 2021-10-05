@@ -3,6 +3,7 @@ import Stars from '../Stars.jsx';
 
 function AverageRating({metaData}) {
 
+  // If ratings exist, calculate the average
   if (metaData.data && Object.keys(metaData.data.ratings).length > 0) {
     var allRatings = metaData.data.ratings;
     var ratingSum = 0;
@@ -16,12 +17,15 @@ function AverageRating({metaData}) {
     var avgRating = ratingSum / ratingCount;
 
     avgRating = (Math.round(avgRating * 100) / 100).toFixed(1);
+
+    // Return the big average rating number and star representation
     return (
       <div id="rating-summary">
         <span id="big-rating-summary">{avgRating}</span>
         <Stars rating={avgRating}/>
       </div>
     )
+  // Otherwise, return a "no reviews" message
   } else {
     return (
       <div id="rating-summary">

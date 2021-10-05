@@ -48,19 +48,21 @@ class RelatedItemComparison extends React.Component {
           </a>
         </div>
         <table>
-          <caption>Comparing</caption>
           <tbody>
+          <tr>
+            <td className='tableTitle'>Comparing</td>
+            </tr>
             <tr>
-              <th>{this.props.currentItem.name}</th>
+              <th className='currentItemCell'>{this.props.currentItem.name}</th>
               <th></th>
-              <th>{this.props.comparedItem.name}</th>
+              <th className='comparedItemCell'>{this.props.comparedItem.name}</th>
             </tr>
             {this.combiner().map((feature) => {
               return (
                 <tr key={feature.feature}>
-                  <td>{feature.currentItem}</td>
-                  <td>{feature.feature}</td>
-                  <td>{feature.comparedItem}</td>
+                  <td className='currentItemCell'>{feature.currentItem}</td>
+                  <td className='feature'>{feature.feature}</td>
+                  <td className='comparedItemCell'>{feature.comparedItem}</td>
                 </tr>
               );
             })}
