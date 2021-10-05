@@ -2,8 +2,7 @@ const path = require('path');
 const express = require('express');
 const port = process.env.PORT || 3000;
 const morgan = require('morgan');
-// const TOKEN = require('../config.js');
-const TOKEN = process.env.TOKEN;
+const TOKEN = require('../config.js');
 var proxy = require('express-http-proxy');
 
 const app = express()
