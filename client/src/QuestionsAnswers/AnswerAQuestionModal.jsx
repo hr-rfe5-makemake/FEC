@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
-import config from '/config.js'
+const IMGBB = process.env.IMGBB;
 
 class AnswerAQuestionModal extends React.Component{
   constructor(props){
@@ -38,7 +38,7 @@ class AnswerAQuestionModal extends React.Component{
 
   addImage(event){
     let body = new FormData()
-    body.set('key', config.IMGBB)
+    body.set('key', IMGBB)
     body.set('image', event.target.files[0])
     axios.post('https://api.imgbb.com/1/upload', body)
     .then(response => {
