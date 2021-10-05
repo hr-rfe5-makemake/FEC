@@ -79,24 +79,19 @@ class RelatedItems extends React.Component {
   render() {
     if (this.state.fetched) {
       return (
-        <div className='relatedItemsComponent' id='relatedItems'>
+        <div className='relatedItemsComponent'>
         <div className="overlay" style={{display: this.state.overlay ? 'block' : 'none'}}></div>
         <div className='carouselList'>
-          <h1 className='componentHeader'>Related Products</h1>
+          <h4 className='componentHeader'>Related Products</h4>
           <RelatedItemList currentItemId={this.props.currentItemId} currentItem={this.props.currentItem} changeCurrentProduct={this.props.changeCurrentProduct} relatedList={this.state.relatedItems} updateRelated={this.updateRelated} toggleOverlay={this.toggleOverlay}/>
-          <h1 className='componentHeader'>Your Outfit</h1>
+          <h4 className='componentHeader'>Your Outfit</h4>
           <OutfitList currentItemId={this.props.currentItemId} currentItem={this.props.currentItem} changeCurrentProduct={this.props.changeCurrentProduct} outfitList={this.state.outfitList} addOutfit={this.addOutfit} updateRelated={this.updateRelated} removeOutfit={this.removeOutfit}/>
         </div>
         </div>
       )
 
     } else {
-      return (
-      <div>
-        <h1 className='componentHeader'>Related Products</h1>
-        <h1 className='componentHeader'>Your Outfit</h1>
-        </div>
-      )
+      return <div>Loading</div>
     }
   }
 

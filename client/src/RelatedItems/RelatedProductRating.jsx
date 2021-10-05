@@ -13,13 +13,13 @@ class RelatedProductRating extends React.Component {
     var output = [];
     while (rating > 0) {
       if (rating >= 1) {
-        output.push(<img key={5-totalStars} src="./img/star-fill.png"/>);
+        output.push(<img key={5-totalStars} src="star.png"/>);
       } else if (rating >= 0.75) {
-        output.push(<img key={5-totalStars} src="./img/star-three-quarter.png" />);
+        output.push(<img key={5-totalStars} src="star-three-quarter.png" />);
       } else if (rating >= 0.5) {
-        output.push(<img key={5-totalStars} src="./img/star-half.png" />)
+        output.push(<img key={5-totalStars} src="star-half.png" />)
       } else if (rating >= 0.25) {
-        output.push(<img key={5-totalStars} src="./img/star-one-quarter.png" />)
+        output.push(<img key={5-totalStars} src="star-one-quarter.png" />)
       } else {
         break;
       }
@@ -27,7 +27,7 @@ class RelatedProductRating extends React.Component {
       totalStars -= 1;
     }
     for (var i = 0; i < totalStars; i++) {
-      output.push(<img key={5-totalStars+i} src="./img/star.png"/>);
+      output.push(<img key={5-totalStars+i} src="star-empty.png"/>);
     }
     return output
   }

@@ -11,38 +11,26 @@ class SearchQuestion extends React.Component {
   userSearched(event){
     this.setState({
       searchTerm: event.target.value
-    },() => {
-      if(this.state.searchTerm.length > 2){
-        let result = this.props.questions.filter(question => {
-          let wordIndex = question.question_body.toLowerCase().indexOf(this.state.searchTerm.toLowerCase())
-          if(question.question_body.toLowerCase().includes(this.state.searchTerm.toLowerCase())){
-            question.startOfWord = wordIndex
-            question.searchTerm = this.state.searchTerm.length
-            return question
-          }
-        })
-        this.props.changeRenderArray(result, true ,this.props.questions.length)
-      } else if (this.state.searchTerm.length < 3) {
-        let result = this.props.questions.filter(question => {
-          question.startOfWord = null
-          question.searchTerm = null
-          return question
-        })
-        this.props.changeRenderArray(result, false,this.props.oldLength)
-      }
     })
+    if(this.state.searchTerm.length >= 3){
+      let result = this.props.questions.filter(question => {
+        if(question.question_body.toLowerCase().includes(this.state.searchTerm.toLowerCase())){
+          return question
+        }
+      })
+      this.props.changeRenderArray(result, true ,this.props.questions.length)
+    } else if (this.state.searchTerm.length < 3) {
+      this.props.changeRenderArray(this.props.questions, false,this.props.oldLength)
+    }
   }
 
   render(){
-    const inputStyle={
+    const  inputStyle={
       display: "block"
     }
 
     return(
-      <div className='searchbar-div'>
-        <input style={inputStyle} type='text' onChange={this.userSearched.bind(this)} placeholder='Have a question? Search for answers…' className='searchQuestion_Input'></input>
-        <i className="fas fa-search fa-lg"></i>
-      </div>
+      <input style={inputStyle} type='text' onChange={this.userSearched.bind(this)} placeholder='Have a question? Search for answers…'></input>
     )
   }
 

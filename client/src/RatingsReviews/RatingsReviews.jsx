@@ -14,10 +14,8 @@ class RatingsReviews extends React.Component {
     this.handleTimeToReRender = this.handleTimeToReRender.bind(this);
   }
 
-  // Toggle a filter when one of the "star bars" is clicked on the left side of the page
   handleFilterClick(e) {
     var rating = parseInt(e.currentTarget.getAttribute('identifier'));
-    // if the rating is not already included in current filters, add it
     if (this.state.filterOptions.indexOf(rating) === -1) {
       var newFilters = this.state.filterOptions.slice();
       newFilters.push(rating);
@@ -25,7 +23,6 @@ class RatingsReviews extends React.Component {
       this.setState({
         filterOptions: newFilters
       });
-      // if the rating is already included in the filters, remove it
     } else {
       var index = this.state.filterOptions.indexOf(rating);
       var newFilters = this.state.filterOptions.slice();
@@ -36,14 +33,12 @@ class RatingsReviews extends React.Component {
     }
   }
 
-  // Removes all filters
   handleRemoveFiltersClick() {
     this.setState({
       filterOptions: []
     });
   }
 
-  // ReviewList calls this fn to instruct BreakdownFilter to rerender
   handleTimeToReRender() {
     this.setState(prevState => ({
       timeToReRender: !prevState.timeToReRender
@@ -53,7 +48,7 @@ class RatingsReviews extends React.Component {
   render() {
     return (
       <div id='rr-container'>
-        <h1>Ratings and Reviews</h1>
+        <h4>RATINGS & REVIEWS</h4>
         <div id='rr-left'>
           <BreakdownFilter
             product_id={this.props.product_id}

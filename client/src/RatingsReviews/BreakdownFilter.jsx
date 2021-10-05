@@ -15,7 +15,6 @@ class BreakdownFilter extends React.Component {
     this.calcPercentRecommend = this.calcPercentRecommend.bind(this);
   }
 
-  // Get review metaData from API, store it in state, calculate the % of reviews that recommend the product
   getMetaData(product_id) {
     axios.get(`${urlFragment}reviews/meta?product_id=${product_id}`)
     .then(metaData => {
@@ -27,7 +26,6 @@ class BreakdownFilter extends React.Component {
     .catch(err => console.error(err))
   }
 
-  // Calculate percent of reviews that recommend the product
   calcPercentRecommend(recommended) {
     var trueCount = parseInt(recommended[true]) || 0;
     var falseCount = parseInt(recommended[false]) || 0;
@@ -37,7 +35,6 @@ class BreakdownFilter extends React.Component {
     });
   }
 
-  // Rerender this component when instructed by ReviewList
   componentDidUpdate(prevProps) {
     if (this.props.timeToReRender !== prevProps.timeToReRender) {
       this.getMetaData(this.props.product_id);
@@ -46,7 +43,6 @@ class BreakdownFilter extends React.Component {
     }
   }
 
-  // Get metaData when app loads
   componentDidMount() {
     this.getMetaData(this.props.product_id);
   }
@@ -73,7 +69,6 @@ class BreakdownFilter extends React.Component {
 
         <br></br>
         <FactorBreakdown metaData={this.state.metaData}/>
-
       </div>
     );
   }

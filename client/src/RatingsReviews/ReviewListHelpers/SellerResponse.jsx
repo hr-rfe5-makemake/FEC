@@ -1,6 +1,5 @@
 import React from 'react';
 
-// If seller responded to a review, display their response on the individual review tile with special styling
 function SellerResponse({response}) {
   if (response) {
     return (

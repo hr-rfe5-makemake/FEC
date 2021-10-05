@@ -1,7 +1,5 @@
 import React from 'react';
 
-// Create and return the characteristic rating bars on the left side of the page
-// The number of characteristics varies depending on the product.
 function FactorBreakdown({metaData}) {
   if (!Array.isArray(metaData)) {
     var characteristics = metaData.data.characteristics;
@@ -17,29 +15,27 @@ function FactorBreakdown({metaData}) {
     };
 
     for (var characteristic in characteristics) {
-      var rating = parseFloat(characteristics[characteristic].value);
+      var rating = parseInt(characteristics[characteristic].value);
       if (rating === 5) {
         rating -= 0.1;
       }
-      if (!isNaN(rating)) {
-        bars.push(
-          <div className="char-bar" key={characteristic} style={{zIndex: '0'}}>
-            <div><b>{characteristic}</b></div>
-            <div className="bar-grey">
-              <div className="bar-mid" style={{height: "10px", width: '32%'}}></div>
-              <div className="bar-white" style={{height: "10px", width: '2%'}}></div>
-              <div className="bar-mid" style={{height: "10px", width: '32%'}}></div>
-              <div className="bar-white" style={{height: "10px", width: '2%'}}></div>
-              <div className="bar-mid" style={{height: "10px", width: '32%'}}></div>
-              <div className="bar-green-char" style={{height: "10px", width: `2%`, position: 'absolute', left:`${100 * (rating / 5)}%`}}></div>
-            </div>
-            <div className="range">
-              <span>{words[characteristic][0]}</span>
-              <span>{words[characteristic][1]}</span>
-            </div>
+      bars.push(
+        <div className="char-bar" key={characteristic}>
+          <div><b>{characteristic}</b></div>
+          <div className="bar-grey">
+            <div className="bar-mid" style={{height: "10px", width: '32%'}}></div>
+            <div className="bar-white" style={{height: "10px", width: '2%'}}></div>
+            <div className="bar-mid" style={{height: "10px", width: '32%'}}></div>
+            <div className="bar-white" style={{height: "10px", width: '2%'}}></div>
+            <div className="bar-mid" style={{height: "10px", width: '32%'}}></div>
+            <div className="bar-green-char" style={{height: "10px", width: `2%`, position: 'absolute', left:`${100 * (rating / 5)}%`}}></div>
           </div>
-        );
-      }
+          <div className="range">
+            <span>{words[characteristic][0]}</span>
+            <span>{words[characteristic][1]}</span>
+          </div>
+        </div>
+      );
     }
 
     return <div id="factor-bars">{bars}</div>;

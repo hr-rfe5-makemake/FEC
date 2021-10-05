@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Breakdown({metaData, handleRemoveFiltersClick, handleFilterClick, filterOptions}) {
-  // If ratings exist
   if (metaData.data && Object.keys(metaData.data.ratings).length > 0) {
     var allRatings = metaData.data.ratings;
     var bars = [];
@@ -18,13 +17,12 @@ function Breakdown({metaData, handleRemoveFiltersClick, handleFilterClick, filte
         <div className="bar-container" onClick={handleFilterClick} identifier={i} key={i}>
           <u>{i} stars</u>
           <div className="bar-grey">
-            <div className="bar-green" style={{height: "20px", width: `${average}%`}}></div>
+            <div className="bar-green" style={{height: "10px", width: `${average}%`}}></div>
           </div>
-          <span className={"filter-count"}>{allRatings[i] || 0}</span>
+          {allRatings[i] || 0}
         </div>
       )
     }
-    // Return star bars on left side of page
     return (
       <div>
         <div className='filterOption'>{bars}</div>
@@ -36,7 +34,6 @@ function Breakdown({metaData, handleRemoveFiltersClick, handleFilterClick, filte
           : null}
       </div>
     );
-  // Otherwise, if there are no ratings
   } else {
     var bars = [];
     for (var i = 5; i > 0; i--) {
@@ -44,12 +41,11 @@ function Breakdown({metaData, handleRemoveFiltersClick, handleFilterClick, filte
         <div className="bar-container" onClick={handleFilterClick} identifier={i} key={i}>
           <u>{i} stars</u>
           <div className="bar-grey">
-            <div className="bar-green" style={{height: "20px", width: `0%`}}></div>
+            <div className="bar-green" style={{height: "10px", width: `0%`}}></div>
           </div> 0
         </div>
       )
     }
-    // Return empty bars
     return (
       <div id="filters">
         <div className='filterOption'>{bars}</div>
