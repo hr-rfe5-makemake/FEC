@@ -24,6 +24,7 @@ class IndividualTile extends React.Component {
     this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
   }
 
+  // Reformat dates before displaying on page
   reformatDate(date) {
     var split = date.split('-');
     var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -36,6 +37,7 @@ class IndividualTile extends React.Component {
     return `${month} ${day}, ${year}`;
   }
 
+  // When a user clicks the "Helpful" button, that info is sent to the API and the ReviewList rerenders to show the incremented "Helpful" count
   handleHelpfulClick() {
     if (!this.state.helpful) {
       this.state.helpful = true;
@@ -47,6 +49,7 @@ class IndividualTile extends React.Component {
     }
   }
 
+  // When a user clicks the "Report" button, that info is sent to the API and the review will not appear next time the page is loaded
   handleReport() {
     axios.put(`${urlFragment}reviews/${this.props.review.review_id}/report`)
       .then(data => {
@@ -55,6 +58,7 @@ class IndividualTile extends React.Component {
       .catch(err => console.error(err))
   }
 
+  // When a thumbnail image is clicked, display it in a fullscreen modal
   handleThumbnailClick(e) {
     this.setState(prevState => ({
       imageModal: !prevState.imageModal,
@@ -62,6 +66,7 @@ class IndividualTile extends React.Component {
     }));
   }
 
+  // If a review comes with photos, create an array of thumbnail elements to be displayed
   generateThumbnails() {
     var photos = this.props.review.photos;
     if (!photos.length) {
@@ -78,11 +83,11 @@ class IndividualTile extends React.Component {
   render() {
     return (
       <div className="individual-tile">
-        {this.state.imageModal ?  <div className="modal" onClick={this.handleThumbnailClick}><img src={this.state.modalURL}></img></div> : null}
+        {this.state.imageModal ?  <div className="modal" id="rr-image-modal" onClick={this.handleThumbnailClick}><img id="rr-modal-image" src={this.state.modalURL}></img></div> : null}
         <MyUsername username={this.props.review.reviewer_name} verified={this.state.verified} searchTerm={this.props.searchTerm}/>
         <Stars rating={this.props.review.rating}/>
-        <span className="tile-date">Reviewed on {this.reformatDate(this.props.review.date)}</span>
         <ReviewSummary summary={this.props.review.summary} searchTerm={this.props.searchTerm}/>
+        <span className="tile-date">Reviewed on {this.reformatDate(this.props.review.date)}</span>
         <ReviewBody body={this.props.review.body} searchTerm={this.props.searchTerm}/>
         {this.generateThumbnails()}
         <IRecommend recommend={this.props.review.recommend}/>

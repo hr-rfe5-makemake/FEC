@@ -14,7 +14,8 @@ class QuestionsAnswers extends React.Component {
       renderQuestions: [],
       questionsRendered: 2,
       oldQuestionsRendered: 2,
-      renderedAllQuestion: false
+      renderedAllQuestion: false,
+      collapseQuesitons: false
     }
   }
 
@@ -47,7 +48,6 @@ class QuestionsAnswers extends React.Component {
   componentDidUpdate(prevProps){
     if(this.props.product.id !== prevProps.product.id){
       this.questionsFetcher()
-      console.log(this.props.product.id)
     }
   }
 
@@ -56,8 +56,10 @@ class QuestionsAnswers extends React.Component {
       this.setState({
         questionsRendered: this.state.questionsRendered+=2,
         oldQuestionsRendered:this.state.oldQuestionsRendered += 2,
-        renderedAllQuestion: true
+        renderedAllQuestion: true,
+        collapseQuesitons: true
       })
+
     } else {
       this.setState({
         questionsRendered: this.state.questionsRendered+=2,
@@ -82,29 +84,41 @@ class QuestionsAnswers extends React.Component {
     }
   }
 
+  collapseQuesitons(){
+    this.setState({
+      questionsRendered: 2,
+      oldQuestionsRendered: 2,
+      collapseQuesitons: false,
+      renderedAllQuestion: false
+    })
+  }
+
   render(){
     if(this.props.product){
       const moreQuestionsStyle={
         display: !this.state.renderedAllQuestion ? 'block' : 'none'
       }
-      const scroll = {
-        overflow:"scroll",
-        maxHeight: '70vh'
+
+      const collapseStyle = {
+        display: this.state.collapseQuesitons ? 'block' : 'none'
       }
 
       return(
-        <div className='questions_answers'>
-          Questions & Answers
+        <div className='questions_answers' id='questions_answers'>
+          <h1>Questions & Answers</h1>
           <SearchQuestion questions={this.state.allQuestions} oldLength={this.state.oldQuestionsRendered} changeRenderArray={this.changeRenderArray.bind(this)}/>
           <AddQuestionModal product={this.props.product.name} product_id={this.props.product.id}/>
           <div className='modal-placeHolder'></div>
-          <ul style={scroll}>
+          <ul className='questionsList'>
             {this.state.renderQuestions.slice(0,this.state.questionsRendered).map((question,index) => (
               <IndividualQuestion question= {question} key={question.question_id} updateQuestions={this.questionsFetcher.bind(this)} index={index} product={this.props.product}/>
             ))}
           </ul>
-          <button style={moreQuestionsStyle} onClick={this.loadMoreQuestions.bind(this)} className='moreQuestions'>More Answered Questions</button>
-          <AddAQuestion />
+          <div className='main_buttons'>
+            <button style={moreQuestionsStyle} onClick={this.loadMoreQuestions.bind(this)} className='moreQuestions'>MORE ANSWERED QUESTION +</button>
+            <button style={collapseStyle} onClick={this.collapseQuesitons.bind(this)}>Collapse Question's</button>
+            <AddAQuestion />
+          </div>
         </div>
       )
     }
