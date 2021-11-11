@@ -8,7 +8,7 @@ class AddAQuestion extends React.Component {
 
     }
   }
-
+    //test
   handleButtonClick(e){
     e.preventDefault();
     let modal = document.getElementsByClassName('questionModalBackground')[0]
